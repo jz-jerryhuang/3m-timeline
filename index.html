@@ -10,6 +10,10 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Classical Historic Serif Fonts (Declaration of Independence Aesthetic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
   <!-- Direct Timeline Data Load -->
   <script src="timeline_data.js"></script>
   
@@ -42,6 +46,21 @@
       background: radial-gradient(130% 90% at 50% -10%, #173059 0%, #0e1d38 45%, #081224 100%);
       background-attachment: fixed;
       color: #f1f5f9;
+    }
+
+    /* 18th Century Historical Parchment Declaration Style */
+    .font-parchment-en {
+      font-family: 'Cinzel', 'EB Garamond', Georgia, serif;
+    }
+    .font-parchment-body {
+      font-family: 'EB Garamond', 'Noto Serif TC', Georgia, serif;
+    }
+    .parchment-sheet {
+      background: radial-gradient(ellipse at 50% 25%, #fdfbf7 0%, #f7f0e0 55%, #ecdcb9 100%);
+      box-shadow: 
+        inset 0 0 60px rgba(120, 80, 40, 0.18),
+        inset 0 0 130px rgba(90, 55, 25, 0.12),
+        0 25px 80px rgba(0, 0, 0, 0.85);
     }
 
     /* Custom Scrollbar */
@@ -737,110 +756,144 @@
     </div>
   </div>
 
-  <!-- ================= 3M MANIFESTO MODAL ================= -->
+  <!-- ================= 3M MANIFESTO MODAL (HISTORICAL DECLARATION THEME) ================= -->
   <div 
     v-if="isManifestoOpen"
     @click.self="closeManifesto"
-    class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl flex items-center justify-center p-3 sm:p-6 overflow-y-auto select-none transition-all duration-300">
+    class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto select-none transition-all duration-300">
     
     <div 
-      class="relative w-full max-w-2xl bg-gradient-to-b from-[#0f1f3d]/95 via-[#0a162b]/95 to-[#060e1c]/98 border border-cyan-500/40 rounded-3xl p-6 sm:p-8 shadow-[0_0_60px_rgba(6,182,212,0.25)] text-left my-auto animate-scale-reveal">
+      class="relative w-full max-w-2xl parchment-sheet border-4 border-double border-[#96724a]/80 rounded-sm p-3 sm:p-5 text-left my-auto animate-scale-reveal text-[#2b2118] font-parchment-body select-text shadow-2xl">
       
-      <!-- Top Close Button -->
-      <button 
-        @click="closeManifesto" 
-        class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl p-2 rounded-full hover:bg-slate-800/60 transition-colors cursor-pointer"
-        title="關閉 (ESC)">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+      <!-- Inner Frame with Filigree Corner Accents -->
+      <div class="border border-[#aa8256]/50 p-5 sm:p-8 relative rounded-sm bg-[#faf5eb]/50">
+        
+        <!-- Corner Ornaments -->
+        <span class="absolute top-1.5 left-1.5 text-xs text-[#8a633c]/60 select-none pointer-events-none">❧</span>
+        <span class="absolute top-1.5 right-1.5 text-xs text-[#8a633c]/60 select-none pointer-events-none">☙</span>
+        <span class="absolute bottom-1.5 left-1.5 text-xs text-[#8a633c]/60 select-none pointer-events-none">❧</span>
+        <span class="absolute bottom-1.5 right-1.5 text-xs text-[#8a633c]/60 select-none pointer-events-none">☙</span>
 
-      <!-- Badge Header -->
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold text-amber-300 bg-amber-500/15 border border-amber-500/40 mb-4 tracking-wider uppercase shadow-[0_0_12px_rgba(245,158,11,0.2)]">
-        <i class="fa-solid fa-compass text-amber-400"></i>
-        <span>3M MANIFESTO • 創會精神</span>
-      </div>
-
-      <h3 class="text-2xl sm:text-3xl font-black text-white mb-6 tracking-tight">
-        3M 讀書會 <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-200 to-amber-400">創會宗旨與核心價值</span>
-      </h3>
-
-      <!-- 1. 宗旨 (Mission Quote Block) -->
-      <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-cyan-950/50 via-slate-900/60 to-transparent border border-cyan-500/30 mb-6 relative overflow-hidden group shadow-lg">
-        <div class="absolute -right-4 -bottom-4 text-7xl font-serif text-cyan-500/[0.08] select-none pointer-events-none">❝</div>
-        <div class="flex items-center gap-2 text-xs font-bold text-cyan-400 tracking-wider uppercase mb-2">
-          <i class="fa-solid fa-bullseye"></i> 創會宗旨
-        </div>
-        <p class="text-base sm:text-lg text-white font-medium leading-relaxed">
-          在讀書會成員彼此充分信任的基礎上，營造一個能夠坦誠交流、自由分享想法的精緻小團體。
-        </p>
-      </div>
-
-      <!-- 2. 核心價值觀 (Values) -->
-      <div class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 mb-6">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="text-xs font-bold text-amber-400 tracking-wider uppercase flex items-center gap-1.5">
-            <i class="fa-solid fa-gem text-amber-400"></i> 核心價值觀
-          </span>
-          <div class="flex items-center gap-1.5 font-mono">
-            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">開放 Open</span>
-            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">尊重 Respect</span>
-            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40">互信 Trust</span>
-          </div>
-        </div>
-        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
-          讀書會以開放、尊重與互信為核心價值，鼓勵成員真誠交流、共享知識，在彼此啟發與支持中共同成長，讓學習成為豐富人生的力量。
-        </p>
-      </div>
-
-      <!-- 3. 三大實踐目標 (Goals Bento Grid) -->
-      <div>
-        <span class="text-xs font-bold text-slate-400 tracking-wider uppercase block mb-3 flex items-center gap-1.5">
-          <i class="fa-solid fa-mountain-sun text-slate-400"></i> 實踐目標
-        </span>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <!-- 目標 1 -->
-          <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(6,182,212,0.15)] group">
-            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-2.5 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-lightbulb text-sm"></i>
-            </div>
-            <h4 class="text-xs sm:text-sm font-bold text-white mb-1.5">多元視角啟發思維</h4>
-            <p class="text-[11px] text-slate-400 leading-relaxed font-light">
-              透過成員不同的專業背景與經驗，提供多元觀點，促進深度討論與知識交流，拓展彼此的思維廣度。
-            </p>
-          </div>
-
-          <!-- 目標 2 -->
-          <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-sky-500/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(56,189,248,0.15)] group">
-            <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 mb-2.5 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-book-open-reader text-sm"></i>
-            </div>
-            <h4 class="text-xs sm:text-sm font-bold text-white mb-1.5">培養終身學習習慣</h4>
-            <p class="text-[11px] text-slate-400 leading-relaxed font-light">
-              建立持續學習的氛圍，透過閱讀與討論，不斷吸收新知、提升個人素養，並應用於生活與工作中。
-            </p>
-          </div>
-
-          <!-- 目標 3 -->
-          <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-amber-500/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(245,158,11,0.15)] group">
-            <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-2.5 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-hand-holding-heart text-sm"></i>
-            </div>
-            <h4 class="text-xs sm:text-sm font-bold text-white mb-1.5">共創成長與價值</h4>
-            <p class="text-[11px] text-slate-400 leading-relaxed font-light">
-              秉持「共好」的精神，相互支持與鼓勵，促進成員共同成長，並將知識與收穫回饋給社會，實現更大的價值。
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
-        <span>2015 - 2026 • 淬鍊同行</span>
+        <!-- Top Close Button -->
         <button 
           @click="closeManifesto" 
-          class="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer">
-          關閉 (ESC)
+          class="absolute top-2.5 right-2.5 text-[#785433] hover:text-[#2b1c10] text-lg p-1.5 rounded hover:bg-[#ebd9bc]/60 transition-colors cursor-pointer"
+          title="關閉憲章 (ESC)">
+          <i class="fa-solid fa-xmark"></i>
         </button>
+
+        <!-- Header: In Congress / Preamble Small Caps -->
+        <div class="text-center font-parchment-en text-[10px] sm:text-[11px] tracking-[0.25em] text-[#7d5936] font-bold uppercase mb-2 flex items-center justify-center gap-2 select-none">
+          <i class="fa-solid fa-feather-pointed text-xs text-[#8a633c]"></i>
+          <span>IN CONGRESS OF 3M • OCTOBER 18, 2015</span>
+          <i class="fa-solid fa-feather-pointed text-xs text-[#8a633c] -scale-x-100"></i>
+        </div>
+
+        <!-- Main Title: Declaration of Independence Style -->
+        <h2 class="text-2xl sm:text-4xl font-black font-parchment-en tracking-wide text-[#23180f] text-center uppercase my-2">
+          The Declaration of 3M
+        </h2>
+        <div class="text-center font-serif text-xs tracking-widest text-[#69482b] font-medium mb-4">
+          — 創立憲章 • 宗旨與核心價值宣言 —
+        </div>
+
+        <!-- Hairline Vintage Divider -->
+        <div class="flex items-center justify-center gap-3 mb-6 text-[#94704b]/60 select-none">
+          <span class="h-[1px] w-20 bg-[#94704b]/40"></span>✦ ❧ ✦<span class="h-[1px] w-20 bg-[#94704b]/40"></span>
+        </div>
+
+        <!-- 1. 創立宗旨 (The Preamble) -->
+        <div class="mb-6 pb-6 border-b border-[#aa8256]/30">
+          <div class="text-[11px] font-bold font-parchment-en tracking-widest text-[#785330] uppercase mb-2 flex items-center gap-1.5 select-none">
+            <i class="fa-solid fa-scroll text-xs"></i> I. 創立宗旨 • THE PREAMBLE
+          </div>
+          <div class="p-4 rounded-sm bg-[#f3e7ce]/60 border-l-3 border-[#80572e] shadow-[inset_0_1px_4px_rgba(128,87,46,0.08)]">
+            <p class="text-base sm:text-lg text-[#1f160f] font-semibold leading-relaxed tracking-wide italic font-serif text-justify">
+              「在讀書會成員彼此充分信任的基礎上，營造一個能夠坦誠交流、自由分享想法的精緻小團體。」
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. 核心價值觀 (Core Tenets) -->
+        <div class="mb-6 pb-6 border-b border-[#aa8256]/30">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+            <div class="text-[11px] font-bold font-parchment-en tracking-widest text-[#785330] uppercase flex items-center gap-1.5 select-none">
+              <i class="fa-solid fa-shield-halved text-xs"></i> II. 核心價值觀 • CORE TENETS
+            </div>
+            <div class="flex items-center gap-1.5 font-parchment-en text-[11px] select-none">
+              <span class="px-2 py-0.5 border border-[#8b653e]/60 bg-[#eddcc0]/70 text-[#3b2716] font-bold shadow-xs">開放 OPEN</span>
+              <span class="px-2 py-0.5 border border-[#8b653e]/60 bg-[#eddcc0]/70 text-[#3b2716] font-bold shadow-xs">尊重 RESPECT</span>
+              <span class="px-2 py-0.5 border border-[#8b653e]/60 bg-[#eddcc0]/70 text-[#3b2716] font-bold shadow-xs">互信 TRUST</span>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-[#382a1d] leading-relaxed text-justify font-normal pl-1">
+            讀書會以開放、尊重與互信為核心價值，鼓勵成員真誠交流、共享知識，在彼此啟發與支持中共同成長，讓學習成為豐富人生的力量。
+          </p>
+        </div>
+
+        <!-- 3. 實踐目標 (The Three Pillars) -->
+        <div class="mb-6">
+          <div class="text-[11px] font-bold font-parchment-en tracking-widest text-[#785330] uppercase mb-3 flex items-center gap-1.5 select-none">
+            <i class="fa-solid fa-landmark text-xs"></i> III. 實踐目標 • THE THREE PILLARS
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- Pillar 1 -->
+            <div class="p-3.5 bg-[#f4ebd9]/70 border border-[#b8956e]/55 rounded-sm shadow-xs">
+              <div class="font-parchment-en text-[11px] font-bold text-[#805934] mb-1.5 flex items-center gap-1">
+                <span>§ 1.</span> 多元視角啟發思維
+              </div>
+              <p class="text-[11px] text-[#473729] leading-relaxed text-justify font-normal">
+                透過成員不同的專業背景與經驗，提供多元觀點，促進深度討論與知識交流，拓展彼此的思維廣度。
+              </p>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="p-3.5 bg-[#f4ebd9]/70 border border-[#b8956e]/55 rounded-sm shadow-xs">
+              <div class="font-parchment-en text-[11px] font-bold text-[#805934] mb-1.5 flex items-center gap-1">
+                <span>§ 2.</span> 培養終身學習習慣
+              </div>
+              <p class="text-[11px] text-[#473729] leading-relaxed text-justify font-normal">
+                建立持續學習的氛圍，透過閱讀與討論，不斷吸收新知、提升個人素養，並應用於生活與工作中。
+              </p>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="p-3.5 bg-[#f4ebd9]/70 border border-[#b8956e]/55 rounded-sm shadow-xs">
+              <div class="font-parchment-en text-[11px] font-bold text-[#805934] mb-1.5 flex items-center gap-1">
+                <span>§ 3.</span> 共創成長與價值
+              </div>
+              <p class="text-[11px] text-[#473729] leading-relaxed text-justify font-normal">
+                秉持「共好」的精神，相互支持與鼓勵，促進成員共同成長，並將知識與收穫回饋給社會，實現更大的價值。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Signatures & Crimson Wax Seal -->
+        <div class="pt-4 border-t-2 border-[#8b653e]/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <!-- Left: Historical Date & Creed -->
+          <div class="text-center sm:text-left text-[11px] font-serif text-[#634931]">
+            <div class="font-bold tracking-widest uppercase font-parchment-en text-[10px]">In Witness Whereof • 立約為銘</div>
+            <div class="italic text-[#7a5c3e] text-xs">十一年淬鍊同行 • 2015.10.18 — 2026.10.18</div>
+          </div>
+
+          <!-- Right: Crimson Wax Seal Stamp & Close Action -->
+          <div class="flex items-center gap-4">
+            <!-- Vintage Crimson Wax Seal Stamp -->
+            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#801b15] via-[#a0241b] to-[#5e0f0b] text-[#fce4ae] border-2 border-[#b5342a] flex flex-col items-center justify-center font-parchment-en text-[9px] uppercase font-bold tracking-wider leading-none rotate-[-6deg] select-none shadow-[0_4px_14px_rgba(128,27,21,0.45)] ring-1 ring-[#801b15]/30">
+              <span class="text-[8px] tracking-widest">★ 3M ★</span>
+              <span class="text-[7px] text-[#fce4ae]/80 mt-0.5">EST. 2015</span>
+              <span class="text-[6px] tracking-widest text-[#fce4ae]/70 mt-0.5">VERITAS</span>
+            </div>
+
+            <button 
+              @click="closeManifesto" 
+              class="px-3.5 py-1.5 text-xs font-serif font-semibold border border-[#8b653e]/60 bg-[#e7d4b4]/80 hover:bg-[#dfc5a0] text-[#2c1c0f] rounded-sm transition-colors cursor-pointer shadow-xs">
+              收起憲章 (ESC)
+            </button>
+          </div>
+        </div>
+
       </div>
 
     </div>
