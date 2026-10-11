@@ -782,13 +782,6 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
 
-        <!-- Header: In Congress / Preamble Small Caps -->
-        <div class="text-center font-parchment-en text-[10px] sm:text-[11px] tracking-[0.25em] text-[#7d5936] font-bold uppercase mb-2 flex items-center justify-center gap-2 select-none">
-          <i class="fa-solid fa-feather-pointed text-xs text-[#8a633c]"></i>
-          <span>IN CONGRESS OF 3M • OCTOBER 18, 2015</span>
-          <i class="fa-solid fa-feather-pointed text-xs text-[#8a633c] -scale-x-100"></i>
-        </div>
-
         <!-- Main Title: Declaration of Independence Style -->
         <h2 class="text-2xl sm:text-4xl font-black font-parchment-en tracking-wide text-[#23180f] text-center uppercase my-2">
           The Declaration of 3M
@@ -870,27 +863,17 @@
         </div>
 
         <!-- 4. Signatures & Crimson Wax Seal -->
-        <div class="pt-4 border-t-2 border-[#8b653e]/40 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <!-- Left: Historical Date & Creed -->
-          <div class="text-center sm:text-left text-[11px] font-serif text-[#634931]">
-            <div class="font-bold tracking-widest uppercase font-parchment-en text-[10px]">In Witness Whereof • 立約為銘</div>
-            <div class="italic text-[#7a5c3e] text-xs">十一年淬鍊同行 • 2015.10.18 — 2026.10.18</div>
+        <div class="pt-4 border-t-2 border-[#8b653e]/40 flex items-center justify-between gap-4">
+          <!-- Left: Creed -->
+          <div class="text-left text-[11px] font-serif text-[#634931]">
+            <div class="font-bold tracking-widest uppercase font-parchment-en text-xs">In Witness Whereof • 立約為銘</div>
           </div>
 
-          <!-- Right: Crimson Wax Seal Stamp & Close Action -->
-          <div class="flex items-center gap-4">
-            <!-- Vintage Crimson Wax Seal Stamp -->
-            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#801b15] via-[#a0241b] to-[#5e0f0b] text-[#fce4ae] border-2 border-[#b5342a] flex flex-col items-center justify-center font-parchment-en text-[9px] uppercase font-bold tracking-wider leading-none rotate-[-6deg] select-none shadow-[0_4px_14px_rgba(128,27,21,0.45)] ring-1 ring-[#801b15]/30">
-              <span class="text-[8px] tracking-widest">★ 3M ★</span>
-              <span class="text-[7px] text-[#fce4ae]/80 mt-0.5">EST. 2015</span>
-              <span class="text-[6px] tracking-widest text-[#fce4ae]/70 mt-0.5">VERITAS</span>
-            </div>
-
-            <button 
-              @click="closeManifesto" 
-              class="px-3.5 py-1.5 text-xs font-serif font-semibold border border-[#8b653e]/60 bg-[#e7d4b4]/80 hover:bg-[#dfc5a0] text-[#2c1c0f] rounded-sm transition-colors cursor-pointer shadow-xs">
-              收起憲章 (ESC)
-            </button>
+          <!-- Right: Crimson Wax Seal Stamp -->
+          <div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#801b15] via-[#a0241b] to-[#5e0f0b] text-[#fce4ae] border-2 border-[#b5342a] flex flex-col items-center justify-center font-parchment-en text-[9px] uppercase font-bold tracking-wider leading-none rotate-[-6deg] select-none shadow-[0_4px_14px_rgba(128,27,21,0.45)] ring-1 ring-[#801b15]/30">
+            <span class="text-[8px] tracking-widest">★ 3M ★</span>
+            <span class="text-[7px] text-[#fce4ae]/80 mt-0.5">EST. 2015</span>
+            <span class="text-[6px] tracking-widest text-[#fce4ae]/70 mt-0.5">VERITAS</span>
           </div>
         </div>
 
