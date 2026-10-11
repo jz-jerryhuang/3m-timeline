@@ -34,13 +34,6 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "photos_web/FWD_2015/IMAG1220 (1).webp",
-          "type": "image",
-          "name": "IMAG1220 (1).jpg",
-          "thumb": "photos_web/FWD_2015/IMAG1220 (1)_thumb.webp",
-          "original_url": "3M 聚會照片/FWD_2015/IMAG1220 (1).jpg"
-        },
-        {
           "url": "photos_web/FWD_2015/1.webp",
           "type": "image",
           "name": "1.jpg",
@@ -97,6 +90,13 @@ window.TIMELINE_DATA = {
           "original_url": "3M 聚會照片/FWD_2015/DSC_0570.JPG"
         },
         {
+          "url": "photos_web/FWD_2015/IMAG1220 (1).webp",
+          "type": "image",
+          "name": "IMAG1220 (1).jpg",
+          "thumb": "photos_web/FWD_2015/IMAG1220 (1)_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/IMAG1220 (1).jpg"
+        },
+        {
           "url": "photos_web/FWD_2015/IMAG1783.webp",
           "type": "image",
           "name": "IMAG1783.jpg",
@@ -112,7 +112,6 @@ window.TIMELINE_DATA = {
         }
       ],
       "photos": [
-        "photos_web/FWD_2015/IMAG1220 (1).webp",
         "photos_web/FWD_2015/1.webp",
         "photos_web/FWD_2015/2.webp",
         "photos_web/FWD_2015/3.webp",
@@ -121,6 +120,7 @@ window.TIMELINE_DATA = {
         "photos_web/FWD_2015/6.webp",
         "photos_web/FWD_2015/7.webp",
         "photos_web/FWD_2015/DSC_0570.webp",
+        "photos_web/FWD_2015/IMAG1220 (1).webp",
         "photos_web/FWD_2015/IMAG1783.webp",
         "photos_web/FWD_2015/IMAG1803.webp"
       ],
@@ -361,8 +361,8 @@ window.TIMELINE_DATA = {
           "type": "gif",
           "name": "讀書會分享 - 新零售 (Jerry) 5-22-2018.gif",
           "thumb": "photos_web/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018_thumb.webp",
-          "poster": "photos_web/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018_poster.webp",
           "original_url": "3M 聚會照片/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018.gif",
+          "poster": "photos_web/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018_poster.webp",
           "anim_url": "3M 聚會照片/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018.gif"
         }
       ],
@@ -393,8 +393,8 @@ window.TIMELINE_DATA = {
           "type": "gif",
           "name": "讀書會分享 - 人工智慧 (Jerry) 6-23-2018.gif",
           "thumb": "photos_web/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018_thumb.webp",
-          "poster": "photos_web/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018_poster.webp",
           "original_url": "3M 聚會照片/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018.gif",
+          "poster": "photos_web/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018_poster.webp",
           "anim_url": "3M 聚會照片/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018.gif"
         }
       ],
@@ -422,22 +422,6 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "photos_web/Blockchain_2018-7-28/DSC_7318.webp",
-          "type": "image",
-          "name": "DSC_7318.JPG",
-          "thumb": "photos_web/Blockchain_2018-7-28/DSC_7318_thumb.webp",
-          "original_url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7318.JPG"
-        },
-        {
-          "url": "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_poster.webp",
-          "type": "gif",
-          "name": "讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif",
-          "thumb": "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_thumb.webp",
-          "poster": "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_poster.webp",
-          "original_url": "3M 聚會照片/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif",
-          "anim_url": "3M 聚會照片/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif"
-        },
-        {
           "url": "photos_web/Blockchain_2018-7-28/DSC_7312.webp",
           "type": "image",
           "name": "DSC_7312.JPG",
@@ -457,14 +441,30 @@ window.TIMELINE_DATA = {
           "name": "DSC_7317.JPG",
           "thumb": "photos_web/Blockchain_2018-7-28/DSC_7317_thumb.webp",
           "original_url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7317.JPG"
+        },
+        {
+          "url": "photos_web/Blockchain_2018-7-28/DSC_7318.webp",
+          "type": "image",
+          "name": "DSC_7318.JPG",
+          "thumb": "photos_web/Blockchain_2018-7-28/DSC_7318_thumb.webp",
+          "original_url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7318.JPG"
+        },
+        {
+          "url": "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_poster.webp",
+          "type": "gif",
+          "name": "讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif",
+          "thumb": "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_thumb.webp",
+          "original_url": "3M 聚會照片/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif",
+          "poster": "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_poster.webp",
+          "anim_url": "3M 聚會照片/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif"
         }
       ],
       "photos": [
-        "photos_web/Blockchain_2018-7-28/DSC_7318.webp",
-        "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_poster.webp",
         "photos_web/Blockchain_2018-7-28/DSC_7312.webp",
         "photos_web/Blockchain_2018-7-28/DSC_7313.webp",
-        "photos_web/Blockchain_2018-7-28/DSC_7317.webp"
+        "photos_web/Blockchain_2018-7-28/DSC_7317.webp",
+        "photos_web/Blockchain_2018-7-28/DSC_7318.webp",
+        "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_poster.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1ZpepfTmQjkvHCAqAeZuogtj1EOYS1CyB?usp=drive_link"
     },
@@ -490,8 +490,8 @@ window.TIMELINE_DATA = {
           "type": "gif",
           "name": "讀書會分享 - 量子 (Jerry) 12-15-2018.gif",
           "thumb": "photos_web/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018_thumb.webp",
-          "poster": "photos_web/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018_poster.webp",
           "original_url": "3M 聚會照片/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018.gif",
+          "poster": "photos_web/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018_poster.webp",
           "anim_url": "3M 聚會照片/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018.gif"
         }
       ],
@@ -522,8 +522,8 @@ window.TIMELINE_DATA = {
           "type": "gif",
           "name": "20190727 - Universal Basic Income (Vickie).gif",
           "thumb": "photos_web/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie)_thumb.webp",
-          "poster": "photos_web/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie)_poster.webp",
           "original_url": "3M 聚會照片/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie).gif",
+          "poster": "photos_web/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie)_poster.webp",
           "anim_url": "3M 聚會照片/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie).gif"
         }
       ],
@@ -558,8 +558,8 @@ window.TIMELINE_DATA = {
           "type": "gif",
           "name": "新冠肺炎下的新飲食型態 (Jerry)  04-26-2020.gif",
           "thumb": "photos_web/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020_thumb.webp",
-          "poster": "photos_web/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020_poster.webp",
           "original_url": "3M 聚會照片/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020.gif",
+          "poster": "photos_web/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020_poster.webp",
           "anim_url": "3M 聚會照片/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020.gif"
         }
       ],
@@ -593,8 +593,8 @@ window.TIMELINE_DATA = {
           "type": "gif",
           "name": "國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2.gif",
           "thumb": "photos_web/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2_thumb.webp",
-          "poster": "photos_web/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2_poster.webp",
           "original_url": "3M 聚會照片/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2.gif",
+          "poster": "photos_web/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2_poster.webp",
           "anim_url": "3M 聚會照片/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2.gif"
         }
       ],
@@ -618,11 +618,11 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.webp",
+          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.webp",
           "type": "image",
-          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.jpg",
-          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8_thumb.webp",
-          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.jpg"
+          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.jpg",
+          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1_thumb.webp",
+          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.jpg"
         },
         {
           "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13.webp",
@@ -653,20 +653,20 @@ window.TIMELINE_DATA = {
           "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17.jpg"
         },
         {
-          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.webp",
+          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.webp",
           "type": "image",
-          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.jpg",
-          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1_thumb.webp",
-          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.jpg"
+          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.jpg",
+          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8_thumb.webp",
+          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.jpg"
         }
       ],
       "photos": [
-        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.webp",
+        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.webp",
         "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13.webp",
         "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_14.webp",
         "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_16.webp",
         "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17.webp",
-        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.webp"
+        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.webp"
       ],
       "drive_url": null
     },
@@ -688,31 +688,31 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_poster.webp",
+          "url": "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_poster.webp",
           "type": "gif",
-          "name": "Elon Musk的事業版圖與雄心壯志_0508.gif",
-          "thumb": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_thumb.webp",
-          "poster": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_poster.webp",
-          "original_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508.gif",
-          "anim_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508.gif"
+          "name": "20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif",
+          "thumb": "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_thumb.webp",
+          "original_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif",
+          "poster": "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_poster.webp",
+          "anim_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif"
         },
         {
           "url": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_poster.webp",
           "type": "gif",
           "name": "Elon Musk 收購Twitter時間點與佈局_20220508_una.gif",
           "thumb": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_thumb.webp",
-          "poster": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_poster.webp",
           "original_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una.gif",
+          "poster": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_poster.webp",
           "anim_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una.gif"
         },
         {
-          "url": "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_poster.webp",
+          "url": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_poster.webp",
           "type": "gif",
-          "name": "20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif",
-          "thumb": "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_thumb.webp",
-          "poster": "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_poster.webp",
-          "original_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif",
-          "anim_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif"
+          "name": "Elon Musk的事業版圖與雄心壯志_0508.gif",
+          "thumb": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_thumb.webp",
+          "original_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508.gif",
+          "poster": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_poster.webp",
+          "anim_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508.gif"
         },
         {
           "url": "photos_web/Elon Musk bought Twitter_2022-5-8/LINE_ALBUM_202258 小樹屋聚會_261010_1.webp",
@@ -723,9 +723,9 @@ window.TIMELINE_DATA = {
         }
       ],
       "photos": [
-        "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_poster.webp",
-        "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_poster.webp",
         "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_poster.webp",
+        "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_poster.webp",
+        "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_poster.webp",
         "photos_web/Elon Musk bought Twitter_2022-5-8/LINE_ALBUM_202258 小樹屋聚會_261010_1.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1AJyWY8yj3fYk-bFYyV53_uNdopyW7szB?usp=drive_link"
