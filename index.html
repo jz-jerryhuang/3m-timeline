@@ -543,15 +543,16 @@
                   @click="openLightbox(getMediaList(item)[0], getMediaList(item), 0)"
                   class="cursor-pointer relative aspect-video max-h-80 w-full flex items-center justify-center bg-slate-950">
                   <img 
-                    :src="getMediaList(item)[0].url" 
+                    :src="getMediaList(item)[0].poster || getMediaList(item)[0].url" 
                     :alt="getMediaList(item)[0].name" 
                     class="w-full h-full object-contain group-hover/solo:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    decoding="async"
                   />
                   <!-- Live GIF indicator -->
                   <div v-if="getMediaList(item)[0].type === 'gif'" class="absolute top-3 left-3 bg-purple-600/90 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-purple-400/50 flex items-center gap-1.5 shadow-lg">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    簡報動畫 GIF
+                    簡報動畫 GIF (點擊播放)
                   </div>
                   <div class="absolute inset-0 bg-cyan-950/20 opacity-0 group-hover/solo:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="px-3 py-1 bg-black/80 rounded-full text-xs text-cyan-300 border border-cyan-500/40">
@@ -567,7 +568,7 @@
                   v-for="(m, mIdx) in getMediaList(item)" :key="mIdx"
                   @click="openLightbox(m, getMediaList(item), mIdx)"
                   class="relative aspect-square rounded-lg overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer group/matrix">
-                  <img :src="m.url" class="w-full h-full object-cover group-hover/matrix:scale-110 transition-transform duration-300" loading="lazy" />
+                  <img :src="m.thumb || m.url" class="w-full h-full object-cover group-hover/matrix:scale-110 transition-transform duration-300" loading="lazy" decoding="async" />
                   <div v-if="m.type === 'gif'" class="absolute top-1.5 left-1.5 bg-purple-600 text-white text-[9px] font-bold px-1 rounded">
                     GIF
                   </div>
@@ -584,7 +585,7 @@
                   <div 
                     @click="openLightbox(getMediaList(item)[0], getMediaList(item), 0)"
                     class="col-span-2 aspect-[16/10] rounded-xl overflow-hidden border border-cyan-500/20 bg-slate-950 cursor-pointer relative group/bentoMain">
-                    <img :src="getMediaList(item)[0].url" class="w-full h-full object-cover group-hover/bentoMain:scale-105 transition-transform duration-300" loading="lazy" />
+                    <img :src="getMediaList(item)[0].poster || getMediaList(item)[0].url" class="w-full h-full object-cover group-hover/bentoMain:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
                     <div v-if="getMediaList(item)[0].type === 'gif'" class="absolute top-2 left-2 bg-purple-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">
                       GIF
                     </div>
@@ -594,7 +595,7 @@
                       v-for="(m, sIdx) in getMediaList(item).slice(1, 3)" :key="sIdx"
                       @click="openLightbox(m, getMediaList(item), sIdx + 1)"
                       class="flex-1 aspect-[4/3] rounded-xl overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer relative group/bentoSide">
-                      <img :src="m.url" class="w-full h-full object-cover group-hover/bentoSide:scale-105 transition-transform duration-300" loading="lazy" />
+                      <img :src="m.thumb || m.url" class="w-full h-full object-cover group-hover/bentoSide:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
                       <div v-if="m.type === 'gif'" class="absolute top-1 left-1 bg-purple-600 text-white text-[8px] font-bold px-1 rounded">
                         GIF
                       </div>
@@ -608,7 +609,7 @@
                     v-for="(m, mIdx) in getMediaList(item)" :key="mIdx"
                     @click="openLightbox(m, getMediaList(item), mIdx)"
                     class="aspect-[16/10] rounded-xl overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer group/two">
-                    <img :src="m.url" class="w-full h-full object-cover group-hover/two:scale-105 transition-transform duration-300" loading="lazy" />
+                    <img :src="m.url" class="w-full h-full object-cover group-hover/two:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
                   </div>
                 </div>
 
@@ -621,7 +622,7 @@
                       v-for="(m, mIdx) in getMediaList(item)" :key="mIdx"
                       @click="openLightbox(m, getMediaList(item), mIdx)"
                       class="w-16 sm:w-20 aspect-square rounded-lg overflow-hidden border border-slate-800 hover:border-cyan-400 bg-slate-950 shrink-0 cursor-pointer relative group/thumb transition-all">
-                      <img :src="m.url" class="w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-200" loading="lazy" />
+                      <img :src="m.thumb || m.url" class="w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-200" loading="lazy" decoding="async" />
                       <div v-if="m.type === 'gif'" class="absolute top-0.5 left-0.5 bg-purple-600 text-white text-[7px] font-bold px-1 rounded">
                         GIF
                       </div>
@@ -687,11 +688,12 @@
         <i class="fa-solid fa-chevron-left text-lg"></i>
       </button>
 
-      <!-- Current Media -->
+      <!-- Current Media (Plays full animation if GIF, or crystal clear 1600px HD WebP) -->
       <img 
         v-if="currentMedia"
-        :src="currentMedia.url" 
+        :src="currentMedia.anim_url || currentMedia.original_url || currentMedia.url" 
         class="max-w-full max-h-[76vh] object-contain rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-cyan-500/20"
+        :alt="currentMedia.name"
       />
 
       <!-- Next -->
@@ -710,7 +712,7 @@
         @click="lightbox.currentIndex = idx"
         :class="lightbox.currentIndex === idx ? 'border-cyan-400 ring-2 ring-cyan-400/60 scale-110 opacity-100' : 'border-slate-800 opacity-40 hover:opacity-100'"
         class="w-12 h-12 rounded-lg overflow-hidden shrink-0 cursor-pointer border transition-all relative">
-        <img :src="m.url" class="w-full h-full object-cover" />
+        <img :src="m.thumb || m.url" class="w-full h-full object-cover" loading="lazy" decoding="async" />
       </div>
     </div>
   </div>

@@ -1,5 +1,8 @@
 import http.server
+import mimetypes
 import sys
+
+mimetypes.add_type('image/webp', '.webp')
 
 PORT = 8080
 if hasattr(sys.stdout, 'reconfigure'):

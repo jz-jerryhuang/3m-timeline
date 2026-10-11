@@ -34,73 +34,95 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/FWD_2015/IMAG1220 (1).jpg",
+          "url": "photos_web/FWD_2015/IMAG1220 (1).webp",
           "type": "image",
-          "name": "IMAG1220 (1).jpg"
+          "name": "IMAG1220 (1).jpg",
+          "thumb": "photos_web/FWD_2015/IMAG1220 (1)_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/IMAG1220 (1).jpg"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/1.jpg",
+          "url": "photos_web/FWD_2015/1.webp",
           "type": "image",
-          "name": "1.jpg"
+          "name": "1.jpg",
+          "thumb": "photos_web/FWD_2015/1_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/1.jpg"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/2.jpg",
+          "url": "photos_web/FWD_2015/2.webp",
           "type": "image",
-          "name": "2.jpg"
+          "name": "2.jpg",
+          "thumb": "photos_web/FWD_2015/2_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/2.jpg"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/3.jpg",
+          "url": "photos_web/FWD_2015/3.webp",
           "type": "image",
-          "name": "3.jpg"
+          "name": "3.jpg",
+          "thumb": "photos_web/FWD_2015/3_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/3.jpg"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/4.jpg",
+          "url": "photos_web/FWD_2015/4.webp",
           "type": "image",
-          "name": "4.jpg"
+          "name": "4.jpg",
+          "thumb": "photos_web/FWD_2015/4_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/4.jpg"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/5.jpg",
+          "url": "photos_web/FWD_2015/5.webp",
           "type": "image",
-          "name": "5.jpg"
+          "name": "5.jpg",
+          "thumb": "photos_web/FWD_2015/5_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/5.jpg"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/6.jpg",
+          "url": "photos_web/FWD_2015/6.webp",
           "type": "image",
-          "name": "6.jpg"
+          "name": "6.jpg",
+          "thumb": "photos_web/FWD_2015/6_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/6.jpg"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/7.jpg",
+          "url": "photos_web/FWD_2015/7.webp",
           "type": "image",
-          "name": "7.jpg"
+          "name": "7.jpg",
+          "thumb": "photos_web/FWD_2015/7_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/7.jpg"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/DSC_0570.JPG",
+          "url": "photos_web/FWD_2015/DSC_0570.webp",
           "type": "image",
-          "name": "DSC_0570.JPG"
+          "name": "DSC_0570.JPG",
+          "thumb": "photos_web/FWD_2015/DSC_0570_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/DSC_0570.JPG"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/IMAG1783.jpg",
+          "url": "photos_web/FWD_2015/IMAG1783.webp",
           "type": "image",
-          "name": "IMAG1783.jpg"
+          "name": "IMAG1783.jpg",
+          "thumb": "photos_web/FWD_2015/IMAG1783_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/IMAG1783.jpg"
         },
         {
-          "url": "3M 聚會照片/FWD_2015/IMAG1803.jpg",
+          "url": "photos_web/FWD_2015/IMAG1803.webp",
           "type": "image",
-          "name": "IMAG1803.jpg"
+          "name": "IMAG1803.jpg",
+          "thumb": "photos_web/FWD_2015/IMAG1803_thumb.webp",
+          "original_url": "3M 聚會照片/FWD_2015/IMAG1803.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/FWD_2015/IMAG1220 (1).jpg",
-        "3M 聚會照片/FWD_2015/1.jpg",
-        "3M 聚會照片/FWD_2015/2.jpg",
-        "3M 聚會照片/FWD_2015/3.jpg",
-        "3M 聚會照片/FWD_2015/4.jpg",
-        "3M 聚會照片/FWD_2015/5.jpg",
-        "3M 聚會照片/FWD_2015/6.jpg",
-        "3M 聚會照片/FWD_2015/7.jpg",
-        "3M 聚會照片/FWD_2015/DSC_0570.JPG",
-        "3M 聚會照片/FWD_2015/IMAG1783.jpg",
-        "3M 聚會照片/FWD_2015/IMAG1803.jpg"
+        "photos_web/FWD_2015/IMAG1220 (1).webp",
+        "photos_web/FWD_2015/1.webp",
+        "photos_web/FWD_2015/2.webp",
+        "photos_web/FWD_2015/3.webp",
+        "photos_web/FWD_2015/4.webp",
+        "photos_web/FWD_2015/5.webp",
+        "photos_web/FWD_2015/6.webp",
+        "photos_web/FWD_2015/7.webp",
+        "photos_web/FWD_2015/DSC_0570.webp",
+        "photos_web/FWD_2015/IMAG1783.webp",
+        "photos_web/FWD_2015/IMAG1803.webp"
       ],
       "drive_url": null
     },
@@ -119,19 +141,23 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/2015-12-02 寒舍艾美簽約儀式/20151202_1.JPG",
+          "url": "photos_web/2015-12-02 寒舍艾美簽約儀式/20151202_1.webp",
           "type": "image",
-          "name": "20151202_1.JPG"
+          "name": "20151202_1.JPG",
+          "thumb": "photos_web/2015-12-02 寒舍艾美簽約儀式/20151202_1_thumb.webp",
+          "original_url": "3M 聚會照片/2015-12-02 寒舍艾美簽約儀式/20151202_1.JPG"
         },
         {
-          "url": "3M 聚會照片/2015-12-02 寒舍艾美簽約儀式/20151202_2.JPG",
+          "url": "photos_web/2015-12-02 寒舍艾美簽約儀式/20151202_2.webp",
           "type": "image",
-          "name": "20151202_2.JPG"
+          "name": "20151202_2.JPG",
+          "thumb": "photos_web/2015-12-02 寒舍艾美簽約儀式/20151202_2_thumb.webp",
+          "original_url": "3M 聚會照片/2015-12-02 寒舍艾美簽約儀式/20151202_2.JPG"
         }
       ],
       "photos": [
-        "3M 聚會照片/2015-12-02 寒舍艾美簽約儀式/20151202_1.JPG",
-        "3M 聚會照片/2015-12-02 寒舍艾美簽約儀式/20151202_2.JPG"
+        "photos_web/2015-12-02 寒舍艾美簽約儀式/20151202_1.webp",
+        "photos_web/2015-12-02 寒舍艾美簽約儀式/20151202_2.webp"
       ],
       "drive_url": "https://drive.google.com/open?id=17VuDQSgBfVk21Iv9_0fDnom2VBGjoPq7&usp=drive_copy"
     },
@@ -150,19 +176,23 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/2015-12-30 合作社/20151230_1.jpg",
+          "url": "photos_web/2015-12-30 合作社/20151230_1.webp",
           "type": "image",
-          "name": "20151230_1.jpg"
+          "name": "20151230_1.jpg",
+          "thumb": "photos_web/2015-12-30 合作社/20151230_1_thumb.webp",
+          "original_url": "3M 聚會照片/2015-12-30 合作社/20151230_1.jpg"
         },
         {
-          "url": "3M 聚會照片/2015-12-30 合作社/20151230_2.jpg",
+          "url": "photos_web/2015-12-30 合作社/20151230_2.webp",
           "type": "image",
-          "name": "20151230_2.jpg"
+          "name": "20151230_2.jpg",
+          "thumb": "photos_web/2015-12-30 合作社/20151230_2_thumb.webp",
+          "original_url": "3M 聚會照片/2015-12-30 合作社/20151230_2.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/2015-12-30 合作社/20151230_1.jpg",
-        "3M 聚會照片/2015-12-30 合作社/20151230_2.jpg"
+        "photos_web/2015-12-30 合作社/20151230_1.webp",
+        "photos_web/2015-12-30 合作社/20151230_2.webp"
       ],
       "drive_url": "https://drive.google.com/open?id=1xsQdZdlIc26qqv9TsPiRcu8gVT8Ig0H8&usp=drive_copy"
     },
@@ -185,43 +215,55 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/FB training_2016-04-20/1791628674551.jpg",
+          "url": "photos_web/FB training_2016-04-20/1791628674551.webp",
           "type": "image",
-          "name": "1791628674551.jpg"
+          "name": "1791628674551.jpg",
+          "thumb": "photos_web/FB training_2016-04-20/1791628674551_thumb.webp",
+          "original_url": "3M 聚會照片/FB training_2016-04-20/1791628674551.jpg"
         },
         {
-          "url": "3M 聚會照片/FB training_2016-04-20/1791628675606.jpg",
+          "url": "photos_web/FB training_2016-04-20/1791628675606.webp",
           "type": "image",
-          "name": "1791628675606.jpg"
+          "name": "1791628675606.jpg",
+          "thumb": "photos_web/FB training_2016-04-20/1791628675606_thumb.webp",
+          "original_url": "3M 聚會照片/FB training_2016-04-20/1791628675606.jpg"
         },
         {
-          "url": "3M 聚會照片/FB training_2016-04-20/1791628676267.jpg",
+          "url": "photos_web/FB training_2016-04-20/1791628676267.webp",
           "type": "image",
-          "name": "1791628676267.jpg"
+          "name": "1791628676267.jpg",
+          "thumb": "photos_web/FB training_2016-04-20/1791628676267_thumb.webp",
+          "original_url": "3M 聚會照片/FB training_2016-04-20/1791628676267.jpg"
         },
         {
-          "url": "3M 聚會照片/FB training_2016-04-20/1791628677503.jpg",
+          "url": "photos_web/FB training_2016-04-20/1791628677503.webp",
           "type": "image",
-          "name": "1791628677503.jpg"
+          "name": "1791628677503.jpg",
+          "thumb": "photos_web/FB training_2016-04-20/1791628677503_thumb.webp",
+          "original_url": "3M 聚會照片/FB training_2016-04-20/1791628677503.jpg"
         },
         {
-          "url": "3M 聚會照片/FB training_2016-04-20/1791628678134.jpg",
+          "url": "photos_web/FB training_2016-04-20/1791628678134.webp",
           "type": "image",
-          "name": "1791628678134.jpg"
+          "name": "1791628678134.jpg",
+          "thumb": "photos_web/FB training_2016-04-20/1791628678134_thumb.webp",
+          "original_url": "3M 聚會照片/FB training_2016-04-20/1791628678134.jpg"
         },
         {
-          "url": "3M 聚會照片/FB training_2016-04-20/1791628680630.jpg",
+          "url": "photos_web/FB training_2016-04-20/1791628680630.webp",
           "type": "image",
-          "name": "1791628680630.jpg"
+          "name": "1791628680630.jpg",
+          "thumb": "photos_web/FB training_2016-04-20/1791628680630_thumb.webp",
+          "original_url": "3M 聚會照片/FB training_2016-04-20/1791628680630.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/FB training_2016-04-20/1791628674551.jpg",
-        "3M 聚會照片/FB training_2016-04-20/1791628675606.jpg",
-        "3M 聚會照片/FB training_2016-04-20/1791628676267.jpg",
-        "3M 聚會照片/FB training_2016-04-20/1791628677503.jpg",
-        "3M 聚會照片/FB training_2016-04-20/1791628678134.jpg",
-        "3M 聚會照片/FB training_2016-04-20/1791628680630.jpg"
+        "photos_web/FB training_2016-04-20/1791628674551.webp",
+        "photos_web/FB training_2016-04-20/1791628675606.webp",
+        "photos_web/FB training_2016-04-20/1791628676267.webp",
+        "photos_web/FB training_2016-04-20/1791628677503.webp",
+        "photos_web/FB training_2016-04-20/1791628678134.webp",
+        "photos_web/FB training_2016-04-20/1791628680630.webp"
       ],
       "drive_url": null
     },
@@ -245,43 +287,55 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/3M 春酒_2018-04-28/1791628541684.jpg",
+          "url": "photos_web/3M 春酒_2018-04-28/1791628541684.webp",
           "type": "image",
-          "name": "1791628541684.jpg"
+          "name": "1791628541684.jpg",
+          "thumb": "photos_web/3M 春酒_2018-04-28/1791628541684_thumb.webp",
+          "original_url": "3M 聚會照片/3M 春酒_2018-04-28/1791628541684.jpg"
         },
         {
-          "url": "3M 聚會照片/3M 春酒_2018-04-28/1791628542240.jpg",
+          "url": "photos_web/3M 春酒_2018-04-28/1791628542240.webp",
           "type": "image",
-          "name": "1791628542240.jpg"
+          "name": "1791628542240.jpg",
+          "thumb": "photos_web/3M 春酒_2018-04-28/1791628542240_thumb.webp",
+          "original_url": "3M 聚會照片/3M 春酒_2018-04-28/1791628542240.jpg"
         },
         {
-          "url": "3M 聚會照片/3M 春酒_2018-04-28/1791628544168.jpg",
+          "url": "photos_web/3M 春酒_2018-04-28/1791628544168.webp",
           "type": "image",
-          "name": "1791628544168.jpg"
+          "name": "1791628544168.jpg",
+          "thumb": "photos_web/3M 春酒_2018-04-28/1791628544168_thumb.webp",
+          "original_url": "3M 聚會照片/3M 春酒_2018-04-28/1791628544168.jpg"
         },
         {
-          "url": "3M 聚會照片/3M 春酒_2018-04-28/1791628544640.jpg",
+          "url": "photos_web/3M 春酒_2018-04-28/1791628544640.webp",
           "type": "image",
-          "name": "1791628544640.jpg"
+          "name": "1791628544640.jpg",
+          "thumb": "photos_web/3M 春酒_2018-04-28/1791628544640_thumb.webp",
+          "original_url": "3M 聚會照片/3M 春酒_2018-04-28/1791628544640.jpg"
         },
         {
-          "url": "3M 聚會照片/3M 春酒_2018-04-28/1791628545116.jpg",
+          "url": "photos_web/3M 春酒_2018-04-28/1791628545116.webp",
           "type": "image",
-          "name": "1791628545116.jpg"
+          "name": "1791628545116.jpg",
+          "thumb": "photos_web/3M 春酒_2018-04-28/1791628545116_thumb.webp",
+          "original_url": "3M 聚會照片/3M 春酒_2018-04-28/1791628545116.jpg"
         },
         {
-          "url": "3M 聚會照片/3M 春酒_2018-04-28/1791628547090.jpg",
+          "url": "photos_web/3M 春酒_2018-04-28/1791628547090.webp",
           "type": "image",
-          "name": "1791628547090.jpg"
+          "name": "1791628547090.jpg",
+          "thumb": "photos_web/3M 春酒_2018-04-28/1791628547090_thumb.webp",
+          "original_url": "3M 聚會照片/3M 春酒_2018-04-28/1791628547090.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/3M 春酒_2018-04-28/1791628541684.jpg",
-        "3M 聚會照片/3M 春酒_2018-04-28/1791628542240.jpg",
-        "3M 聚會照片/3M 春酒_2018-04-28/1791628544168.jpg",
-        "3M 聚會照片/3M 春酒_2018-04-28/1791628544640.jpg",
-        "3M 聚會照片/3M 春酒_2018-04-28/1791628545116.jpg",
-        "3M 聚會照片/3M 春酒_2018-04-28/1791628547090.jpg"
+        "photos_web/3M 春酒_2018-04-28/1791628541684.webp",
+        "photos_web/3M 春酒_2018-04-28/1791628542240.webp",
+        "photos_web/3M 春酒_2018-04-28/1791628544168.webp",
+        "photos_web/3M 春酒_2018-04-28/1791628544640.webp",
+        "photos_web/3M 春酒_2018-04-28/1791628545116.webp",
+        "photos_web/3M 春酒_2018-04-28/1791628547090.webp"
       ],
       "drive_url": null
     },
@@ -303,13 +357,17 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018.gif",
+          "url": "photos_web/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018_poster.webp",
           "type": "gif",
-          "name": "讀書會分享 - 新零售 (Jerry) 5-22-2018.gif"
+          "name": "讀書會分享 - 新零售 (Jerry) 5-22-2018.gif",
+          "thumb": "photos_web/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018_thumb.webp",
+          "poster": "photos_web/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018_poster.webp",
+          "original_url": "3M 聚會照片/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018.gif",
+          "anim_url": "3M 聚會照片/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018.gif"
         }
       ],
       "photos": [
-        "3M 聚會照片/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018.gif"
+        "photos_web/New retail_2018-5-26/讀書會分享 - 新零售 (Jerry) 5-22-2018_poster.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1-tEEI6MgXRSUVdpveIak2pjta6l6HMiX?usp=drive_link"
     },
@@ -331,13 +389,17 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018.gif",
+          "url": "photos_web/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018_poster.webp",
           "type": "gif",
-          "name": "讀書會分享 - 人工智慧 (Jerry) 6-23-2018.gif"
+          "name": "讀書會分享 - 人工智慧 (Jerry) 6-23-2018.gif",
+          "thumb": "photos_web/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018_thumb.webp",
+          "poster": "photos_web/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018_poster.webp",
+          "original_url": "3M 聚會照片/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018.gif",
+          "anim_url": "3M 聚會照片/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018.gif"
         }
       ],
       "photos": [
-        "3M 聚會照片/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018.gif"
+        "photos_web/AI_2018-6-23/讀書會分享 - 人工智慧 (Jerry) 6-23-2018_poster.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1eJQrprUFSY9lWzhUi587wqcV2kTUJkUo?usp=drive_link"
     },
@@ -360,37 +422,49 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7318.JPG",
+          "url": "photos_web/Blockchain_2018-7-28/DSC_7318.webp",
           "type": "image",
-          "name": "DSC_7318.JPG"
+          "name": "DSC_7318.JPG",
+          "thumb": "photos_web/Blockchain_2018-7-28/DSC_7318_thumb.webp",
+          "original_url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7318.JPG"
         },
         {
-          "url": "3M 聚會照片/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif",
+          "url": "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_poster.webp",
           "type": "gif",
-          "name": "讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif"
+          "name": "讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif",
+          "thumb": "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_thumb.webp",
+          "poster": "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_poster.webp",
+          "original_url": "3M 聚會照片/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif",
+          "anim_url": "3M 聚會照片/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif"
         },
         {
-          "url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7312.JPG",
+          "url": "photos_web/Blockchain_2018-7-28/DSC_7312.webp",
           "type": "image",
-          "name": "DSC_7312.JPG"
+          "name": "DSC_7312.JPG",
+          "thumb": "photos_web/Blockchain_2018-7-28/DSC_7312_thumb.webp",
+          "original_url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7312.JPG"
         },
         {
-          "url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7313.JPG",
+          "url": "photos_web/Blockchain_2018-7-28/DSC_7313.webp",
           "type": "image",
-          "name": "DSC_7313.JPG"
+          "name": "DSC_7313.JPG",
+          "thumb": "photos_web/Blockchain_2018-7-28/DSC_7313_thumb.webp",
+          "original_url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7313.JPG"
         },
         {
-          "url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7317.JPG",
+          "url": "photos_web/Blockchain_2018-7-28/DSC_7317.webp",
           "type": "image",
-          "name": "DSC_7317.JPG"
+          "name": "DSC_7317.JPG",
+          "thumb": "photos_web/Blockchain_2018-7-28/DSC_7317_thumb.webp",
+          "original_url": "3M 聚會照片/Blockchain_2018-7-28/DSC_7317.JPG"
         }
       ],
       "photos": [
-        "3M 聚會照片/Blockchain_2018-7-28/DSC_7318.JPG",
-        "3M 聚會照片/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018.gif",
-        "3M 聚會照片/Blockchain_2018-7-28/DSC_7312.JPG",
-        "3M 聚會照片/Blockchain_2018-7-28/DSC_7313.JPG",
-        "3M 聚會照片/Blockchain_2018-7-28/DSC_7317.JPG"
+        "photos_web/Blockchain_2018-7-28/DSC_7318.webp",
+        "photos_web/Blockchain_2018-7-28/讀書會分享 - 區塊鏈 (Jerry) 7-28-2018_poster.webp",
+        "photos_web/Blockchain_2018-7-28/DSC_7312.webp",
+        "photos_web/Blockchain_2018-7-28/DSC_7313.webp",
+        "photos_web/Blockchain_2018-7-28/DSC_7317.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1ZpepfTmQjkvHCAqAeZuogtj1EOYS1CyB?usp=drive_link"
     },
@@ -412,13 +486,17 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018.gif",
+          "url": "photos_web/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018_poster.webp",
           "type": "gif",
-          "name": "讀書會分享 - 量子 (Jerry) 12-15-2018.gif"
+          "name": "讀書會分享 - 量子 (Jerry) 12-15-2018.gif",
+          "thumb": "photos_web/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018_thumb.webp",
+          "poster": "photos_web/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018_poster.webp",
+          "original_url": "3M 聚會照片/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018.gif",
+          "anim_url": "3M 聚會照片/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018.gif"
         }
       ],
       "photos": [
-        "3M 聚會照片/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018.gif"
+        "photos_web/Quantum Computing_2018-12-15/讀書會分享 - 量子 (Jerry) 12-15-2018_poster.webp"
       ],
       "drive_url": null
     },
@@ -440,13 +518,17 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie).gif",
+          "url": "photos_web/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie)_poster.webp",
           "type": "gif",
-          "name": "20190727 - Universal Basic Income (Vickie).gif"
+          "name": "20190727 - Universal Basic Income (Vickie).gif",
+          "thumb": "photos_web/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie)_thumb.webp",
+          "poster": "photos_web/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie)_poster.webp",
+          "original_url": "3M 聚會照片/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie).gif",
+          "anim_url": "3M 聚會照片/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie).gif"
         }
       ],
       "photos": [
-        "3M 聚會照片/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie).gif"
+        "photos_web/UBI_2019-07-27/20190727 - Universal Basic Income (Vickie)_poster.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1E5oJ-NAEEOq_tRqcCPOPdiqGpRnNaNTm?usp=drive_link"
     },
@@ -472,13 +554,17 @@ window.TIMELINE_DATA = {
       "extra_image_dirs": [],
       "media": [
         {
-          "url": "3M 聚會照片/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020.gif",
+          "url": "photos_web/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020_poster.webp",
           "type": "gif",
-          "name": "新冠肺炎下的新飲食型態 (Jerry)  04-26-2020.gif"
+          "name": "新冠肺炎下的新飲食型態 (Jerry)  04-26-2020.gif",
+          "thumb": "photos_web/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020_thumb.webp",
+          "poster": "photos_web/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020_poster.webp",
+          "original_url": "3M 聚會照片/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020.gif",
+          "anim_url": "3M 聚會照片/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020.gif"
         }
       ],
       "photos": [
-        "3M 聚會照片/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020.gif"
+        "photos_web/2020-4-26_new norm post COVID19/新冠肺炎下的新飲食型態 (Jerry)  04-26-2020_poster.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1kz92WtQNxdituyf2yFJ1kqxxGx76s31z?usp=drive_link"
     },
@@ -503,13 +589,17 @@ window.TIMELINE_DATA = {
       "extra_image_dirs": [],
       "media": [
         {
-          "url": "3M 聚會照片/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2.gif",
+          "url": "photos_web/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2_poster.webp",
           "type": "gif",
-          "name": "國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2.gif"
+          "name": "國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2.gif",
+          "thumb": "photos_web/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2_thumb.webp",
+          "poster": "photos_web/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2_poster.webp",
+          "original_url": "3M 聚會照片/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2.gif",
+          "anim_url": "3M 聚會照片/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2.gif"
         }
       ],
       "photos": [
-        "3M 聚會照片/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2.gif"
+        "photos_web/2020-5-23/國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2_poster.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1H72GX9JJoeW8ce0W3ePOg1JNJD8UK4IW?usp=drive_link"
     },
@@ -528,43 +618,55 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.jpg",
+          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.webp",
           "type": "image",
-          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.jpg"
+          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.jpg",
+          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8_thumb.webp",
+          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.jpg"
         },
         {
-          "url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13.jpg",
+          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13.webp",
           "type": "image",
-          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13.jpg"
+          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13.jpg",
+          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13_thumb.webp",
+          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13.jpg"
         },
         {
-          "url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_14.jpg",
+          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_14.webp",
           "type": "image",
-          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_14.jpg"
+          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_14.jpg",
+          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_14_thumb.webp",
+          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_14.jpg"
         },
         {
-          "url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_16.jpg",
+          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_16.webp",
           "type": "image",
-          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_16.jpg"
+          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_16.jpg",
+          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_16_thumb.webp",
+          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_16.jpg"
         },
         {
-          "url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17.jpg",
+          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17.webp",
           "type": "image",
-          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17.jpg"
+          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17.jpg",
+          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17_thumb.webp",
+          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17.jpg"
         },
         {
-          "url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.jpg",
+          "url": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.webp",
           "type": "image",
-          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.jpg"
+          "name": "LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.jpg",
+          "thumb": "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1_thumb.webp",
+          "original_url": "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.jpg",
-        "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13.jpg",
-        "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_14.jpg",
-        "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_16.jpg",
-        "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17.jpg",
-        "3M 聚會照片/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.jpg"
+        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_8.webp",
+        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_13.webp",
+        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_14.webp",
+        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_16.webp",
+        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_17.webp",
+        "photos_web/小樹屋聚會_2021-7-31/LINE_ALBUM_2021731 小樹🌲屋的實體聚會_261010_1.webp"
       ],
       "drive_url": null
     },
@@ -586,31 +688,45 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508.gif",
+          "url": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_poster.webp",
           "type": "gif",
-          "name": "Elon Musk的事業版圖與雄心壯志_0508.gif"
+          "name": "Elon Musk的事業版圖與雄心壯志_0508.gif",
+          "thumb": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_thumb.webp",
+          "poster": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_poster.webp",
+          "original_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508.gif",
+          "anim_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508.gif"
         },
         {
-          "url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una.gif",
+          "url": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_poster.webp",
           "type": "gif",
-          "name": "Elon Musk 收購Twitter時間點與佈局_20220508_una.gif"
+          "name": "Elon Musk 收購Twitter時間點與佈局_20220508_una.gif",
+          "thumb": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_thumb.webp",
+          "poster": "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_poster.webp",
+          "original_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una.gif",
+          "anim_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una.gif"
         },
         {
-          "url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif",
+          "url": "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_poster.webp",
           "type": "gif",
-          "name": "20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif"
+          "name": "20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif",
+          "thumb": "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_thumb.webp",
+          "poster": "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_poster.webp",
+          "original_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif",
+          "anim_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif"
         },
         {
-          "url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/LINE_ALBUM_202258 小樹屋聚會_261010_1.jpg",
+          "url": "photos_web/Elon Musk bought Twitter_2022-5-8/LINE_ALBUM_202258 小樹屋聚會_261010_1.webp",
           "type": "image",
-          "name": "LINE_ALBUM_202258 小樹屋聚會_261010_1.jpg"
+          "name": "LINE_ALBUM_202258 小樹屋聚會_261010_1.jpg",
+          "thumb": "photos_web/Elon Musk bought Twitter_2022-5-8/LINE_ALBUM_202258 小樹屋聚會_261010_1_thumb.webp",
+          "original_url": "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/LINE_ALBUM_202258 小樹屋聚會_261010_1.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508.gif",
-        "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una.gif",
-        "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望.gif",
-        "3M 聚會照片/Elon Musk bought Twitter_2022-5-8/LINE_ALBUM_202258 小樹屋聚會_261010_1.jpg"
+        "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk的事業版圖與雄心壯志_0508_poster.webp",
+        "photos_web/Elon Musk bought Twitter_2022-5-8/Elon Musk 收購Twitter時間點與佈局_20220508_una_poster.webp",
+        "photos_web/Elon Musk bought Twitter_2022-5-8/20220508 - Elon Musk 收購 Twitter 對加密貨幣市場的未來展望_poster.webp",
+        "photos_web/Elon Musk bought Twitter_2022-5-8/LINE_ALBUM_202258 小樹屋聚會_261010_1.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1AJyWY8yj3fYk-bFYyV53_uNdopyW7szB?usp=drive_link"
     },
@@ -629,25 +745,31 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_1.jpg",
+          "url": "photos_web/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_1.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_1.jpg"
+          "name": "LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_1.jpg",
+          "thumb": "photos_web/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_1_thumb.webp",
+          "original_url": "3M 聚會照片/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_1.jpg"
         },
         {
-          "url": "3M 聚會照片/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_11.jpg",
+          "url": "photos_web/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_11.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_11.jpg"
+          "name": "LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_11.jpg",
+          "thumb": "photos_web/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_11_thumb.webp",
+          "original_url": "3M 聚會照片/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_11.jpg"
         },
         {
-          "url": "3M 聚會照片/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_7.jpg",
+          "url": "photos_web/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_7.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_7.jpg"
+          "name": "LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_7.jpg",
+          "thumb": "photos_web/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_7_thumb.webp",
+          "original_url": "3M 聚會照片/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_7.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_1.jpg",
-        "3M 聚會照片/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_11.jpg",
-        "3M 聚會照片/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_7.jpg"
+        "photos_web/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_1.webp",
+        "photos_web/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_11.webp",
+        "photos_web/彥伶 ChatGPT 交流_2023-4-23/LINE_ALBUM_20230423 彥伶 ChatGPT 交流_261010_7.webp"
       ],
       "drive_url": null
     },
@@ -666,79 +788,103 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_1.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_1.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_1.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_1.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_1_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_1.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_10.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_10.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_10.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_10.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_10_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_10.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_11.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_11.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_11.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_11.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_11_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_11.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_12.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_12.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_12.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_12.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_12_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_12.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_2.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_2.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_2.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_2.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_2_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_2.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_3.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_3.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_3.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_3.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_3_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_3.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_4.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_4.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_4.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_4.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_4_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_4.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_5.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_5.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_5.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_5.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_5_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_5.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_6.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_6.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_6.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_6.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_6_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_6.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_7.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_7.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_7.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_7.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_7_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_7.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_8.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_8.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_8.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_8.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_8_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_8.jpg"
         },
         {
-          "url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_9.jpg",
+          "url": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_9.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_9.jpg"
+          "name": "LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_9.jpg",
+          "thumb": "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_9_thumb.webp",
+          "original_url": "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_9.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_1.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_10.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_11.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_12.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_2.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_3.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_4.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_5.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_6.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_7.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_8.jpg",
-        "3M 聚會照片/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_9.jpg"
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_1.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_10.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_11.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_12.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_2.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_3.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_4.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_5.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_6.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_7.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_8.webp",
+        "photos_web/財務規劃 feat.劉耀元學長_2024-10-19/LINE_ALBUM_20241019 財務規劃 feat.劉耀元學長_261010_9.webp"
       ],
       "drive_url": null
     },
@@ -757,31 +903,39 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_1.jpg",
+          "url": "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_1.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20250816 川普關稅對全球影響_261010_1.jpg"
+          "name": "LINE_ALBUM_20250816 川普關稅對全球影響_261010_1.jpg",
+          "thumb": "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_1_thumb.webp",
+          "original_url": "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_1.jpg"
         },
         {
-          "url": "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_13.jpg",
+          "url": "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_13.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20250816 川普關稅對全球影響_261010_13.jpg"
+          "name": "LINE_ALBUM_20250816 川普關稅對全球影響_261010_13.jpg",
+          "thumb": "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_13_thumb.webp",
+          "original_url": "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_13.jpg"
         },
         {
-          "url": "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_14.jpg",
+          "url": "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_14.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20250816 川普關稅對全球影響_261010_14.jpg"
+          "name": "LINE_ALBUM_20250816 川普關稅對全球影響_261010_14.jpg",
+          "thumb": "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_14_thumb.webp",
+          "original_url": "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_14.jpg"
         },
         {
-          "url": "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_3.jpg",
+          "url": "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_3.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20250816 川普關稅對全球影響_261010_3.jpg"
+          "name": "LINE_ALBUM_20250816 川普關稅對全球影響_261010_3.jpg",
+          "thumb": "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_3_thumb.webp",
+          "original_url": "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_3.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_1.jpg",
-        "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_13.jpg",
-        "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_14.jpg",
-        "3M 聚會照片/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_3.jpg"
+        "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_1.webp",
+        "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_13.webp",
+        "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_14.webp",
+        "photos_web/川普關稅對全球影響_2025-08-16/LINE_ALBUM_20250816 川普關稅對全球影響_261010_3.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1_AbYnWDoBBUGrRkbJOQdA2U22t_j5Eyg?usp=drive_link"
     },
@@ -800,55 +954,71 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_1.jpg",
+          "url": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_1.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_1.jpg"
+          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_1.jpg",
+          "thumb": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_1_thumb.webp",
+          "original_url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_1.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_10.jpg",
+          "url": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_10.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_10.jpg"
+          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_10.jpg",
+          "thumb": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_10_thumb.webp",
+          "original_url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_10.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_11.jpg",
+          "url": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_11.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_11.jpg"
+          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_11.jpg",
+          "thumb": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_11_thumb.webp",
+          "original_url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_11.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_12.jpg",
+          "url": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_12.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_12.jpg"
+          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_12.jpg",
+          "thumb": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_12_thumb.webp",
+          "original_url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_12.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_14.jpg",
+          "url": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_14.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_14.jpg"
+          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_14.jpg",
+          "thumb": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_14_thumb.webp",
+          "original_url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_14.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_16.jpg",
+          "url": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_16.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_16.jpg"
+          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_16.jpg",
+          "thumb": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_16_thumb.webp",
+          "original_url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_16.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_6.jpg",
+          "url": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_6.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_6.jpg"
+          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_6.jpg",
+          "thumb": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_6_thumb.webp",
+          "original_url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_6.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_8.jpg",
+          "url": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_8.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_8.jpg"
+          "name": "LINE_ALBUM_20260628 AI agent sharing_261011_8.jpg",
+          "thumb": "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_8_thumb.webp",
+          "original_url": "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_8.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_1.jpg",
-        "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_10.jpg",
-        "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_11.jpg",
-        "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_12.jpg",
-        "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_14.jpg",
-        "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_16.jpg",
-        "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_6.jpg",
-        "3M 聚會照片/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_8.jpg"
+        "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_1.webp",
+        "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_10.webp",
+        "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_11.webp",
+        "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_12.webp",
+        "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_14.webp",
+        "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_16.webp",
+        "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_6.webp",
+        "photos_web/2026-06-28_AI agent sharing/LINE_ALBUM_20260628 AI agent sharing_261011_8.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1PFjPQ_Tp11nIssJnQ1QKzIirCXp1EEdD?usp=drive_link"
     },
@@ -867,43 +1037,55 @@ window.TIMELINE_DATA = {
       ],
       "media": [
         {
-          "url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_1.jpg",
+          "url": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_1.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_1.jpg"
+          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_1.jpg",
+          "thumb": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_1_thumb.webp",
+          "original_url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_1.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_10.jpg",
+          "url": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_10.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_10.jpg"
+          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_10.jpg",
+          "thumb": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_10_thumb.webp",
+          "original_url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_10.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_12.jpg",
+          "url": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_12.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_12.jpg"
+          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_12.jpg",
+          "thumb": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_12_thumb.webp",
+          "original_url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_12.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_4.jpg",
+          "url": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_4.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_4.jpg"
+          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_4.jpg",
+          "thumb": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_4_thumb.webp",
+          "original_url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_4.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_5.jpg",
+          "url": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_5.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_5.jpg"
+          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_5.jpg",
+          "thumb": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_5_thumb.webp",
+          "original_url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_5.jpg"
         },
         {
-          "url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_6.jpg",
+          "url": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_6.webp",
           "type": "image",
-          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_6.jpg"
+          "name": "LINE_ALBUM_20260705 平台生態系講座_261011_6.jpg",
+          "thumb": "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_6_thumb.webp",
+          "original_url": "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_6.jpg"
         }
       ],
       "photos": [
-        "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_1.jpg",
-        "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_10.jpg",
-        "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_12.jpg",
-        "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_4.jpg",
-        "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_5.jpg",
-        "3M 聚會照片/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_6.jpg"
+        "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_1.webp",
+        "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_10.webp",
+        "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_12.webp",
+        "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_4.webp",
+        "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_5.webp",
+        "photos_web/2026-07-05_平台生態系講座/LINE_ALBUM_20260705 平台生態系講座_261011_6.webp"
       ],
       "drive_url": "https://drive.google.com/drive/folders/1IGHOOblFs6q9BvLsnet3dq0vFEl80b0D?usp=drive_link"
     },
