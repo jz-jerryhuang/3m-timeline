@@ -10,8 +10,6 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   <!-- Direct Timeline Data Load -->
   <script src="timeline_data.js"></script>
   
@@ -296,44 +294,17 @@
           <span>開場動畫</span>
         </button>
 
-        <!-- Edit Mode Toggle -->
-        <button 
-          @click="isEditMode = !isEditMode"
-          :class="isEditMode ? 'bg-amber-500 text-slate-950 font-bold shadow-[0_0_12px_rgba(245,158,11,0.6)]' : 'bg-slate-900 text-slate-300 border border-slate-700 hover:border-amber-400'"
-          class="px-3 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5">
-          <i :class="isEditMode ? 'fa-solid fa-pen-nib' : 'fa-regular fa-pen-to-square'"></i>
-          <span>{{ isEditMode ? '編輯中（點擊完成）' : '編輯文字' }}</span>
-        </button>
-
-        <!-- Save Button (Active when in edit mode or dirty) -->
-        <button 
-          @click="saveToServer"
-          :disabled="isSaving"
-          :class="hasUnsavedChanges ? 'bg-gradient-to-r from-emerald-500 to-teal-400 text-black font-extrabold shadow-[0_0_15px_rgba(16,185,129,0.7)] animate-pulse' : 'bg-slate-900 text-slate-400 border border-slate-800 hover:text-white'"
-          class="px-3 py-1 rounded-full text-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50">
-          <i :class="isSaving ? 'fa-solid fa-spinner fa-spin' : 'fa-solid fa-floppy-disk'"></i>
-          <span>{{ isSaving ? '儲存中...' : (hasUnsavedChanges ? '💾 儲存並覆蓋本機檔案*' : '儲存至本機') }}</span>
-        </button>
-
         <!-- Autopilot Cruise Button -->
         <button 
           @click="toggleAutopilot" 
           :class="isAutopilot ? 'bg-cyan-500 text-black font-bold shadow-[0_0_15px_rgba(6,182,212,0.6)]' : 'bg-slate-900/90 text-cyan-300 border border-cyan-500/30 hover:border-cyan-400'"
-          class="px-3 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5">
+          class="px-3 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer">
           <i :class="isAutopilot ? 'fa-solid fa-pause' : 'fa-solid fa-play'"></i>
           <span>{{ isAutopilot ? '暫停導覽' : '自動導覽' }}</span>
         </button>
       </div>
     </div>
   </div>
-
-  <!-- Toast Notification -->
-  <transition enter-active-class="transition duration-300 ease-out" enter-from-class="transform -translate-y-4 opacity-0" enter-to-class="transform translate-y-0 opacity-100" leave-active-class="transition duration-200 ease-in" leave-from-class="transform translate-y-0 opacity-100" leave-to-class="transform -translate-y-4 opacity-0">
-    <div v-if="toast.show" class="fixed top-14 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 border" :class="toast.type === 'success' ? 'bg-emerald-950/90 border-emerald-500/80 text-emerald-200' : 'bg-red-950/90 border-red-500/80 text-red-200'">
-      <i :class="toast.type === 'success' ? 'fa-solid fa-circle-check text-emerald-400' : 'fa-solid fa-circle-exclamation text-red-400'"></i>
-      <span>{{ toast.message }}</span>
-    </div>
-  </transition>
 
   <!-- ================= HERO SECTION ================= -->
   <header class="relative pt-16 pb-16 px-4 text-center overflow-hidden">
@@ -343,30 +314,13 @@
     <div class="max-w-5xl mx-auto relative z-10">
       
       <!-- Date Tag -->
-      <div v-if="isEditMode" class="mb-5 inline-flex items-center gap-2 bg-slate-900/90 border border-amber-500/60 rounded-full px-4 py-1.5 shadow-lg">
-        <i class="fa-solid fa-sparkles text-amber-400 text-xs"></i>
-        <input 
-          v-model="hero.badge" 
-          @input="hasUnsavedChanges = true"
-          class="bg-transparent text-xs text-cyan-300 font-mono tracking-wider focus:outline-none w-72 sm:w-80 text-center"
-          placeholder="頂部徽章文字..."
-        />
-      </div>
-      <div v-else class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/40 bg-cyan-950/40 text-cyan-300 text-xs tracking-widest uppercase mb-6 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/40 bg-cyan-950/40 text-cyan-300 text-xs tracking-widest uppercase mb-6 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
         <i class="fa-solid fa-sparkles text-amber-400"></i>
         <span>{{ hero.badge }}</span>
       </div>
 
       <!-- Main Title -->
-      <div v-if="isEditMode" class="mb-5 max-w-2xl mx-auto">
-        <input 
-          v-model="hero.title" 
-          @input="hasUnsavedChanges = true"
-          class="w-full text-center text-3xl sm:text-5xl font-black bg-slate-900/95 border border-amber-500/60 rounded-2xl px-4 py-2.5 text-white focus:outline-none shadow-xl tracking-tight"
-          placeholder="主標題..."
-        />
-      </div>
-      <h1 v-else class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-6">
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-6">
         <template v-if="hero.title && hero.title.includes('11 週年')">
           {{ hero.title.split('11 週年')[0] }}<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-200 to-amber-400">11 週年</span>{{ hero.title.split('11 週年')[1] }}
         </template>
@@ -376,70 +330,31 @@
       </h1>
 
       <!-- Subtitle -->
-      <div v-if="isEditMode" class="mb-8 max-w-3xl mx-auto">
-        <textarea 
-          v-model="hero.subtitle" 
-          @input="hasUnsavedChanges = true"
-          rows="3"
-          class="w-full bg-slate-900/95 border border-amber-500/60 rounded-xl p-3 text-sm sm:text-base text-slate-200 focus:outline-none shadow-xl resize-none font-light leading-relaxed text-center"
-          placeholder="輸入副標題文字...">
-        </textarea>
-      </div>
-      <p v-else class="text-slate-300 max-w-3xl mx-auto text-sm sm:text-lg leading-relaxed mb-10 font-light whitespace-pre-line">
+      <p class="text-slate-300 max-w-3xl mx-auto text-sm sm:text-lg leading-relaxed mb-10 font-light whitespace-pre-line">
         {{ hero.subtitle }}
       </p>
 
-      <!-- Dashboard Stats (VISUAL LOGS removed as requested) -->
+      <!-- Dashboard Stats -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
         <!-- Stat 1 -->
-        <div class="holo-card rounded-xl p-4 text-left border-l-2 border-l-cyan-400" :class="isEditMode ? 'ring-1 ring-amber-500/40' : ''">
-          <div v-if="isEditMode" class="space-y-1.5 font-mono">
-            <input v-model="hero.stat1Label" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xs text-cyan-400 font-semibold w-full focus:outline-none focus:border-amber-400" placeholder="標籤名稱" />
-            <div class="flex items-center gap-1.5">
-              <input v-model="hero.stat1Value" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xl font-black text-white w-20 focus:outline-none focus:border-amber-400" placeholder="數值" />
-              <input v-model="hero.stat1Unit" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-slate-400 w-14 focus:outline-none focus:border-amber-400" placeholder="單位" />
-            </div>
-            <input v-model="hero.stat1Desc" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-[11px] text-slate-400 w-full focus:outline-none focus:border-amber-400" placeholder="備註說明" />
-          </div>
-          <template v-else>
-            <div class="text-xs text-cyan-400 uppercase tracking-wider font-semibold">{{ hero.stat1Label }}</div>
-            <div class="text-3xl font-black text-white mt-1">{{ hero.stat1Value }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat1Unit }}</span></div>
-            <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat1Desc }}</div>
-          </template>
+        <div class="holo-card rounded-xl p-4 text-left border-l-2 border-l-cyan-400">
+          <div class="text-xs text-cyan-400 uppercase tracking-wider font-semibold">{{ hero.stat1Label }}</div>
+          <div class="text-3xl font-black text-white mt-1">{{ hero.stat1Value }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat1Unit }}</span></div>
+          <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat1Desc }}</div>
         </div>
 
         <!-- Stat 2 -->
-        <div class="holo-card rounded-xl p-4 text-left border-l-2 border-l-sky-400" :class="isEditMode ? 'ring-1 ring-amber-500/40' : ''">
-          <div v-if="isEditMode" class="space-y-1.5 font-mono">
-            <input v-model="hero.stat2Label" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xs text-sky-400 font-semibold w-full focus:outline-none focus:border-amber-400" placeholder="標籤名稱" />
-            <div class="flex items-center gap-1.5">
-              <input v-model="hero.stat2Value" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xl font-black text-white w-24 focus:outline-none focus:border-amber-400" placeholder="數值" />
-              <input v-model="hero.stat2Unit" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-slate-400 w-14 focus:outline-none focus:border-amber-400" placeholder="單位" />
-            </div>
-            <input v-model="hero.stat2Desc" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-[11px] text-slate-400 w-full focus:outline-none focus:border-amber-400" placeholder="備註說明" />
-          </div>
-          <template v-else>
-            <div class="text-xs text-sky-400 uppercase tracking-wider font-semibold">{{ hero.stat2Label }}</div>
-            <div class="text-3xl font-black text-white mt-1">{{ hero.stat2Value }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat2Unit }}</span></div>
-            <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat2Desc }}</div>
-          </template>
+        <div class="holo-card rounded-xl p-4 text-left border-l-2 border-l-sky-400">
+          <div class="text-xs text-sky-400 uppercase tracking-wider font-semibold">{{ hero.stat2Label }}</div>
+          <div class="text-3xl font-black text-white mt-1">{{ hero.stat2Value }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat2Unit }}</span></div>
+          <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat2Desc }}</div>
         </div>
 
         <!-- Stat 3 -->
-        <div class="holo-card rounded-xl p-4 text-left border-l-2 border-l-amber-400" :class="isEditMode ? 'ring-1 ring-amber-500/40' : ''">
-          <div v-if="isEditMode" class="space-y-1.5 font-mono">
-            <input v-model="hero.stat3Label" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xs text-amber-400 font-semibold w-full focus:outline-none focus:border-amber-400" placeholder="標籤名稱" />
-            <div class="flex items-center gap-1.5">
-              <div class="text-2xl font-black text-amber-400 w-20 px-2 py-0.5 font-mono">{{ events.length }}</div>
-              <input v-model="hero.stat3Unit" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-slate-400 w-14 focus:outline-none focus:border-amber-400" placeholder="單位" />
-            </div>
-            <input v-model="hero.stat3Desc" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-[11px] text-slate-400 w-full focus:outline-none focus:border-amber-400" placeholder="備註說明" />
-          </div>
-          <template v-else>
-            <div class="text-xs text-amber-400 uppercase tracking-wider font-semibold">{{ hero.stat3Label }}</div>
-            <div class="text-3xl font-black text-amber-400 mt-1">{{ events.length }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat3Unit }}</span></div>
-            <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat3Desc }}</div>
-          </template>
+        <div class="holo-card rounded-xl p-4 text-left border-l-2 border-l-amber-400">
+          <div class="text-xs text-amber-400 uppercase tracking-wider font-semibold">{{ hero.stat3Label }}</div>
+          <div class="text-3xl font-black text-amber-400 mt-1">{{ events.length }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat3Unit }}</span></div>
+          <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat3Desc }}</div>
         </div>
       </div>
 
@@ -494,16 +409,7 @@
           class="px-2.5 py-0.5 rounded transition-all shrink-0">
           {{ cat }}
         </button>
-
-        <!-- Add Event Button in Edit Mode -->
-        <button 
-          v-if="isEditMode"
-          @click="addNewEvent"
-          class="ml-auto px-2.5 py-0.5 rounded text-emerald-300 bg-emerald-950/80 border border-emerald-500/50 hover:bg-emerald-900 flex items-center gap-1 shrink-0">
-          <i class="fa-solid fa-plus text-[10px]"></i> 新增主題
-        </button>
       </div>
-
     </div>
   </section>
 
@@ -555,102 +461,41 @@
           ]">
           
           <div 
-            :class="[
-              item.category === '週年盛典' ? 'holo-card-anniversary' : 'holo-card',
-              isEditMode ? 'ring-1 ring-amber-500/50' : ''
-            ]"
+            :class="item.category === '週年盛典' ? 'holo-card-anniversary' : 'holo-card'"
             class="rounded-2xl p-5 sm:p-6 text-left relative overflow-hidden group/card shadow-2xl">
             
-            <!-- Edit Mode Badge -->
-            <div v-if="isEditMode" class="absolute top-2 right-2 text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded">
-              可直接點擊文字編輯
-            </div>
-
             <!-- Header Info: Date & Category -->
             <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-              <!-- Date (Editable) -->
-              <div v-if="isEditMode" class="flex items-center gap-1.5">
-                <i class="fa-regular fa-calendar text-cyan-400 text-xs"></i>
-                <input 
-                  v-model="item.date" 
-                  @input="onFieldChange(item)"
-                  class="bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-xs text-cyan-300 font-mono focus:border-amber-400 focus:outline-none w-32"
-                />
-              </div>
-              <span v-else class="text-xs font-bold text-cyan-400 tracking-wider flex items-center gap-1.5 font-mono">
+              <span class="text-xs font-bold text-cyan-400 tracking-wider flex items-center gap-1.5 font-mono">
                 <i class="fa-regular fa-calendar text-cyan-500"></i> {{ item.date }}
               </span>
 
-              <!-- Category (Editable) -->
-              <div v-if="isEditMode">
-                <input 
-                  v-model="item.category" 
-                  @input="onFieldChange(item)"
-                  class="bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-[11px] text-amber-300 focus:border-amber-400 focus:outline-none w-28 text-center"
-                />
-              </div>
-              <span v-else 
+              <span 
                 :class="item.category === '週年盛典' ? 'bg-amber-500 text-black font-black' : 'bg-slate-900 text-slate-300 border border-slate-700'"
                 class="text-[10px] px-2.5 py-0.5 rounded-full font-semibold tracking-wider">
                 {{ item.category }}
               </span>
             </div>
 
-            <!-- Title (Editable) -->
-            <div v-if="isEditMode" class="mb-2">
-              <input 
-                v-model="item.title" 
-                @input="onFieldChange(item)"
-                class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-base font-bold text-white focus:border-amber-400 focus:outline-none"
-              />
-            </div>
-            <h2 v-else class="text-xl sm:text-2xl font-black text-white mb-2 leading-snug tracking-tight group-hover/card:text-cyan-300 transition-colors">
+            <!-- Title -->
+            <h2 class="text-xl sm:text-2xl font-black text-white mb-2 leading-snug tracking-tight group-hover/card:text-cyan-300 transition-colors">
               {{ item.title }}
             </h2>
 
-            <!-- Speakers (Editable) -->
-            <div v-if="isEditMode" class="mb-3 flex items-center gap-1.5">
-              <span class="text-[11px] text-slate-400">講者:</span>
-              <input 
-                v-model="item.speakersText"
-                @input="onSpeakerInput(item)"
-                @blur="commitSpeakers(item)"
-                placeholder="以逗號分隔，例如: Jerry, Vickie"
-                class="flex-1 bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-xs text-slate-200 focus:border-amber-400 focus:outline-none"
-              />
-            </div>
-            <div v-else class="flex flex-wrap items-center gap-1.5 mb-3">
+            <!-- Speakers -->
+            <div class="flex flex-wrap items-center gap-1.5 mb-3">
               <span v-for="spk in item.speakers" :key="spk" class="text-xs text-slate-300 bg-slate-950/80 px-2.5 py-0.5 rounded border border-slate-800">
                 <i class="fa-solid fa-user-circle text-cyan-400 mr-1"></i>{{ spk }}
               </span>
             </div>
 
-            <!-- Summary (Editable) -->
-            <div v-if="isEditMode" class="mb-4">
-              <textarea 
-                v-model="item.summary" 
-                @input="onFieldChange(item)"
-                rows="3"
-                class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-xs text-slate-200 leading-relaxed focus:border-amber-400 focus:outline-none"
-              ></textarea>
-            </div>
-            <p v-else class="text-sm text-slate-300 leading-relaxed font-light mb-4">
+            <!-- Summary -->
+            <p class="text-sm text-slate-300 leading-relaxed font-light mb-4">
               {{ item.summary }}
             </p>
 
             <!-- Google Drive Folder Link (查看更多) -->
-            <div v-if="isEditMode" class="mb-4 flex items-center gap-2 bg-slate-950/70 p-2 rounded-lg border border-slate-800">
-              <span class="text-[11px] text-cyan-400 shrink-0 flex items-center gap-1 font-medium">
-                <i class="fa-brands fa-google-drive text-emerald-400"></i> 雲端連結:
-              </span>
-              <input 
-                v-model="item.drive_url" 
-                @input="onFieldChange(item)"
-                placeholder="https://drive.google.com/drive/folders/..." 
-                class="flex-1 bg-slate-900 border border-slate-700 rounded px-2.5 py-1 text-xs text-slate-200 focus:border-amber-400 focus:outline-none font-mono"
-              />
-            </div>
-            <div v-else-if="item.drive_url" class="mb-4 flex items-center">
+            <div v-if="item.drive_url" class="mb-4 flex items-center">
               <a 
                 :href="item.drive_url" 
                 target="_blank" 
@@ -691,71 +536,7 @@
                   </button>
                 </div>
               </div>
-
-              <!-- EDIT MODE: Interactive Photo Reorder Studio -->
-              <div v-if="isEditMode" class="space-y-2">
-                <div class="text-[11px] text-amber-300 font-mono flex items-center justify-between pb-1">
-                  <span><i class="fa-solid fa-arrows-up-down-left-right mr-1"></i>可直接拖曳相片或點擊箭頭排序</span>
-                  <span class="text-[10px] text-slate-400">第一張將自動成為焦點首圖</span>
-                </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  <div 
-                    v-for="(m, mIdx) in item.media" :key="m.url"
-                    draggable="true"
-                    @dragstart="onDragStart(item, mIdx, $event)"
-                    @dragover.prevent="onDragOver(item, mIdx, $event)"
-                    @drop="onDrop(item, mIdx, $event)"
-                    :class="draggedInfo && draggedInfo.eventId === item.id && draggedInfo.index === mIdx ? 'opacity-30 border-dashed border-amber-400' : 'border-slate-800 hover:border-amber-400/80'"
-                    class="relative aspect-[4/3] rounded-lg overflow-hidden border bg-slate-950 p-1 group/editPhoto transition-all cursor-grab active:cursor-grabbing">
-                    
-                    <!-- Thumbnail -->
-                    <img :src="m.url" class="w-full h-full object-cover rounded pointer-events-none" />
-                    
-                    <!-- Top Index Badge -->
-                    <div class="absolute top-2 left-2 flex items-center gap-1 pointer-events-none">
-                      <span 
-                        :class="mIdx === 0 ? 'bg-amber-500 text-black font-extrabold shadow-[0_0_8px_rgba(245,158,11,0.8)]' : 'bg-black/80 text-white'"
-                        class="text-[10px] px-1.5 py-0.5 rounded font-mono">
-                        #{{ mIdx + 1 }}{{ mIdx === 0 ? ' (首圖)' : '' }}
-                      </span>
-                      <span v-if="m.type === 'gif'" class="bg-purple-600 text-white text-[9px] px-1 py-0.5 rounded font-mono font-bold">
-                        GIF
-                      </span>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="absolute inset-x-1 bottom-1 bg-gradient-to-t from-black/95 via-black/80 to-transparent p-1.5 flex items-center justify-between opacity-90 group-hover/editPhoto:opacity-100 transition-opacity">
-                      <button 
-                        @click.stop="moveMedia(item, mIdx, -1)" 
-                        :disabled="mIdx === 0"
-                        title="往前移"
-                        class="w-6 h-6 rounded bg-slate-800 hover:bg-amber-500 hover:text-black text-white text-xs flex items-center justify-center transition-colors disabled:opacity-20 disabled:hover:bg-slate-800 disabled:hover:text-white">
-                        <i class="fa-solid fa-chevron-left"></i>
-                      </button>
-                      
-                      <button 
-                        v-if="mIdx !== 0"
-                        @click.stop="setAsCover(item, mIdx)"
-                        title="設為首圖"
-                        class="px-1.5 py-0.5 rounded bg-amber-500/20 hover:bg-amber-500 hover:text-black text-amber-300 text-[10px] transition-colors font-mono">
-                        ★設首圖
-                      </button>
-
-                      <button 
-                        @click.stop="moveMedia(item, mIdx, 1)" 
-                        :disabled="mIdx === item.media.length - 1"
-                        title="往後移"
-                        class="w-6 h-6 rounded bg-slate-800 hover:bg-amber-500 hover:text-black text-white text-xs flex items-center justify-center transition-colors disabled:opacity-20 disabled:hover:bg-slate-800 disabled:hover:text-white">
-                        <i class="fa-solid fa-chevron-right"></i>
-                      </button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-              <!-- NORMAL VIEW (Cinematic layouts) -->
-              <template v-else>
+              
               <!-- VIEW A: Single GIF / Single Image -->
               <div v-if="getMediaList(item).length === 1" class="rounded-xl overflow-hidden border border-cyan-500/30 bg-black/60 relative group/solo">
                 <div 
@@ -849,8 +630,6 @@
                 </div>
 
               </div>
-              </template>
-
             </div>
 
           </div>
@@ -985,13 +764,6 @@
       const expandedEvents = ref({});
       const isAutopilot = ref(false);
       let autopilotTimer = null;
-
-      // Edit Mode & Save state
-      const isEditMode = ref(false);
-      const isSaving = ref(false);
-      const hasUnsavedChanges = ref(false);
-      const toast = ref({ show: false, message: '', type: 'success' });
-
       const lightboxEl = ref(null);
       const lightbox = ref({
         isOpen: false,
@@ -1141,57 +913,6 @@
           }
         }
       };
-
-      // 相片排序：拖曳與移動狀態
-      const draggedInfo = ref(null);
-
-      const onDragStart = (item, index, event) => {
-        draggedInfo.value = { eventId: item.id, index };
-        if (event.dataTransfer) {
-          event.dataTransfer.effectAllowed = 'move';
-          try { event.dataTransfer.setData('text/plain', index.toString()); } catch (e) {}
-        }
-      };
-
-      const onDragOver = (item, index, event) => {
-        if (draggedInfo.value && draggedInfo.value.eventId === item.id) {
-          event.preventDefault();
-          if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
-        }
-      };
-
-      const onDrop = (item, targetIndex, event) => {
-        event.preventDefault();
-        if (!draggedInfo.value || draggedInfo.value.eventId !== item.id) return;
-        const sourceIndex = draggedInfo.value.index;
-        if (sourceIndex === targetIndex) return;
-
-        const moved = item.media.splice(sourceIndex, 1)[0];
-        item.media.splice(targetIndex, 0, moved);
-        item.photos = item.media.map(m => m.url);
-        draggedInfo.value = null;
-        hasUnsavedChanges.value = true;
-        showToast(`已調整相片順序（第 ${sourceIndex + 1} 張 移至 第 ${targetIndex + 1} 張）`, 'success');
-      };
-
-      const moveMedia = (item, index, direction) => {
-        const targetIndex = index + direction;
-        if (targetIndex < 0 || targetIndex >= item.media.length) return;
-        const moved = item.media.splice(index, 1)[0];
-        item.media.splice(targetIndex, 0, moved);
-        item.photos = item.media.map(m => m.url);
-        hasUnsavedChanges.value = true;
-      };
-
-      const setAsCover = (item, index) => {
-        if (index === 0) return;
-        const moved = item.media.splice(index, 1)[0];
-        item.media.unshift(moved);
-        item.photos = item.media.map(m => m.url);
-        hasUnsavedChanges.value = true;
-        showToast('已設為焦點首圖！', 'success');
-      };
-
       onMounted(async () => {
         // 先初始化預載的 window.TIMELINE_DATA
         events.value.forEach(initEventItem);
@@ -1237,106 +958,6 @@
           }
         });
       });
-
-      const showToast = (message, type = 'success') => {
-        toast.value = { show: true, message, type };
-        setTimeout(() => {
-          toast.value.show = false;
-        }, 3500);
-      };
-
-      const onFieldChange = (item) => {
-        // 自動依照日期更新年份
-        if (item.date && item.date.length >= 4) {
-          item.year = item.date.substring(0, 4);
-        }
-        hasUnsavedChanges.value = true;
-      };
-
-      const onSpeakerInput = (item) => {
-        hasUnsavedChanges.value = true;
-        commitSpeakers(item);
-      };
-
-      const commitSpeakers = (item) => {
-        if (typeof item.speakersText === 'string') {
-          // 支援半形逗號、全形逗號、頓號
-          item.speakers = item.speakersText
-            .split(/[,，、]/)
-            .map(s => s.trim())
-            .filter(Boolean);
-        }
-      };
-
-      const addNewEvent = () => {
-        const todayStr = new Date().toISOString().split('T')[0];
-        const newEvt = {
-          id: todayStr + '-' + Date.now().toString().slice(-4),
-          date: todayStr,
-          year: todayStr.substring(0, 4),
-          title: '新增主題名稱',
-          category: '科技趨勢',
-          speakers: ['成員名稱'],
-          speakersText: '成員名稱',
-          summary: '請在此輸入主題的重點摘要與討論心得...',
-          drive_url: '',
-          media: [],
-          photos: []
-        };
-        events.value.unshift(newEvt);
-        hasUnsavedChanges.value = true;
-        showToast('已新增節點，編輯後請點擊「儲存並覆蓋本機檔案」！', 'success');
-      };
-
-      // 一鍵儲存並覆蓋本機檔案
-      const saveToServer = async () => {
-        isSaving.value = true;
-        try {
-          events.value.forEach(item => {
-            commitSpeakers(item);
-            if (item.date && item.date.length >= 4) {
-              item.year = item.date.substring(0, 4);
-            }
-          });
-
-          const eventsPayload = events.value.map(e => {
-            const copy = { ...e };
-            delete copy.speakersText;
-            if (copy.media) {
-              copy.photos = copy.media.map(m => m.url);
-            }
-            return copy;
-          });
-
-          const payload = {
-            hero: hero.value,
-            events: eventsPayload
-          };
-
-          const res = await fetch('/api/save', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json; charset=utf-8' },
-            body: JSON.stringify(payload, null, 2)
-          });
-          
-          if (res.ok) {
-            hasUnsavedChanges.value = false;
-            showToast('✅ 成功儲存！已覆蓋本機 timeline_data.json 與 timeline_data.js', 'success');
-            if (typeof confetti === 'function') {
-              confetti({ particleCount: 80, spread: 60, origin: { y: 0.2 } });
-            }
-          } else {
-            const err = await res.json();
-            throw new Error(err.error || 'Server error');
-          }
-        } catch (e) {
-          console.error("Save error:", e);
-          showToast('❌ 儲存失敗: ' + e.message, 'error');
-        } finally {
-          isSaving.value = false;
-        }
-      };
-
       const getMediaList = (item) => {
         if (item.media && item.media.length > 0) return item.media;
         if (item.photos && item.photos.length > 0) {
@@ -1520,10 +1141,6 @@
         filteredEvents,
         expandedEvents,
         isAutopilot,
-        isEditMode,
-        isSaving,
-        hasUnsavedChanges,
-        toast,
         lightbox,
         lightboxEl,
         currentMedia,
@@ -1540,17 +1157,6 @@
         resetFilters,
         scrollToTop,
         scrollToNode,
-        onFieldChange,
-        onSpeakerInput,
-        commitSpeakers,
-        addNewEvent,
-        saveToServer,
-        draggedInfo,
-        onDragStart,
-        onDragOver,
-        onDrop,
-        moveMedia,
-        setAsCover,
         opening,
         runOpeningAnimation,
         dockOpening,
