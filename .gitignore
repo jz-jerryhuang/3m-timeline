@@ -1,0 +1,26 @@
+# Source raw presentation / document folders (linked via Google Drive)
+5-26-2018 （新零售）/
+6-23-2018 (AI)/
+7-28-2018 (區塊鏈)/
+7-28-2019 (UBI)/
+4-26-2020 (COVID-19)/
+國際情勢-新冠疫苗開發 (Jerry) 5-23-2020 v2/
+2022-05-09 Elon Musk bought Twitter/
+8-16-2025 川普新關稅影響/
+
+# Loose office docs and google doc shortcuts in root
+*.pptx
+*.docx
+*.pdf
+*.gdoc
+*.gslides
+~$*
+
+# OS / temporary files
+.DS_Store
+desktop.ini
+Thumbs.db
+*.tmp
+*.db
+*.db-shm
+*.db-wal

@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3M 讀書會 11 週年紀念時光軸 (2015 - 2026)</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Vue 3 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <!-- Direct Timeline Data Load -->
+  <script src="timeline_data.js"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              black: '#081224',
+              navy: '#0d1b38',
+              card: '#102244',
+              cardHover: '#172f5c',
+              border: '#1e3868',
+              neonCyan: '#06B6D4',
+              neonAmber: '#F59E0B',
+              neonPurple: '#A855F7',
+              laser: '#38BDF8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Academic Midnight Sapphire Gradient Background */
+    body {
+      background: radial-gradient(130% 90% at 50% -10%, #173059 0%, #0e1d38 45%, #081224 100%);
+      background-attachment: fixed;
+      color: #f1f5f9;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #081224; }
+    ::-webkit-scrollbar-thumb { background: #1e3868; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #06B6D4; }
+
+    /* Laser Filament Glow */
+    .laser-glow {
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.6), 0 0 30px rgba(6, 182, 212, 0.2);
+    }
+    .amber-glow {
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.5), 0 0 40px rgba(245, 158, 11, 0.2);
+    }
+    .holo-card {
+      background: linear-gradient(135deg, rgba(18, 35, 68, 0.78) 0%, rgba(10, 20, 42, 0.9) 100%);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      box-shadow: 0 10px 30px rgba(2, 8, 24, 0.45);
+      transition: all 0.3s ease;
+    }
+    .holo-card:hover {
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: 0 14px 40px -10px rgba(6, 182, 212, 0.3);
+      background: linear-gradient(135deg, rgba(24, 46, 88, 0.85) 0%, rgba(13, 26, 54, 0.95) 100%);
+    }
+    .holo-card-anniversary {
+      background: linear-gradient(135deg, rgba(40, 28, 14, 0.88) 0%, rgba(20, 14, 8, 0.95) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.35);
+    }
+
+    /* Filmstrip smooth scroll */
+    .filmstrip-scroll {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .filmstrip-scroll::-webkit-scrollbar {
+      height: 4px;
+    }
+    .filmstrip-scroll::-webkit-scrollbar-thumb {
+      background: #0ea5e9;
+      border-radius: 9999px;
+    }
+
+    /* Apple Keynote Text Shimmer & Glow */
+    @keyframes appleShimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .apple-text-shimmer {
+      background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffffff 35%,
+        #38bdf8 48%,
+        #f59e0b 52%,
+        #ffffff 65%,
+        #ffffff 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: appleShimmer 3.5s infinite ease-in-out;
+    }
+
+    @keyframes scaleReveal {
+      0% { opacity: 0; transform: scale(0.88); filter: blur(10px); }
+      100% { opacity: 1; transform: scale(1); filter: blur(0px); }
+    }
+    .animate-scale-reveal {
+      animation: scaleReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Laser line animation */
+    @keyframes pulseLaser {
+      0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 8px #06B6D4); }
+      50% { opacity: 1; filter: drop-shadow(0 0 16px #38BDF8); }
+    }
+    .laser-line-anim {
+      animation: pulseLaser 3s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-black">
+<div id="app" class="relative z-10">
+
+  <!-- ================= CANVAS & AMBIENT AURORA BACKGROUND ================= -->
+  <canvas id="cosmicCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-70"></canvas>
+
+  <!-- Ambient Aurora Nebula Lights (Knowledge & Tech depth) -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <!-- Top-Left Cyan Knowledge Synapse -->
+    <div class="absolute -top-32 -left-20 w-[650px] h-[650px] bg-gradient-to-br from-cyan-500/15 via-blue-600/10 to-transparent blur-[140px] rounded-full"></div>
+    <!-- Center-Top Royal Sapphire Beam -->
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-blue-500/15 via-indigo-600/10 to-transparent blur-[150px] rounded-full"></div>
+    <!-- Right Ambient Violet Wisdom Glow -->
+    <div class="absolute top-1/3 -right-32 w-[600px] h-[600px] bg-gradient-to-bl from-purple-600/12 via-indigo-600/10 to-transparent blur-[140px] rounded-full"></div>
+    <!-- Bottom Archival Amber Warmth -->
+    <div class="absolute -bottom-40 left-1/4 w-[700px] h-[550px] bg-gradient-to-tr from-amber-500/10 via-cyan-500/8 to-transparent blur-[150px] rounded-full"></div>
+  </div>
+
+  <!-- ================= APPLE KEYNOTE OPENING OVERLAY ================= -->
+  <div 
+    v-if="opening.active" 
+    :class="opening.docking ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'"
+    class="fixed inset-0 z-50 bg-gradient-to-b from-[#0f1f3d]/98 via-[#0a162b]/98 to-[#060e1c]/98 backdrop-blur-2xl flex flex-col items-center justify-center p-4 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] select-none">
+    
+    <!-- Top Right Skip Button -->
+    <button 
+      @click="skipOpening" 
+      class="absolute top-6 right-6 text-xs text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full border border-slate-700/80 hover:border-cyan-400 bg-slate-900/80 backdrop-blur transition-all flex items-center gap-1.5 cursor-pointer font-mono shadow-lg">
+      <span>跳過開場</span>
+      <kbd class="text-[10px] bg-slate-800 px-1 rounded text-slate-300">ESC</kbd>
+    </button>
+
+    <!-- Apple Chromatic Halo Background -->
+    <div class="absolute w-[680px] h-[680px] rounded-full bg-gradient-to-tr from-cyan-500/20 via-purple-500/15 to-amber-500/20 blur-[140px] pointer-events-none animate-pulse"></div>
+
+    <!-- Center Content Deck -->
+    <div class="max-w-4xl w-full text-center relative z-10 space-y-7 animate-scale-reveal">
+      
+      <!-- 1. Capsule Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/50 bg-cyan-950/70 text-cyan-300 text-xs tracking-widest uppercase shadow-[0_0_25px_rgba(6,182,212,0.4)]">
+        <i class="fa-solid fa-sparkles text-amber-400"></i>
+        <span>{{ hero.badge }}</span>
+      </div>
+
+      <!-- 2. Main Title with Apple Liquid Sheen -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white apple-text-shimmer leading-tight">
+        {{ hero.title }}
+      </h1>
+
+      <!-- 3. Subtitle -->
+      <p class="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed opacity-90 font-light whitespace-pre-line">
+        {{ hero.subtitle }}
+      </p>
+
+      <!-- 4. Three Monumental Metric Cards (Sequential Spotlight & Odometer Count-up) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 max-w-3xl mx-auto pt-4 font-mono">
+        
+        <!-- Card 1: 成立歷程 (週年) -->
+        <div 
+          :class="[
+            opening.stage === 'card1' ? 'border-cyan-400 bg-slate-900/95 ring-2 ring-cyan-400/60 shadow-[0_0_40px_rgba(6,182,212,0.5)] scale-105' : 
+            opening.stage === 'intro' ? 'opacity-35 border-slate-800/80 bg-slate-950/60' : 
+            opening.stage === 'finale' ? 'border-cyan-400/80 bg-slate-900/90 shadow-[0_0_25px_rgba(6,182,212,0.3)] opacity-100' :
+            'border-cyan-500/30 bg-slate-900/70 opacity-80'
+          ]"
+          class="rounded-2xl p-5 text-left backdrop-blur transition-all duration-500 relative overflow-hidden group">
+          
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-cyan-400 font-semibold uppercase tracking-wider">{{ hero.stat1Label }}</span>
+            <span v-if="opening.stage === 'card1'" class="flex items-center gap-1 text-[10px] text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded-full border border-cyan-500/40">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+              聚焦里程
+            </span>
+            <span v-else-if="opening.countYear === 11" class="text-cyan-400/80 text-xs">
+              <i class="fa-solid fa-circle-check"></i>
+            </span>
+          </div>
+
+          <div class="text-4xl sm:text-5xl font-black text-white mt-2 transition-all">
+            {{ opening.countYear }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat1Unit }}</span>
+          </div>
+          <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat1Desc }}</div>
+        </div>
+
+        <!-- Card 2: 陪伴天數 -->
+        <div 
+          :class="[
+            opening.stage === 'card2' ? 'border-sky-400 bg-slate-900/95 ring-2 ring-sky-400/60 shadow-[0_0_40px_rgba(56,189,248,0.5)] scale-105' : 
+            (opening.stage === 'intro' || opening.stage === 'card1') ? 'opacity-35 border-slate-800/80 bg-slate-950/60' : 
+            opening.stage === 'finale' ? 'border-sky-400/80 bg-slate-900/90 shadow-[0_0_25px_rgba(56,189,248,0.3)] opacity-100' :
+            'border-sky-500/30 bg-slate-900/70 opacity-80'
+          ]"
+          class="rounded-2xl p-5 text-left backdrop-blur transition-all duration-500 relative overflow-hidden group">
+          
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-sky-400 font-semibold uppercase tracking-wider">{{ hero.stat2Label }}</span>
+            <span v-if="opening.stage === 'card2'" class="flex items-center gap-1 text-[10px] text-sky-300 bg-sky-950/80 px-2 py-0.5 rounded-full border border-sky-500/40">
+              <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping"></span>
+              歲月沉澱
+            </span>
+            <span v-else-if="opening.countDays === 4018" class="text-sky-400/80 text-xs">
+              <i class="fa-solid fa-circle-check"></i>
+            </span>
+          </div>
+
+          <div class="text-4xl sm:text-5xl font-black text-white mt-2 transition-all">
+            {{ opening.countDays.toLocaleString() }}+ <span class="text-xs text-slate-400 font-normal">{{ hero.stat2Unit }}</span>
+          </div>
+          <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat2Desc }}</div>
+        </div>
+
+        <!-- Card 3: 研討專題 -->
+        <div 
+          :class="[
+            opening.stage === 'card3' ? 'border-amber-400 bg-slate-900/95 ring-2 ring-amber-400/60 shadow-[0_0_40px_rgba(245,158,11,0.5)] scale-105' : 
+            (opening.stage === 'intro' || opening.stage === 'card1' || opening.stage === 'card2') ? 'opacity-35 border-slate-800/80 bg-slate-950/60' : 
+            opening.stage === 'finale' ? 'border-amber-400/80 bg-slate-900/90 shadow-[0_0_25px_rgba(245,158,11,0.3)] opacity-100' :
+            'border-amber-500/30 bg-slate-900/70 opacity-80'
+          ]"
+          class="rounded-2xl p-5 text-left backdrop-blur transition-all duration-500 relative overflow-hidden group">
+          
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-amber-400 font-semibold uppercase tracking-wider">{{ hero.stat3Label }}</span>
+            <span v-if="opening.stage === 'card3'" class="flex items-center gap-1 text-[10px] text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-500/40">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
+              智識交鋒
+            </span>
+            <span v-else-if="opening.countEvents > 0 && opening.stage !== 'intro' && opening.stage !== 'card1' && opening.stage !== 'card2'" class="text-amber-400/80 text-xs">
+              <i class="fa-solid fa-circle-check"></i>
+            </span>
+          </div>
+
+          <div class="text-4xl sm:text-5xl font-black text-amber-400 mt-2 transition-all">
+            {{ opening.countEvents }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat3Unit }}</span>
+          </div>
+          <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat3Desc }}</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= TOP TOOLBAR ================= -->
+  <div class="sticky top-0 z-40 bg-[#0c1832]/90 backdrop-blur-md border-b border-cyan-500/20 px-3 sm:px-6 py-2.5 shadow-xl">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+      
+      <!-- Left info -->
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 font-semibold tracking-wide">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          3M 讀書會 • 11 週年紀念典藏
+        </span>
+        <span class="text-slate-400 hidden sm:inline">陪伴時光：<strong class="text-amber-400 font-bold">4,018 天</strong></span>
+      </div>
+
+      <!-- Right controls: Replay opening, Edit mode, Save & Autopilot -->
+      <div class="flex items-center gap-2">
+        <!-- Replay Opening Animation Button -->
+        <button 
+          @click="replayOpening"
+          title="播放 Apple 發表會級開場特效"
+          class="px-3 py-1 rounded-full text-xs text-slate-300 bg-slate-900/90 border border-slate-700 hover:border-cyan-400 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-clapperboard text-cyan-400"></i>
+          <span>開場動畫</span>
+        </button>
+
+        <!-- Edit Mode Toggle -->
+        <button 
+          @click="isEditMode = !isEditMode"
+          :class="isEditMode ? 'bg-amber-500 text-slate-950 font-bold shadow-[0_0_12px_rgba(245,158,11,0.6)]' : 'bg-slate-900 text-slate-300 border border-slate-700 hover:border-amber-400'"
+          class="px-3 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5">
+          <i :class="isEditMode ? 'fa-solid fa-pen-nib' : 'fa-regular fa-pen-to-square'"></i>
+          <span>{{ isEditMode ? '編輯中（點擊完成）' : '編輯文字' }}</span>
+        </button>
+
+        <!-- Save Button (Active when in edit mode or dirty) -->
+        <button 
+          @click="saveToServer"
+          :disabled="isSaving"
+          :class="hasUnsavedChanges ? 'bg-gradient-to-r from-emerald-500 to-teal-400 text-black font-extrabold shadow-[0_0_15px_rgba(16,185,129,0.7)] animate-pulse' : 'bg-slate-900 text-slate-400 border border-slate-800 hover:text-white'"
+          class="px-3 py-1 rounded-full text-xs transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50">
+          <i :class="isSaving ? 'fa-solid fa-spinner fa-spin' : 'fa-solid fa-floppy-disk'"></i>
+          <span>{{ isSaving ? '儲存中...' : (hasUnsavedChanges ? '💾 儲存並覆蓋本機檔案*' : '儲存至本機') }}</span>
+        </button>
+
+        <!-- Autopilot Cruise Button -->
+        <button 
+          @click="toggleAutopilot" 
+          :class="isAutopilot ? 'bg-cyan-500 text-black font-bold shadow-[0_0_15px_rgba(6,182,212,0.6)]' : 'bg-slate-900/90 text-cyan-300 border border-cyan-500/30 hover:border-cyan-400'"
+          class="px-3 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5">
+          <i :class="isAutopilot ? 'fa-solid fa-pause' : 'fa-solid fa-play'"></i>
+          <span>{{ isAutopilot ? '暫停導覽' : '自動導覽' }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <transition enter-active-class="transition duration-300 ease-out" enter-from-class="transform -translate-y-4 opacity-0" enter-to-class="transform translate-y-0 opacity-100" leave-active-class="transition duration-200 ease-in" leave-from-class="transform translate-y-0 opacity-100" leave-to-class="transform -translate-y-4 opacity-0">
+    <div v-if="toast.show" class="fixed top-14 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 border" :class="toast.type === 'success' ? 'bg-emerald-950/90 border-emerald-500/80 text-emerald-200' : 'bg-red-950/90 border-red-500/80 text-red-200'">
+      <i :class="toast.type === 'success' ? 'fa-solid fa-circle-check text-emerald-400' : 'fa-solid fa-circle-exclamation text-red-400'"></i>
+      <span>{{ toast.message }}</span>
+    </div>
+  </transition>
+
+  <!-- ================= HERO SECTION ================= -->
+  <header class="relative pt-16 pb-16 px-4 text-center overflow-hidden">
+    <!-- Ambient Glow -->
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-cyan-600/15 via-purple-600/10 to-amber-500/15 blur-[100px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+      
+      <!-- Date Tag -->
+      <div v-if="isEditMode" class="mb-5 inline-flex items-center gap-2 bg-slate-900/90 border border-amber-500/60 rounded-full px-4 py-1.5 shadow-lg">
+        <i class="fa-solid fa-sparkles text-amber-400 text-xs"></i>
+        <input 
+          v-model="hero.badge" 
+          @input="hasUnsavedChanges = true"
+          class="bg-transparent text-xs text-cyan-300 font-mono tracking-wider focus:outline-none w-72 sm:w-80 text-center"
+          placeholder="頂部徽章文字..."
+        />
+      </div>
+      <div v-else class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/40 bg-cyan-950/40 text-cyan-300 text-xs tracking-widest uppercase mb-6 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+        <i class="fa-solid fa-sparkles text-amber-400"></i>
+        <span>{{ hero.badge }}</span>
+      </div>
+
+      <!-- Main Title -->
+      <div v-if="isEditMode" class="mb-5 max-w-2xl mx-auto">
+        <input 
+          v-model="hero.title" 
+          @input="hasUnsavedChanges = true"
+          class="w-full text-center text-3xl sm:text-5xl font-black bg-slate-900/95 border border-amber-500/60 rounded-2xl px-4 py-2.5 text-white focus:outline-none shadow-xl tracking-tight"
+          placeholder="主標題..."
+        />
+      </div>
+      <h1 v-else class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white mb-6">
+        <template v-if="hero.title && hero.title.includes('11 週年')">
+          {{ hero.title.split('11 週年')[0] }}<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-200 to-amber-400">11 週年</span>{{ hero.title.split('11 週年')[1] }}
+        </template>
+        <template v-else>
+          {{ hero.title }}
+        </template>
+      </h1>
+
+      <!-- Subtitle -->
+      <div v-if="isEditMode" class="mb-8 max-w-3xl mx-auto">
+        <textarea 
+          v-model="hero.subtitle" 
+          @input="hasUnsavedChanges = true"
+          rows="3"
+          class="w-full bg-slate-900/95 border border-amber-500/60 rounded-xl p-3 text-sm sm:text-base text-slate-200 focus:outline-none shadow-xl resize-none font-light leading-relaxed text-center"
+          placeholder="輸入副標題文字...">
+        </textarea>
+      </div>
+      <p v-else class="text-slate-300 max-w-3xl mx-auto text-sm sm:text-lg leading-relaxed mb-10 font-light whitespace-pre-line">
+        {{ hero.subtitle }}
+      </p>
+
+      <!-- Dashboard Stats (VISUAL LOGS removed as requested) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+        <!-- Stat 1 -->
+        <div class="holo-card rounded-xl p-4 text-left border-l-2 border-l-cyan-400" :class="isEditMode ? 'ring-1 ring-amber-500/40' : ''">
+          <div v-if="isEditMode" class="space-y-1.5 font-mono">
+            <input v-model="hero.stat1Label" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xs text-cyan-400 font-semibold w-full focus:outline-none focus:border-amber-400" placeholder="標籤名稱" />
+            <div class="flex items-center gap-1.5">
+              <input v-model="hero.stat1Value" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xl font-black text-white w-20 focus:outline-none focus:border-amber-400" placeholder="數值" />
+              <input v-model="hero.stat1Unit" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-slate-400 w-14 focus:outline-none focus:border-amber-400" placeholder="單位" />
+            </div>
+            <input v-model="hero.stat1Desc" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-[11px] text-slate-400 w-full focus:outline-none focus:border-amber-400" placeholder="備註說明" />
+          </div>
+          <template v-else>
+            <div class="text-xs text-cyan-400 uppercase tracking-wider font-semibold">{{ hero.stat1Label }}</div>
+            <div class="text-3xl font-black text-white mt-1">{{ hero.stat1Value }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat1Unit }}</span></div>
+            <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat1Desc }}</div>
+          </template>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="holo-card rounded-xl p-4 text-left border-l-2 border-l-sky-400" :class="isEditMode ? 'ring-1 ring-amber-500/40' : ''">
+          <div v-if="isEditMode" class="space-y-1.5 font-mono">
+            <input v-model="hero.stat2Label" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xs text-sky-400 font-semibold w-full focus:outline-none focus:border-amber-400" placeholder="標籤名稱" />
+            <div class="flex items-center gap-1.5">
+              <input v-model="hero.stat2Value" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xl font-black text-white w-24 focus:outline-none focus:border-amber-400" placeholder="數值" />
+              <input v-model="hero.stat2Unit" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-slate-400 w-14 focus:outline-none focus:border-amber-400" placeholder="單位" />
+            </div>
+            <input v-model="hero.stat2Desc" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-[11px] text-slate-400 w-full focus:outline-none focus:border-amber-400" placeholder="備註說明" />
+          </div>
+          <template v-else>
+            <div class="text-xs text-sky-400 uppercase tracking-wider font-semibold">{{ hero.stat2Label }}</div>
+            <div class="text-3xl font-black text-white mt-1">{{ hero.stat2Value }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat2Unit }}</span></div>
+            <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat2Desc }}</div>
+          </template>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="holo-card rounded-xl p-4 text-left border-l-2 border-l-amber-400" :class="isEditMode ? 'ring-1 ring-amber-500/40' : ''">
+          <div v-if="isEditMode" class="space-y-1.5 font-mono">
+            <input v-model="hero.stat3Label" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-xs text-amber-400 font-semibold w-full focus:outline-none focus:border-amber-400" placeholder="標籤名稱" />
+            <div class="flex items-center gap-1.5">
+              <div class="text-2xl font-black text-amber-400 w-20 px-2 py-0.5 font-mono">{{ events.length }}</div>
+              <input v-model="hero.stat3Unit" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-slate-400 w-14 focus:outline-none focus:border-amber-400" placeholder="單位" />
+            </div>
+            <input v-model="hero.stat3Desc" @input="hasUnsavedChanges = true" class="bg-slate-950/80 border border-slate-700 rounded px-2 py-0.5 text-[11px] text-slate-400 w-full focus:outline-none focus:border-amber-400" placeholder="備註說明" />
+          </div>
+          <template v-else>
+            <div class="text-xs text-amber-400 uppercase tracking-wider font-semibold">{{ hero.stat3Label }}</div>
+            <div class="text-3xl font-black text-amber-400 mt-1">{{ events.length }} <span class="text-xs text-slate-400 font-normal">{{ hero.stat3Unit }}</span></div>
+            <div class="text-[11px] text-slate-400 mt-1">{{ hero.stat3Desc }}</div>
+          </template>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= NAVIGATION & SEARCH BAR ================= -->
+  <section class="sticky top-[42px] z-30 bg-[#0c1832]/90 backdrop-blur-md border-y border-slate-700/60 py-3 px-4 shadow-2xl">
+    <div class="max-w-6xl mx-auto flex flex-col gap-2.5">
+      
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <!-- Year Filter Buttons -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full scrollbar-none">
+          <span class="text-xs text-cyan-400 mr-1 shrink-0 font-bold"><i class="fa-solid fa-calendar mr-1"></i>年份:</span>
+          <button 
+            @click="selectedYear = 'ALL'"
+            :class="selectedYear === 'ALL' ? 'bg-cyan-500 text-black font-extrabold shadow-[0_0_12px_rgba(6,182,212,0.8)]' : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'"
+            class="px-2.5 py-1 text-xs rounded-full transition-all shrink-0">
+            全部
+          </button>
+          <button 
+            v-for="year in availableYears" :key="year"
+            @click="selectedYear = year"
+            :class="selectedYear === year ? 'bg-cyan-500 text-black font-extrabold shadow-[0_0_12px_rgba(6,182,212,0.8)]' : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'"
+            class="px-2.5 py-1 text-xs rounded-full transition-all shrink-0">
+            {{ year }}
+          </button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="relative w-full sm:w-64">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-500"></i>
+          <input 
+            v-model="searchQuery"
+            type="text" 
+            placeholder="搜尋主題、講者、關鍵字..." 
+            class="w-full bg-slate-950/80 border border-slate-800 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+          />
+          <button v-if="searchQuery" @click="searchQuery = ''" class="absolute right-2.5 top-2 text-xs text-slate-500 hover:text-slate-300">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="flex items-center gap-1.5 overflow-x-auto text-xs pb-0.5">
+        <span class="text-slate-500 text-[11px] mr-1 shrink-0"><i class="fa-solid fa-tag mr-1"></i>分類:</span>
+        <button 
+          v-for="cat in categories" :key="cat"
+          @click="selectedCategory = cat"
+          :class="selectedCategory === cat ? 'bg-amber-500/20 text-amber-300 border border-amber-500/60 font-semibold' : 'text-slate-400 hover:text-slate-200 bg-slate-950/60 border border-slate-800'"
+          class="px-2.5 py-0.5 rounded transition-all shrink-0">
+          {{ cat }}
+        </button>
+
+        <!-- Add Event Button in Edit Mode -->
+        <button 
+          v-if="isEditMode"
+          @click="addNewEvent"
+          class="ml-auto px-2.5 py-0.5 rounded text-emerald-300 bg-emerald-950/80 border border-emerald-500/50 hover:bg-emerald-900 flex items-center gap-1 shrink-0">
+          <i class="fa-solid fa-plus text-[10px]"></i> 新增主題
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TIMELINE SEQUENCE ================= -->
+  <main class="max-w-5xl mx-auto px-4 py-16 relative">
+    
+    <!-- Central Laser Filament Spine -->
+    <div class="absolute left-6 md:left-1/2 top-10 bottom-20 -translate-x-1/2 w-[3px] bg-gradient-to-b from-cyan-500 via-sky-400 to-amber-500 opacity-60 laser-line-anim pointer-events-none"></div>
+
+    <!-- Empty Search Results -->
+    <div v-if="filteredEvents.length === 0" class="text-center py-20 holo-card rounded-2xl max-w-lg mx-auto">
+      <i class="fa-solid fa-folder-open text-4xl text-slate-600 mb-3"></i>
+      <p class="text-slate-400 text-sm">查無符合條件的活動記錄</p>
+      <button @click="resetFilters" class="mt-4 px-3 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 rounded text-xs">
+        重設搜尋條件
+      </button>
+    </div>
+
+    <!-- Event Cards -->
+    <div v-else class="space-y-20 relative">
+      
+      <div 
+        v-for="(item, index) in filteredEvents" 
+        :key="item.id" 
+        :id="'event-' + item.id"
+        class="relative flex flex-col md:flex-row items-center group">
+        
+        <!-- Big Year Watermark in Background -->
+        <div class="absolute left-1/2 -translate-x-1/2 -top-12 text-[18vw] md:text-[140px] font-black text-cyan-500/[0.04] select-none pointer-events-none tracking-tighter">
+          {{ item.year }}
+        </div>
+
+        <!-- Central Node Marker -->
+        <div class="absolute left-6 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
+          <div 
+            :class="item.category === '週年盛典' ? 'w-8 h-8 amber-glow border-amber-400 bg-amber-500 text-black' : 'w-6 h-6 laser-glow border-cyan-400 bg-slate-950 text-cyan-400 group-hover:scale-125 group-hover:border-amber-400'"
+            class="rounded-full border-2 flex items-center justify-center transition-all duration-300 shadow-xl cursor-pointer"
+            @click="scrollToNode(item.id)">
+            <span v-if="item.category === '週年盛典'" class="text-[10px] font-black">★</span>
+            <span v-else class="text-[9px] font-bold">{{ index + 1 }}</span>
+          </div>
+        </div>
+
+        <!-- Alternating Card Container -->
+        <div 
+          :class="[
+            index % 2 === 0 ? 'md:pr-14 md:text-right md:self-start md:mr-auto' : 'md:pl-14 md:text-left md:self-end md:ml-auto',
+            'w-full md:w-[48%] pl-14 md:pl-0'
+          ]">
+          
+          <div 
+            :class="[
+              item.category === '週年盛典' ? 'holo-card-anniversary' : 'holo-card',
+              isEditMode ? 'ring-1 ring-amber-500/50' : ''
+            ]"
+            class="rounded-2xl p-5 sm:p-6 text-left relative overflow-hidden group/card shadow-2xl">
+            
+            <!-- Edit Mode Badge -->
+            <div v-if="isEditMode" class="absolute top-2 right-2 text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2 py-0.5 rounded">
+              可直接點擊文字編輯
+            </div>
+
+            <!-- Header Info: Date & Category -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <!-- Date (Editable) -->
+              <div v-if="isEditMode" class="flex items-center gap-1.5">
+                <i class="fa-regular fa-calendar text-cyan-400 text-xs"></i>
+                <input 
+                  v-model="item.date" 
+                  @input="onFieldChange(item)"
+                  class="bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-xs text-cyan-300 font-mono focus:border-amber-400 focus:outline-none w-32"
+                />
+              </div>
+              <span v-else class="text-xs font-bold text-cyan-400 tracking-wider flex items-center gap-1.5 font-mono">
+                <i class="fa-regular fa-calendar text-cyan-500"></i> {{ item.date }}
+              </span>
+
+              <!-- Category (Editable) -->
+              <div v-if="isEditMode">
+                <input 
+                  v-model="item.category" 
+                  @input="onFieldChange(item)"
+                  class="bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-[11px] text-amber-300 focus:border-amber-400 focus:outline-none w-28 text-center"
+                />
+              </div>
+              <span v-else 
+                :class="item.category === '週年盛典' ? 'bg-amber-500 text-black font-black' : 'bg-slate-900 text-slate-300 border border-slate-700'"
+                class="text-[10px] px-2.5 py-0.5 rounded-full font-semibold tracking-wider">
+                {{ item.category }}
+              </span>
+            </div>
+
+            <!-- Title (Editable) -->
+            <div v-if="isEditMode" class="mb-2">
+              <input 
+                v-model="item.title" 
+                @input="onFieldChange(item)"
+                class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-base font-bold text-white focus:border-amber-400 focus:outline-none"
+              />
+            </div>
+            <h2 v-else class="text-xl sm:text-2xl font-black text-white mb-2 leading-snug tracking-tight group-hover/card:text-cyan-300 transition-colors">
+              {{ item.title }}
+            </h2>
+
+            <!-- Speakers (Editable) -->
+            <div v-if="isEditMode" class="mb-3 flex items-center gap-1.5">
+              <span class="text-[11px] text-slate-400">講者:</span>
+              <input 
+                v-model="item.speakersText"
+                @input="onSpeakerInput(item)"
+                @blur="commitSpeakers(item)"
+                placeholder="以逗號分隔，例如: Jerry, Vickie"
+                class="flex-1 bg-slate-950 border border-slate-700 rounded px-2 py-0.5 text-xs text-slate-200 focus:border-amber-400 focus:outline-none"
+              />
+            </div>
+            <div v-else class="flex flex-wrap items-center gap-1.5 mb-3">
+              <span v-for="spk in item.speakers" :key="spk" class="text-xs text-slate-300 bg-slate-950/80 px-2.5 py-0.5 rounded border border-slate-800">
+                <i class="fa-solid fa-user-circle text-cyan-400 mr-1"></i>{{ spk }}
+              </span>
+            </div>
+
+            <!-- Summary (Editable) -->
+            <div v-if="isEditMode" class="mb-4">
+              <textarea 
+                v-model="item.summary" 
+                @input="onFieldChange(item)"
+                rows="3"
+                class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-xs text-slate-200 leading-relaxed focus:border-amber-400 focus:outline-none"
+              ></textarea>
+            </div>
+            <p v-else class="text-sm text-slate-300 leading-relaxed font-light mb-4">
+              {{ item.summary }}
+            </p>
+
+            <!-- Google Drive Folder Link (查看更多) -->
+            <div v-if="isEditMode" class="mb-4 flex items-center gap-2 bg-slate-950/70 p-2 rounded-lg border border-slate-800">
+              <span class="text-[11px] text-cyan-400 shrink-0 flex items-center gap-1 font-medium">
+                <i class="fa-brands fa-google-drive text-emerald-400"></i> 雲端連結:
+              </span>
+              <input 
+                v-model="item.drive_url" 
+                @input="onFieldChange(item)"
+                placeholder="https://drive.google.com/drive/folders/..." 
+                class="flex-1 bg-slate-900 border border-slate-700 rounded px-2.5 py-1 text-xs text-slate-200 focus:border-amber-400 focus:outline-none font-mono"
+              />
+            </div>
+            <div v-else-if="item.drive_url" class="mb-4 flex items-center">
+              <a 
+                :href="item.drive_url" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-cyan-300 bg-cyan-950/50 hover:bg-cyan-900/80 border border-cyan-500/30 hover:border-cyan-400 transition-all duration-200 group/driveLink shadow-[0_0_12px_rgba(6,182,212,0.12)] hover:shadow-[0_0_18px_rgba(6,182,212,0.35)]">
+                <i class="fa-brands fa-google-drive text-emerald-400 text-sm group-hover/driveLink:scale-110 transition-transform"></i>
+                <span class="tracking-wide">查看更多</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-cyan-400/80 group-hover/driveLink:translate-x-0.5 group-hover/driveLink:-translate-y-0.5 transition-transform"></i>
+              </a>
+            </div>
+
+            <!-- ================= MEDIA PREVIEWS (PHOTOS & GIFS) ================= -->
+            <div v-if="getMediaList(item).length > 0" class="mt-4 pt-4 border-t border-slate-800/80">
+              
+              <!-- Header Bar -->
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-cyan-400 flex items-center gap-1">
+                    <i class="fa-solid fa-images mr-1"></i> 聚會紀實
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <!-- Slideshow Button -->
+                  <button 
+                    @click="startSlideshow(getMediaList(item), 0)"
+                    class="text-xs text-amber-300 bg-amber-500/15 hover:bg-amber-500/30 border border-amber-500/40 px-2.5 py-1 rounded transition-all flex items-center gap-1">
+                    <i class="fa-solid fa-play text-[10px]"></i> 放映
+                  </button>
+
+                  <!-- Toggle View Mode if > 3 -->
+                  <button 
+                    v-if="getMediaList(item).length > 3"
+                    @click="toggleExpand(item.id)" 
+                    class="text-xs text-slate-400 hover:text-white bg-slate-950 px-2 py-1 rounded border border-slate-800 transition-colors">
+                    <span v-if="expandedEvents[item.id]"><i class="fa-solid fa-compress mr-1"></i>收合</span>
+                    <span v-else><i class="fa-solid fa-table-cells mr-1"></i>全展開</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- EDIT MODE: Interactive Photo Reorder Studio -->
+              <div v-if="isEditMode" class="space-y-2">
+                <div class="text-[11px] text-amber-300 font-mono flex items-center justify-between pb-1">
+                  <span><i class="fa-solid fa-arrows-up-down-left-right mr-1"></i>可直接拖曳相片或點擊箭頭排序</span>
+                  <span class="text-[10px] text-slate-400">第一張將自動成為焦點首圖</span>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  <div 
+                    v-for="(m, mIdx) in item.media" :key="m.url"
+                    draggable="true"
+                    @dragstart="onDragStart(item, mIdx, $event)"
+                    @dragover.prevent="onDragOver(item, mIdx, $event)"
+                    @drop="onDrop(item, mIdx, $event)"
+                    :class="draggedInfo && draggedInfo.eventId === item.id && draggedInfo.index === mIdx ? 'opacity-30 border-dashed border-amber-400' : 'border-slate-800 hover:border-amber-400/80'"
+                    class="relative aspect-[4/3] rounded-lg overflow-hidden border bg-slate-950 p-1 group/editPhoto transition-all cursor-grab active:cursor-grabbing">
+                    
+                    <!-- Thumbnail -->
+                    <img :src="m.url" class="w-full h-full object-cover rounded pointer-events-none" />
+                    
+                    <!-- Top Index Badge -->
+                    <div class="absolute top-2 left-2 flex items-center gap-1 pointer-events-none">
+                      <span 
+                        :class="mIdx === 0 ? 'bg-amber-500 text-black font-extrabold shadow-[0_0_8px_rgba(245,158,11,0.8)]' : 'bg-black/80 text-white'"
+                        class="text-[10px] px-1.5 py-0.5 rounded font-mono">
+                        #{{ mIdx + 1 }}{{ mIdx === 0 ? ' (首圖)' : '' }}
+                      </span>
+                      <span v-if="m.type === 'gif'" class="bg-purple-600 text-white text-[9px] px-1 py-0.5 rounded font-mono font-bold">
+                        GIF
+                      </span>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="absolute inset-x-1 bottom-1 bg-gradient-to-t from-black/95 via-black/80 to-transparent p-1.5 flex items-center justify-between opacity-90 group-hover/editPhoto:opacity-100 transition-opacity">
+                      <button 
+                        @click.stop="moveMedia(item, mIdx, -1)" 
+                        :disabled="mIdx === 0"
+                        title="往前移"
+                        class="w-6 h-6 rounded bg-slate-800 hover:bg-amber-500 hover:text-black text-white text-xs flex items-center justify-center transition-colors disabled:opacity-20 disabled:hover:bg-slate-800 disabled:hover:text-white">
+                        <i class="fa-solid fa-chevron-left"></i>
+                      </button>
+                      
+                      <button 
+                        v-if="mIdx !== 0"
+                        @click.stop="setAsCover(item, mIdx)"
+                        title="設為首圖"
+                        class="px-1.5 py-0.5 rounded bg-amber-500/20 hover:bg-amber-500 hover:text-black text-amber-300 text-[10px] transition-colors font-mono">
+                        ★設首圖
+                      </button>
+
+                      <button 
+                        @click.stop="moveMedia(item, mIdx, 1)" 
+                        :disabled="mIdx === item.media.length - 1"
+                        title="往後移"
+                        class="w-6 h-6 rounded bg-slate-800 hover:bg-amber-500 hover:text-black text-white text-xs flex items-center justify-center transition-colors disabled:opacity-20 disabled:hover:bg-slate-800 disabled:hover:text-white">
+                        <i class="fa-solid fa-chevron-right"></i>
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- NORMAL VIEW (Cinematic layouts) -->
+              <template v-else>
+              <!-- VIEW A: Single GIF / Single Image -->
+              <div v-if="getMediaList(item).length === 1" class="rounded-xl overflow-hidden border border-cyan-500/30 bg-black/60 relative group/solo">
+                <div 
+                  @click="openLightbox(getMediaList(item)[0], getMediaList(item), 0)"
+                  class="cursor-pointer relative aspect-video max-h-80 w-full flex items-center justify-center bg-slate-950">
+                  <img 
+                    :src="getMediaList(item)[0].url" 
+                    :alt="getMediaList(item)[0].name" 
+                    class="w-full h-full object-contain group-hover/solo:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <!-- Live GIF indicator -->
+                  <div v-if="getMediaList(item)[0].type === 'gif'" class="absolute top-3 left-3 bg-purple-600/90 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-purple-400/50 flex items-center gap-1.5 shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    簡報動畫 GIF
+                  </div>
+                  <div class="absolute inset-0 bg-cyan-950/20 opacity-0 group-hover/solo:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="px-3 py-1 bg-black/80 rounded-full text-xs text-cyan-300 border border-cyan-500/40">
+                      <i class="fa-solid fa-expand mr-1"></i> 點擊放大檢視
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW B: Expanded Full Grid -->
+              <div v-else-if="expandedEvents[item.id]" class="grid grid-cols-2 sm:grid-cols-3 gap-2 transition-all">
+                <div 
+                  v-for="(m, mIdx) in getMediaList(item)" :key="mIdx"
+                  @click="openLightbox(m, getMediaList(item), mIdx)"
+                  class="relative aspect-square rounded-lg overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer group/matrix">
+                  <img :src="m.url" class="w-full h-full object-cover group-hover/matrix:scale-110 transition-transform duration-300" loading="lazy" />
+                  <div v-if="m.type === 'gif'" class="absolute top-1.5 left-1.5 bg-purple-600 text-white text-[9px] font-bold px-1 rounded">
+                    GIF
+                  </div>
+                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/matrix:opacity-100 transition-opacity flex items-center justify-center">
+                    <i class="fa-solid fa-magnifying-glass-plus text-cyan-400 text-lg"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW C: Bento Spotlight Hero + Horizontal Filmstrip -->
+              <div v-else class="space-y-2.5">
+                <!-- Bento Layout -->
+                <div v-if="getMediaList(item).length >= 3" class="grid grid-cols-3 gap-2">
+                  <div 
+                    @click="openLightbox(getMediaList(item)[0], getMediaList(item), 0)"
+                    class="col-span-2 aspect-[16/10] rounded-xl overflow-hidden border border-cyan-500/20 bg-slate-950 cursor-pointer relative group/bentoMain">
+                    <img :src="getMediaList(item)[0].url" class="w-full h-full object-cover group-hover/bentoMain:scale-105 transition-transform duration-300" loading="lazy" />
+                    <div v-if="getMediaList(item)[0].type === 'gif'" class="absolute top-2 left-2 bg-purple-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">
+                      GIF
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <div 
+                      v-for="(m, sIdx) in getMediaList(item).slice(1, 3)" :key="sIdx"
+                      @click="openLightbox(m, getMediaList(item), sIdx + 1)"
+                      class="flex-1 aspect-[4/3] rounded-xl overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer relative group/bentoSide">
+                      <img :src="m.url" class="w-full h-full object-cover group-hover/bentoSide:scale-105 transition-transform duration-300" loading="lazy" />
+                      <div v-if="m.type === 'gif'" class="absolute top-1 left-1 bg-purple-600 text-white text-[8px] font-bold px-1 rounded">
+                        GIF
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Two images side by side -->
+                <div v-else-if="getMediaList(item).length === 2" class="grid grid-cols-2 gap-2">
+                  <div 
+                    v-for="(m, mIdx) in getMediaList(item)" :key="mIdx"
+                    @click="openLightbox(m, getMediaList(item), mIdx)"
+                    class="aspect-[16/10] rounded-xl overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer group/two">
+                    <img :src="m.url" class="w-full h-full object-cover group-hover/two:scale-105 transition-transform duration-300" loading="lazy" />
+                  </div>
+                </div>
+
+                <!-- Horizontal Filmstrip -->
+                <div class="relative group/strip">
+                  <div 
+                    :id="'strip-' + item.id"
+                    class="flex items-center gap-2 overflow-x-auto filmstrip-scroll py-1 px-0.5 scrollbar-none">
+                    <div 
+                      v-for="(m, mIdx) in getMediaList(item)" :key="mIdx"
+                      @click="openLightbox(m, getMediaList(item), mIdx)"
+                      class="w-16 sm:w-20 aspect-square rounded-lg overflow-hidden border border-slate-800 hover:border-cyan-400 bg-slate-950 shrink-0 cursor-pointer relative group/thumb transition-all">
+                      <img :src="m.url" class="w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-200" loading="lazy" />
+                      <div v-if="m.type === 'gif'" class="absolute top-0.5 left-0.5 bg-purple-600 text-white text-[7px] font-bold px-1 rounded">
+                        GIF
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              </template>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= LIGHTBOX MODAL ================= -->
+  <div 
+    v-if="lightbox.isOpen" 
+    class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col justify-between p-3 sm:p-6 select-none"
+    @keydown.esc="closeLightbox"
+    @keydown.left="prevLightbox"
+    @keydown.right="nextLightbox"
+    @keydown.space.prevent="toggleSlideshowPlay"
+    tabindex="0"
+    ref="lightboxEl">
+    
+    <!-- Top Bar -->
+    <div class="flex items-center justify-between text-slate-400 max-w-6xl mx-auto w-full px-2">
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-cyan-400 font-bold border border-cyan-500/40 bg-cyan-950/40 px-2 py-0.5 rounded font-mono">
+          {{ lightbox.currentIndex + 1 }} / {{ lightbox.mediaList.length }}
+        </span>
+        <span v-if="currentMedia && currentMedia.type === 'gif'" class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">
+          GIF 動態
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button 
+          @click="toggleSlideshowPlay" 
+          :class="lightbox.isPlaying ? 'bg-amber-500 text-black font-black shadow-[0_0_15px_rgba(245,158,11,0.6)]' : 'bg-slate-900 text-cyan-300 border border-cyan-500/40'"
+          class="px-3 py-1 rounded-full text-xs flex items-center gap-1.5 transition-all">
+          <i :class="lightbox.isPlaying ? 'fa-pause' : 'fa-play'" class="fa-solid"></i>
+          <span>{{ lightbox.isPlaying ? '暫停放映' : '自動放映' }}</span>
+        </button>
+
+        <button @click="closeLightbox" class="text-slate-400 hover:text-white text-2xl p-1 transition-colors">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Stage -->
+    <div class="relative flex items-center justify-center max-w-6xl mx-auto w-full flex-1 my-3 overflow-hidden">
+      <!-- Prev -->
+      <button 
+        v-if="lightbox.mediaList.length > 1" 
+        @click.stop="prevLightbox"
+        class="absolute left-2 sm:left-4 z-10 w-12 h-12 rounded-full bg-slate-950/80 hover:bg-cyan-500 hover:text-black border border-cyan-500/40 flex items-center justify-center text-white transition-all shadow-2xl">
+        <i class="fa-solid fa-chevron-left text-lg"></i>
+      </button>
+
+      <!-- Current Media -->
+      <img 
+        v-if="currentMedia"
+        :src="currentMedia.url" 
+        class="max-w-full max-h-[76vh] object-contain rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-cyan-500/20"
+      />
+
+      <!-- Next -->
+      <button 
+        v-if="lightbox.mediaList.length > 1" 
+        @click.stop="nextLightbox"
+        class="absolute right-2 sm:right-4 z-10 w-12 h-12 rounded-full bg-slate-950/80 hover:bg-cyan-500 hover:text-black border border-cyan-500/40 flex items-center justify-center text-white transition-all shadow-2xl">
+        <i class="fa-solid fa-chevron-right text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Bottom Thumbnails Strip -->
+    <div class="max-w-4xl mx-auto w-full overflow-x-auto flex gap-2 justify-center py-2 scrollbar-none">
+      <div 
+        v-for="(m, idx) in lightbox.mediaList" :key="idx"
+        @click="lightbox.currentIndex = idx"
+        :class="lightbox.currentIndex === idx ? 'border-cyan-400 ring-2 ring-cyan-400/60 scale-110 opacity-100' : 'border-slate-800 opacity-40 hover:opacity-100'"
+        class="w-12 h-12 rounded-lg overflow-hidden shrink-0 cursor-pointer border transition-all relative">
+        <img :src="m.url" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Footer -->
+  <footer class="border-t border-slate-800/80 py-10 text-center text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>
+        © 2015 - 2026 <strong>3M (Mission Marvel) 讀書會</strong> 11 週年誌慶
+      </div>
+      <button @click="scrollToTop" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+        <i class="fa-solid fa-arrow-up mr-1"></i> 回到頁首
+      </button>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ================= SCRIPT LOGIC ================= -->
+<script>
+  const { createApp, ref, computed, onMounted, nextTick } = Vue;
+
+  createApp({
+    setup() {
+      const rawData = window.TIMELINE_DATA || [];
+      const isObjectData = rawData && !Array.isArray(rawData) && rawData.events;
+      const initialEvents = isObjectData ? rawData.events : (Array.isArray(rawData) ? rawData : []);
+      const events = ref(initialEvents);
+
+      const defaultHero = {
+        badge: "2015.10.18 — 2026.10.18 • 11 週年紀念",
+        title: "3M 讀書會 11 週年 歷程回顧",
+        subtitle: "從社群廣告行銷、新零售、區塊鏈與量子力學，到全球疫情風暴與生成式 AI——\n順著時間的流動，重溫十一年來每一次思想激盪與相聚的歡笑時光。",
+        stat1Label: "成立歷程",
+        stat1Value: "11",
+        stat1Unit: "週年",
+        stat1Desc: "2015 - 2026 淬鍊同行",
+        stat2Label: "陪伴天數",
+        stat2Value: "4,018+",
+        stat2Unit: "天",
+        stat2Desc: "跨越長流的真摯情誼",
+        stat3Label: "研討專題",
+        stat3Unit: "場",
+        stat3Desc: "多元領域智慧思辨"
+      };
+
+      const hero = ref(isObjectData && rawData.hero ? { ...defaultHero, ...rawData.hero } : { ...defaultHero });
+      const selectedYear = ref('ALL');
+      const selectedCategory = ref('全部');
+      const searchQuery = ref('');
+      const expandedEvents = ref({});
+      const isAutopilot = ref(false);
+      let autopilotTimer = null;
+
+      // Edit Mode & Save state
+      const isEditMode = ref(false);
+      const isSaving = ref(false);
+      const hasUnsavedChanges = ref(false);
+      const toast = ref({ show: false, message: '', type: 'success' });
+
+      const lightboxEl = ref(null);
+      const lightbox = ref({
+        isOpen: false,
+        mediaList: [],
+        currentIndex: 0,
+        isPlaying: false,
+        timer: null
+      });
+
+      // Apple Keynote Opening state (Sequential Mindful Choreography)
+      const opening = ref({
+        active: true,
+        docking: false,
+        stage: 'intro', // 'intro' -> 'card1' -> 'card2' -> 'card3' -> 'finale' -> 'dock'
+        countYear: 0,
+        countDays: 0,
+        countEvents: 0
+      });
+
+      let openingAnimId = null;
+      let dockTimeout = null;
+
+      const runOpeningAnimation = () => {
+        if (openingAnimId) cancelAnimationFrame(openingAnimId);
+        if (dockTimeout) clearTimeout(dockTimeout);
+
+        opening.value.active = true;
+        opening.value.docking = false;
+        opening.value.stage = 'intro';
+        opening.value.countYear = 0;
+        opening.value.countDays = 0;
+        opening.value.countEvents = 0;
+
+        const startTime = performance.now();
+        const targetDays = 4018;
+        const targetEvents = events.value.length || 18;
+        let finaleFired = false;
+
+        const step = (now) => {
+          const elapsed = now - startTime;
+
+          // Stage 0: 標題與簡介 (0 ~ 1000ms)
+          if (elapsed < 1000) {
+            opening.value.stage = 'intro';
+            opening.value.countYear = 0;
+            opening.value.countDays = 0;
+            opening.value.countEvents = 0;
+          } 
+          // Stage 1: 成立歷程 11 週年 (1000 ~ 3400ms，2.4 秒)
+          else if (elapsed < 3400) {
+            opening.value.stage = 'card1';
+            const p = Math.min((elapsed - 1000) / 1600, 1);
+            const ease = 1 - Math.pow(1 - p, 3); // easeOutCubic
+            opening.value.countYear = Math.floor(ease * 11);
+            // 跑完後在 2600~3400ms 停頓 800ms 給觀眾細細品味「11 週年」
+          } 
+          // Stage 2: 陪伴天數 4,018+ 天 (3400 ~ 6600ms，3.2 秒)
+          else if (elapsed < 6600) {
+            opening.value.stage = 'card2';
+            opening.value.countYear = 11;
+            const p = Math.min((elapsed - 3400) / 2200, 1);
+            const ease = 1 - Math.pow(1 - p, 4); // easeOutQuart 儀表急速平滑收尾
+            opening.value.countDays = Math.floor(ease * targetDays);
+            // 跑完後在 5600~6600ms 停頓 1000ms 給觀眾感受四千多天的厚重情誼
+          } 
+          // Stage 3: 研討專題 18 場 (6600 ~ 9200ms，2.6 秒)
+          else if (elapsed < 9200) {
+            opening.value.stage = 'card3';
+            opening.value.countYear = 11;
+            opening.value.countDays = targetDays;
+            const p = Math.min((elapsed - 6600) / 1600, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            opening.value.countEvents = Math.floor(ease * targetEvents);
+            // 跑完後在 8200~9200ms 停頓 1000ms 給觀眾感受每一次主題的智慧積累
+          } 
+          // Stage 4: 全體共鳴慶賀 (9200 ~ 11200ms，2.0 秒)
+          else if (elapsed < 11200) {
+            opening.value.stage = 'finale';
+            opening.value.countYear = 11;
+            opening.value.countDays = targetDays;
+            opening.value.countEvents = targetEvents;
+
+            if (!finaleFired && typeof confetti === 'function') {
+              finaleFired = true;
+              confetti({
+                particleCount: 50,
+                spread: 70,
+                origin: { y: 0.55 },
+                colors: ['#06b6d4', '#38bdf8', '#f59e0b', '#a855f7']
+              });
+            }
+          } 
+          // Stage 5: 平滑無縫歸位至頂部
+          else {
+            opening.value.stage = 'dock';
+            opening.value.countYear = 11;
+            opening.value.countDays = targetDays;
+            opening.value.countEvents = targetEvents;
+            dockOpening();
+            return;
+          }
+
+          if (opening.value.active && !opening.value.docking) {
+            openingAnimId = requestAnimationFrame(step);
+          }
+        };
+
+        openingAnimId = requestAnimationFrame(step);
+      };
+
+      const dockOpening = () => {
+        opening.value.docking = true;
+        if (dockTimeout) clearTimeout(dockTimeout);
+        dockTimeout = setTimeout(() => {
+          opening.value.active = false;
+        }, 1000);
+      };
+
+      const skipOpening = () => {
+        if (openingAnimId) cancelAnimationFrame(openingAnimId);
+        if (dockTimeout) clearTimeout(dockTimeout);
+        opening.value.stage = 'dock';
+        opening.value.countYear = 11;
+        opening.value.countDays = 4018;
+        opening.value.countEvents = events.value.length || 18;
+        dockOpening();
+      };
+
+      const replayOpening = () => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        runOpeningAnimation();
+      };
+
+      const initEventItem = (item) => {
+        if (item.speakersText === undefined) {
+          item.speakersText = Array.isArray(item.speakers) ? item.speakers.join(', ') : (item.speakers || '');
+        }
+        if (!item.media || item.media.length === 0) {
+          if (item.photos && item.photos.length > 0) {
+            item.media = item.photos.map(p => ({
+              url: p,
+              type: p.toLowerCase().endsWith('.gif') ? 'gif' : 'image',
+              name: p.split('/').pop()
+            }));
+          } else {
+            item.media = [];
+          }
+        }
+      };
+
+      // 相片排序：拖曳與移動狀態
+      const draggedInfo = ref(null);
+
+      const onDragStart = (item, index, event) => {
+        draggedInfo.value = { eventId: item.id, index };
+        if (event.dataTransfer) {
+          event.dataTransfer.effectAllowed = 'move';
+          try { event.dataTransfer.setData('text/plain', index.toString()); } catch (e) {}
+        }
+      };
+
+      const onDragOver = (item, index, event) => {
+        if (draggedInfo.value && draggedInfo.value.eventId === item.id) {
+          event.preventDefault();
+          if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
+        }
+      };
+
+      const onDrop = (item, targetIndex, event) => {
+        event.preventDefault();
+        if (!draggedInfo.value || draggedInfo.value.eventId !== item.id) return;
+        const sourceIndex = draggedInfo.value.index;
+        if (sourceIndex === targetIndex) return;
+
+        const moved = item.media.splice(sourceIndex, 1)[0];
+        item.media.splice(targetIndex, 0, moved);
+        item.photos = item.media.map(m => m.url);
+        draggedInfo.value = null;
+        hasUnsavedChanges.value = true;
+        showToast(`已調整相片順序（第 ${sourceIndex + 1} 張 移至 第 ${targetIndex + 1} 張）`, 'success');
+      };
+
+      const moveMedia = (item, index, direction) => {
+        const targetIndex = index + direction;
+        if (targetIndex < 0 || targetIndex >= item.media.length) return;
+        const moved = item.media.splice(index, 1)[0];
+        item.media.splice(targetIndex, 0, moved);
+        item.photos = item.media.map(m => m.url);
+        hasUnsavedChanges.value = true;
+      };
+
+      const setAsCover = (item, index) => {
+        if (index === 0) return;
+        const moved = item.media.splice(index, 1)[0];
+        item.media.unshift(moved);
+        item.photos = item.media.map(m => m.url);
+        hasUnsavedChanges.value = true;
+        showToast('已設為焦點首圖！', 'success');
+      };
+
+      onMounted(async () => {
+        // 先初始化預載的 window.TIMELINE_DATA
+        events.value.forEach(initEventItem);
+
+        // 即時嘗試重新抓取最新 json（帶時間戳）
+        try {
+          const res = await fetch('timeline_data.json?t=' + Date.now());
+          if (res.ok) {
+            const data = await res.json();
+            if (data && !Array.isArray(data) && data.events) {
+              if (data.hero) hero.value = { ...defaultHero, ...data.hero };
+              data.events.forEach(initEventItem);
+              events.value = data.events;
+            } else if (Array.isArray(data)) {
+              data.forEach(initEventItem);
+              events.value = data;
+            }
+          }
+        } catch (e) {
+          console.log("Loaded window.TIMELINE_DATA fallback");
+        }
+
+        initCosmicStarfield();
+
+        // 啟動 Apple Keynote 磅礡開場動畫
+        runOpeningAnimation();
+
+        window.addEventListener('keydown', (e) => {
+          // ESC 快速跳過開場
+          if (opening.value.active && (e.key === 'Escape' || e.key === ' ' || e.code === 'Space')) {
+            e.preventDefault();
+            skipOpening();
+            return;
+          }
+
+          if (!lightbox.value.isOpen) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') prevLightbox();
+          if (e.key === 'ArrowRight') nextLightbox();
+          if (e.key === ' ' || e.code === 'Space') {
+            e.preventDefault();
+            toggleSlideshowPlay();
+          }
+        });
+      });
+
+      const showToast = (message, type = 'success') => {
+        toast.value = { show: true, message, type };
+        setTimeout(() => {
+          toast.value.show = false;
+        }, 3500);
+      };
+
+      const onFieldChange = (item) => {
+        // 自動依照日期更新年份
+        if (item.date && item.date.length >= 4) {
+          item.year = item.date.substring(0, 4);
+        }
+        hasUnsavedChanges.value = true;
+      };
+
+      const onSpeakerInput = (item) => {
+        hasUnsavedChanges.value = true;
+        commitSpeakers(item);
+      };
+
+      const commitSpeakers = (item) => {
+        if (typeof item.speakersText === 'string') {
+          // 支援半形逗號、全形逗號、頓號
+          item.speakers = item.speakersText
+            .split(/[,，、]/)
+            .map(s => s.trim())
+            .filter(Boolean);
+        }
+      };
+
+      const addNewEvent = () => {
+        const todayStr = new Date().toISOString().split('T')[0];
+        const newEvt = {
+          id: todayStr + '-' + Date.now().toString().slice(-4),
+          date: todayStr,
+          year: todayStr.substring(0, 4),
+          title: '新增主題名稱',
+          category: '科技趨勢',
+          speakers: ['成員名稱'],
+          speakersText: '成員名稱',
+          summary: '請在此輸入主題的重點摘要與討論心得...',
+          drive_url: '',
+          media: [],
+          photos: []
+        };
+        events.value.unshift(newEvt);
+        hasUnsavedChanges.value = true;
+        showToast('已新增節點，編輯後請點擊「儲存並覆蓋本機檔案」！', 'success');
+      };
+
+      // 一鍵儲存並覆蓋本機檔案
+      const saveToServer = async () => {
+        isSaving.value = true;
+        try {
+          events.value.forEach(item => {
+            commitSpeakers(item);
+            if (item.date && item.date.length >= 4) {
+              item.year = item.date.substring(0, 4);
+            }
+          });
+
+          const eventsPayload = events.value.map(e => {
+            const copy = { ...e };
+            delete copy.speakersText;
+            if (copy.media) {
+              copy.photos = copy.media.map(m => m.url);
+            }
+            return copy;
+          });
+
+          const payload = {
+            hero: hero.value,
+            events: eventsPayload
+          };
+
+          const res = await fetch('/api/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json; charset=utf-8' },
+            body: JSON.stringify(payload, null, 2)
+          });
+          
+          if (res.ok) {
+            hasUnsavedChanges.value = false;
+            showToast('✅ 成功儲存！已覆蓋本機 timeline_data.json 與 timeline_data.js', 'success');
+            if (typeof confetti === 'function') {
+              confetti({ particleCount: 80, spread: 60, origin: { y: 0.2 } });
+            }
+          } else {
+            const err = await res.json();
+            throw new Error(err.error || 'Server error');
+          }
+        } catch (e) {
+          console.error("Save error:", e);
+          showToast('❌ 儲存失敗: ' + e.message, 'error');
+        } finally {
+          isSaving.value = false;
+        }
+      };
+
+      const getMediaList = (item) => {
+        if (item.media && item.media.length > 0) return item.media;
+        if (item.photos && item.photos.length > 0) {
+          return item.photos.map(p => ({
+            url: p,
+            type: p.toLowerCase().endsWith('.gif') ? 'gif' : 'image',
+            name: p.split('/').pop()
+          }));
+        }
+        return [];
+      };
+
+      const availableYears = computed(() => {
+        const years = new Set(events.value.map(e => e.year).filter(Boolean));
+        return Array.from(years).sort();
+      });
+
+      const categories = computed(() => {
+        const cats = new Set(events.value.map(e => e.category).filter(Boolean));
+        return ['全部', ...Array.from(cats)];
+      });
+
+      const filteredEvents = computed(() => {
+        const q = searchQuery.value.trim().toLowerCase();
+        return events.value.filter(e => {
+          const matchYear = selectedYear.value === 'ALL' || e.year === selectedYear.value;
+          const matchCat = selectedCategory.value === '全部' || e.category === selectedCategory.value;
+          
+          let matchQuery = true;
+          if (q) {
+            const inTitle = e.title && e.title.toLowerCase().includes(q);
+            const inSummary = e.summary && e.summary.toLowerCase().includes(q);
+            const inSpeakers = e.speakers && e.speakers.some(s => s.toLowerCase().includes(q));
+            const inDate = e.date && e.date.includes(q);
+            matchQuery = inTitle || inSummary || inSpeakers || inDate;
+          }
+
+          return matchYear && matchCat && matchQuery;
+        });
+      });
+
+      const countType = (media, type) => {
+        if (!media) return 0;
+        return media.filter(m => m.type === type).length;
+      };
+
+      const toggleExpand = (eventId) => {
+        expandedEvents.value[eventId] = !expandedEvents.value[eventId];
+      };
+
+      const currentMedia = computed(() => {
+        if (!lightbox.value.mediaList || lightbox.value.mediaList.length === 0) return null;
+        return lightbox.value.mediaList[lightbox.value.currentIndex];
+      });
+
+      const openLightbox = (currentMediaItem, mediaList, startIndex = 0) => {
+        lightbox.value.mediaList = mediaList || [currentMediaItem];
+        lightbox.value.currentIndex = startIndex;
+        lightbox.value.isOpen = true;
+        lightbox.value.isPlaying = false;
+        clearInterval(lightbox.value.timer);
+
+        nextTick(() => {
+          if (lightboxEl.value) lightboxEl.value.focus();
+        });
+      };
+
+      const closeLightbox = () => {
+        lightbox.value.isOpen = false;
+        lightbox.value.isPlaying = false;
+        clearInterval(lightbox.value.timer);
+      };
+
+      const prevLightbox = () => {
+        const len = lightbox.value.mediaList.length;
+        lightbox.value.currentIndex = (lightbox.value.currentIndex - 1 + len) % len;
+      };
+
+      const nextLightbox = () => {
+        const len = lightbox.value.mediaList.length;
+        lightbox.value.currentIndex = (lightbox.value.currentIndex + 1) % len;
+      };
+
+      const toggleSlideshowPlay = () => {
+        lightbox.value.isPlaying = !lightbox.value.isPlaying;
+        if (lightbox.value.isPlaying) {
+          lightbox.value.timer = setInterval(() => {
+            nextLightbox();
+          }, 1000);
+        } else {
+          clearInterval(lightbox.value.timer);
+        }
+      };
+
+      const startSlideshow = (mediaList, startIndex = 0) => {
+        openLightbox(mediaList[startIndex], mediaList, startIndex);
+        lightbox.value.isPlaying = true;
+        lightbox.value.timer = setInterval(() => {
+          nextLightbox();
+        }, 1000);
+      };
+
+      const toggleAutopilot = () => {
+        isAutopilot.value = !isAutopilot.value;
+        if (isAutopilot.value) {
+          autopilotTimer = setInterval(() => {
+            window.scrollBy({ top: 1.5, behavior: 'smooth' });
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5) {
+              isAutopilot.value = false;
+              clearInterval(autopilotTimer);
+            }
+          }, 25);
+        } else {
+          clearInterval(autopilotTimer);
+        }
+      };
+
+      const resetFilters = () => {
+        selectedYear.value = 'ALL';
+        selectedCategory.value = '全部';
+        searchQuery.value = '';
+      };
+
+      const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      const scrollToNode = (id) => {
+        const el = document.getElementById('event-' + id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+
+      const initCosmicStarfield = () => {
+        const canvas = document.getElementById('cosmicCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const stars = Array.from({ length: 110 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.5 + 0.3,
+          speed: Math.random() * 0.3 + 0.05,
+          alpha: Math.random() * 0.8 + 0.2,
+          isCyan: Math.random() > 0.6
+        }));
+
+        const animate = () => {
+          ctx.clearRect(0, 0, width, height);
+          for (let star of stars) {
+            star.y -= star.speed;
+            if (star.y < 0) {
+              star.y = height;
+              star.x = Math.random() * width;
+            }
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.fillStyle = star.isCyan 
+              ? `rgba(6, 182, 212, ${star.alpha})` 
+              : `rgba(245, 158, 11, ${star.alpha * 0.8})`;
+            ctx.fill();
+          }
+          requestAnimationFrame(animate);
+        };
+        animate();
+      };
+
+      return {
+        events,
+        selectedYear,
+        selectedCategory,
+        searchQuery,
+        availableYears,
+        categories,
+        filteredEvents,
+        expandedEvents,
+        isAutopilot,
+        isEditMode,
+        isSaving,
+        hasUnsavedChanges,
+        toast,
+        lightbox,
+        lightboxEl,
+        currentMedia,
+        getMediaList,
+        countType,
+        toggleExpand,
+        openLightbox,
+        closeLightbox,
+        prevLightbox,
+        nextLightbox,
+        toggleSlideshowPlay,
+        startSlideshow,
+        toggleAutopilot,
+        resetFilters,
+        scrollToTop,
+        scrollToNode,
+        onFieldChange,
+        onSpeakerInput,
+        commitSpeakers,
+        addNewEvent,
+        saveToServer,
+        draggedInfo,
+        onDragStart,
+        onDragOver,
+        onDrop,
+        moveMedia,
+        setAsCover,
+        opening,
+        runOpeningAnimation,
+        dockOpening,
+        skipOpening,
+        replayOpening,
+        hero
+      };
+    }
+  }).mount('#app');
+</script>
+</body>
+</html>
