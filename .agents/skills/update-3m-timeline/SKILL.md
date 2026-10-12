@@ -69,11 +69,13 @@ python server.py
 
 ---
 
-### 步驟 4：發布至 GitHub Pages
+### 步驟 4：本機確認與發布至 GitHub Pages (需使用者確認)
 
-確認無誤後，提交變更並推送至 GitHub：
+> ⚠️ **嚴格規範**：改動完成後**絕不自動執行 git push**！必須先在本機 `http://localhost:8080` 預覽，向使用者確認效果無誤。
+
+僅在**使用者明確指示發布**後，才執行以下指令提交並推送：
 ```powershell
-git add timeline_data.json timeline_data.js photos_web/ scripts/
+git add timeline_data.json timeline_data.js photos_web/ scripts/ index.html
 git commit -m "feat(timeline): 更新讀書會活動內容與照片"
 git push origin main
 ```
