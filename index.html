@@ -546,8 +546,29 @@
               </a>
             </div>
 
+            <!-- ================= CARD TABS (寫真 vs 研討紀要) ================= -->
+            <div v-if="item.knowledge && getMediaList(item).length > 0" class="flex items-center gap-1.5 mt-2 mb-4 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 w-fit">
+              <button 
+                @click="setCardTab(item.id, 'media')"
+                :class="getActiveTab(item) === 'media' ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_12px_rgba(6,182,212,0.25)] font-bold' : 'text-slate-400 hover:text-white border-transparent'"
+                class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border transition-all">
+                <i class="fa-solid fa-camera text-cyan-400"></i>
+                <span>活動寫真</span>
+                <span class="text-[10px] px-1.5 py-0.2 bg-slate-900 text-slate-300 rounded-full font-mono">{{ getMediaList(item).length }}</span>
+              </button>
+
+              <button 
+                @click="setCardTab(item.id, 'knowledge')"
+                :class="getActiveTab(item) === 'knowledge' ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-[0_0_12px_rgba(245,158,11,0.25)] font-bold' : 'text-slate-400 hover:text-white border-transparent'"
+                class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border transition-all">
+                <i class="fa-solid fa-brain text-amber-400"></i>
+                <span>研討紀要 & 簡報</span>
+                <span class="text-[10px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 rounded-full font-mono">{{ item.knowledge.topics ? item.knowledge.topics.length : 1 }}</span>
+              </button>
+            </div>
+
             <!-- ================= MEDIA PREVIEWS (PHOTOS & GIFS) ================= -->
-            <div v-if="getMediaList(item).length > 0" class="mt-4 pt-4 border-t border-slate-800/80">
+            <div v-if="getMediaList(item).length > 0" v-show="getActiveTab(item) === 'media'" class="mt-4 pt-4 border-t border-slate-800/80">
               
               <!-- Header Bar -->
               <div class="flex items-center justify-between mb-3">
@@ -670,6 +691,105 @@
                 </div>
 
               </div>
+            </div>
+
+            <!-- ================= TAB 2: KNOWLEDGE & MEETING MINUTES ================= -->
+            <div v-if="item.knowledge" v-show="getActiveTab(item) === 'knowledge' || getMediaList(item).length === 0" class="mt-4 pt-4 border-t border-slate-800/80 space-y-4">
+              
+              <!-- 1. Executive Summary & Meta -->
+              <div class="p-3.5 rounded-xl bg-gradient-to-br from-amber-500/10 via-slate-950 to-cyan-500/10 border border-amber-500/30 shadow-lg">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-feather text-amber-400"></i> 研討核心總綱
+                  </span>
+                  <span v-if="item.knowledge.minutes_meta" class="text-[10px] text-slate-300 bg-slate-900/90 px-2 py-0.5 rounded border border-slate-800 flex items-center gap-1">
+                    <i class="fa-solid fa-pen-nib text-cyan-400"></i> {{ item.knowledge.minutes_meta.recorder }}
+                  </span>
+                </div>
+                <p class="text-xs text-slate-200 leading-relaxed font-light">
+                  {{ item.knowledge.exec_summary }}
+                </p>
+              </div>
+
+              <!-- 2. Speaker Keynote Briefings -->
+              <div v-if="item.knowledge.topics && item.knowledge.topics.length > 0" class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-cyan-400 flex items-center gap-1.5">
+                    <i class="fa-solid fa-chalkboard-user"></i> 專題精華與硬核結論
+                  </span>
+                  <span class="text-[10px] text-slate-500 font-mono">共 {{ item.knowledge.topics.length }} 個專題</span>
+                </div>
+
+                <div class="space-y-2">
+                  <div 
+                    v-for="(tp, tpIdx) in item.knowledge.topics" :key="tpIdx"
+                    class="bg-slate-950/70 rounded-xl p-3.5 border border-slate-800/90 hover:border-cyan-500/40 transition-colors">
+                    <div class="flex flex-wrap items-center justify-between gap-1.5 mb-1.5">
+                      <span class="text-xs font-bold text-white group-hover:text-cyan-300">
+                        {{ tp.title }}
+                      </span>
+                      <span class="text-[11px] font-semibold text-cyan-300 bg-cyan-950/70 px-2 py-0.5 rounded border border-cyan-800/60 font-mono flex items-center gap-1">
+                        <i class="fa-solid fa-user-circle text-[10px]"></i> {{ tp.speaker }}
+                      </span>
+                    </div>
+                    <ul class="space-y-1 pl-1 text-xs text-slate-300 font-light leading-relaxed">
+                      <li v-for="(b, bIdx) in tp.bullets" :key="bIdx" class="flex items-start gap-1.5">
+                        <span class="text-cyan-400 mt-0.5 text-[8px] shrink-0">▪</span>
+                        <span>{{ b }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Member Debates & Contrarian Sparks -->
+              <div v-if="item.knowledge.debates && item.knowledge.debates.length > 0" class="p-3.5 rounded-xl bg-purple-950/20 border border-purple-500/30">
+                <div class="text-xs font-bold text-purple-300 mb-2.5 flex items-center gap-1.5">
+                  <i class="fa-solid fa-comments text-purple-400"></i> 讀書會成員思辨與非共識火花
+                </div>
+                <div class="space-y-2 text-xs">
+                  <div v-for="(db, dbIdx) in item.knowledge.debates" :key="dbIdx" class="bg-black/40 p-2.5 rounded-lg border border-purple-500/20">
+                    <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
+                      <span class="text-amber-300 font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-bolt text-[10px] text-amber-400"></i> {{ db.topic }}
+                      </span>
+                      <span v-if="db.proposer" class="text-[10px] text-slate-400 bg-slate-900 px-1.5 py-0.2 rounded font-mono">
+                        {{ db.proposer }}
+                      </span>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed pl-1 font-light">{{ db.insight }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Foresight Predictions -->
+              <div v-if="item.knowledge.predictions && item.knowledge.predictions.length > 0" class="p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
+                <div class="text-xs font-bold text-emerald-300 mb-2 flex items-center gap-1.5">
+                  <i class="fa-solid fa-compass text-emerald-400"></i> 前瞻預測與局勢推演
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300 pl-1 font-light">
+                  <li v-for="(pred, pIdx) in item.knowledge.predictions" :key="pIdx" class="flex items-start gap-1.5 leading-relaxed">
+                    <span class="text-emerald-400 mt-0.5 text-[8px] shrink-0">▸</span>
+                    <span>{{ pred }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- 5. Materials List -->
+              <div v-if="item.knowledge.materials && item.knowledge.materials.length > 0" class="pt-2 border-t border-slate-800/60">
+                <div class="text-[11px] font-bold text-slate-400 mb-2 flex items-center gap-1.5">
+                  <i class="fa-solid fa-paperclip text-sky-400"></i> 研討簡報與會議記錄清單 ({{ item.knowledge.materials.length }})
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  <div 
+                    v-for="(mat, mIdx) in item.knowledge.materials" :key="mIdx"
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-300 hover:text-cyan-300 hover:border-slate-700 transition-colors">
+                    <i :class="mat.type === 'pdf' ? 'fa-solid fa-file-pdf text-red-400' : mat.type === 'docx' ? 'fa-solid fa-file-word text-blue-400' : 'fa-solid fa-file-powerpoint text-amber-400'"></i>
+                    <span class="truncate max-w-[240px]">{{ mat.name }}</span>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
           </div>
@@ -1159,6 +1279,20 @@
         return ['全部', ...Array.from(cats)];
       });
 
+      const activeCardTab = ref({});
+      const getActiveTab = (item) => {
+        if (activeCardTab.value[item.id]) {
+          return activeCardTab.value[item.id];
+        }
+        if (getMediaList(item).length === 0 && item.knowledge) {
+          return 'knowledge';
+        }
+        return 'media';
+      };
+      const setCardTab = (itemId, tab) => {
+        activeCardTab.value[itemId] = tab;
+      };
+
       const filteredEvents = computed(() => {
         const q = searchQuery.value.trim().toLowerCase();
         return events.value.filter(e => {
@@ -1171,7 +1305,27 @@
             const inSummary = e.summary && e.summary.toLowerCase().includes(q);
             const inSpeakers = e.speakers && e.speakers.some(s => s.toLowerCase().includes(q));
             const inDate = e.date && e.date.includes(q);
-            matchQuery = inTitle || inSummary || inSpeakers || inDate;
+
+            let inKnowledge = false;
+            if (e.knowledge) {
+              const k = e.knowledge;
+              const inExec = k.exec_summary && k.exec_summary.toLowerCase().includes(q);
+              const inTopics = k.topics && k.topics.some(t => 
+                (t.title && t.title.toLowerCase().includes(q)) || 
+                (t.speaker && t.speaker.toLowerCase().includes(q)) ||
+                (t.bullets && t.bullets.some(b => b.toLowerCase().includes(q)))
+              );
+              const inDebates = k.debates && k.debates.some(d => 
+                (d.topic && d.topic.toLowerCase().includes(q)) || 
+                (d.insight && d.insight.toLowerCase().includes(q)) ||
+                (d.proposer && d.proposer.toLowerCase().includes(q))
+              );
+              const inPreds = k.predictions && k.predictions.some(p => p.toLowerCase().includes(q));
+              const inMats = k.materials && k.materials.some(m => m.name && m.name.toLowerCase().includes(q));
+              inKnowledge = inExec || inTopics || inDebates || inPreds || inMats;
+            }
+
+            matchQuery = inTitle || inSummary || inSpeakers || inDate || inKnowledge;
           }
 
           return matchYear && matchCat && matchQuery;
@@ -1344,7 +1498,10 @@
         hero,
         isManifestoOpen,
         openManifesto,
-        closeManifesto
+        closeManifesto,
+        activeCardTab,
+        getActiveTab,
+        setCardTab
       };
     }
   }).mount('#app');

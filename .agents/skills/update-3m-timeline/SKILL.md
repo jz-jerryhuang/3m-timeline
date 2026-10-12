@@ -119,9 +119,44 @@ git push origin main
   "photos": [
     "photos_web/2026-11-20_新主題/P1.webp",
     "photos_web/2026-11-20_新主題/anim_poster.webp"
-  ]
+  ],
+  "knowledge": {
+    "has_minutes": true,
+    "minutes_meta": {
+      "recorder": "記錄者姓名 (若有)",
+      "file": "會議記錄檔名.docx"
+    },
+    "exec_summary": "1~2 句定調本次研討的核心時代背景、產業衝突與研討綱要。",
+    "topics": [
+      {
+        "speaker": "講者姓名",
+        "title": "專題名稱",
+        "bullets": [
+          "關鍵論點 1 (含實務數據、架構或商業洞察)",
+          "關鍵論點 2 (面臨之挑戰、合規門檻或瓶頸)"
+        ],
+        "file": "簡報檔名.pdf"
+      }
+    ],
+    "debates": [
+      {
+        "topic": "思辨議題名稱",
+        "proposer": "提問/提出質疑之成員",
+        "insight": "成員即席交鋒、跨界業界內幕或非共識觀點。"
+      }
+    ],
+    "predictions": [
+      "當時成員對總經、產業或市場未來發展的前瞻預測。"
+    ],
+    "materials": [
+      { "name": "檔案名稱.pdf", "type": "pdf" },
+      { "name": "會議記錄.docx", "type": "docx" }
+    ]
+  }
 }
 ```
+
+> **知識庫解析 SOP**：若資料夾中包含「會議記錄」檔案（`.docx` / `.pdf`），優先深入解析會議記錄，擷取成員論辯與非共識觀點，再輔以簡報（`.pptx` / `.pdf`）提取各講者重點。當 `knowledge` 物件存在時，網頁時光軸卡片將自動啟用「活動寫真」與「研討紀要 & 簡報」雙分頁切換。
 
 ---
 
