@@ -500,11 +500,12 @@
           ]">
           
           <div 
+            @click="openEventDetail(item)"
             :class="item.category === '週年盛典' ? 'holo-card-anniversary' : 'holo-card'"
-            class="rounded-2xl p-5 sm:p-6 text-left relative overflow-hidden group/card shadow-2xl">
+            class="rounded-2xl p-5 sm:p-6 text-left relative overflow-hidden group/card shadow-2xl cursor-pointer hover:border-cyan-400/80 hover:-translate-y-1 transition-all duration-300">
             
-            <!-- Header Info: Date & Category -->
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <!-- Top Tag: Date & Category -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
               <span class="text-xs font-bold text-cyan-400 tracking-wider flex items-center gap-1.5 font-mono">
                 <i class="fa-regular fa-calendar text-cyan-500"></i> {{ item.date }}
               </span>
@@ -517,280 +518,53 @@
             </div>
 
             <!-- Title -->
-            <h2 class="text-xl sm:text-2xl font-black text-white mb-2 leading-snug tracking-tight group-hover/card:text-cyan-300 transition-colors">
-              {{ item.title }}
+            <h2 class="text-lg sm:text-xl font-black text-white mb-2 leading-snug tracking-tight group-hover/card:text-cyan-300 transition-colors flex items-start justify-between gap-2">
+              <span>{{ item.title }}</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500 group-hover/card:text-cyan-400 group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 transition-all mt-1 shrink-0"></i>
             </h2>
 
             <!-- Speakers -->
-            <div class="flex flex-wrap items-center gap-1.5 mb-3">
-              <span v-for="spk in item.speakers" :key="spk" class="text-xs text-slate-300 bg-slate-950/80 px-2.5 py-0.5 rounded border border-slate-800">
+            <div class="flex flex-wrap items-center gap-1.5 mb-2.5">
+              <span v-for="spk in item.speakers" :key="spk" class="text-xs text-slate-300 bg-slate-950/80 px-2 py-0.5 rounded border border-slate-800">
                 <i class="fa-solid fa-user-circle text-cyan-400 mr-1"></i>{{ spk }}
               </span>
             </div>
 
-            <!-- Summary -->
-            <p class="text-sm text-slate-300 leading-relaxed font-light mb-4">
+            <!-- Summary (Compact 2-line clamp) -->
+            <p class="text-xs text-slate-300 leading-relaxed font-light mb-3.5 line-clamp-2">
               {{ item.summary }}
             </p>
 
-            <!-- Google Drive Folder Link (查看更多) -->
-            <div v-if="item.drive_url" class="mb-4 flex items-center">
-              <a 
-                :href="item.drive_url" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-cyan-300 bg-cyan-950/50 hover:bg-cyan-900/80 border border-cyan-500/30 hover:border-cyan-400 transition-all duration-200 group/driveLink shadow-[0_0_12px_rgba(6,182,212,0.12)] hover:shadow-[0_0_18px_rgba(6,182,212,0.35)]">
-                <i class="fa-brands fa-google-drive text-emerald-400 text-sm group-hover/driveLink:scale-110 transition-transform"></i>
-                <span class="tracking-wide">查看更多</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-cyan-400/80 group-hover/driveLink:translate-x-0.5 group-hover/driveLink:-translate-y-0.5 transition-transform"></i>
-              </a>
+            <!-- Bottom Badges & CTA Button -->
+            <div class="flex items-center justify-between pt-3 border-t border-slate-800/80">
+              <div class="flex flex-wrap items-center gap-2">
+                <!-- Media Count Badge -->
+                <span v-if="getMediaList(item).length > 0" class="inline-flex items-center gap-1 text-[11px] text-cyan-300 bg-cyan-950/60 px-2.5 py-0.5 rounded-lg border border-cyan-800/60 font-mono">
+                  <i class="fa-solid fa-camera text-[10px]"></i>
+                  <span>{{ getMediaList(item).length }} 張</span>
+                </span>
+
+                <!-- Knowledge Badge -->
+                <span v-if="item.knowledge" class="inline-flex items-center gap-1 text-[11px] text-amber-300 bg-amber-950/60 px-2.5 py-0.5 rounded-lg border border-amber-800/60 font-mono">
+                  <i class="fa-solid fa-brain text-[10px]"></i>
+                  <span>{{ item.knowledge.topics ? item.knowledge.topics.length : 1 }} 專題</span>
+                </span>
+                
+                <!-- Drive Badge -->
+                <span v-if="item.drive_url" class="inline-flex items-center gap-1 text-[11px] text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-800/40">
+                  <i class="fa-brands fa-google-drive text-[10px]"></i>
+                  <span>雲端</span>
+                </span>
+              </div>
+
+              <!-- CTA Button -->
+              <span class="text-xs font-bold text-cyan-400 group-hover/card:text-cyan-300 flex items-center gap-1 transition-colors">
+                <span>專場全景</span>
+                <i class="fa-solid fa-chevron-right text-[10px] group-hover/card:translate-x-1 transition-transform"></i>
+              </span>
             </div>
 
-            <!-- ================= CARD TABS (寫真 vs 研討紀要) ================= -->
-            <div v-if="item.knowledge && getMediaList(item).length > 0" class="flex items-center gap-1.5 mt-2 mb-4 p-1 bg-slate-950/80 rounded-xl border border-slate-800/80 w-fit">
-              <button 
-                @click="setCardTab(item.id, 'media')"
-                :class="getActiveTab(item) === 'media' ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_12px_rgba(6,182,212,0.25)] font-bold' : 'text-slate-400 hover:text-white border-transparent'"
-                class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border transition-all">
-                <i class="fa-solid fa-camera text-cyan-400"></i>
-                <span>活動寫真</span>
-                <span class="text-[10px] px-1.5 py-0.2 bg-slate-900 text-slate-300 rounded-full font-mono">{{ getMediaList(item).length }}</span>
-              </button>
-
-              <button 
-                @click="setCardTab(item.id, 'knowledge')"
-                :class="getActiveTab(item) === 'knowledge' ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-[0_0_12px_rgba(245,158,11,0.25)] font-bold' : 'text-slate-400 hover:text-white border-transparent'"
-                class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border transition-all">
-                <i class="fa-solid fa-brain text-amber-400"></i>
-                <span>研討紀要 & 簡報</span>
-                <span class="text-[10px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 rounded-full font-mono">{{ item.knowledge.topics ? item.knowledge.topics.length : 1 }}</span>
-              </button>
-            </div>
-
-            <!-- ================= MEDIA PREVIEWS (PHOTOS & GIFS) ================= -->
-            <div v-if="getMediaList(item).length > 0" v-show="getActiveTab(item) === 'media'" class="mt-4 pt-4 border-t border-slate-800/80">
-              
-              <!-- Header Bar -->
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold text-cyan-400 flex items-center gap-1">
-                    <i class="fa-solid fa-images mr-1"></i> 聚會紀實
-                  </span>
-                </div>
-
-                <div class="flex items-center gap-2">
-                  <!-- Slideshow Button -->
-                  <button 
-                    @click="startSlideshow(getMediaList(item), 0)"
-                    class="text-xs text-amber-300 bg-amber-500/15 hover:bg-amber-500/30 border border-amber-500/40 px-2.5 py-1 rounded transition-all flex items-center gap-1">
-                    <i class="fa-solid fa-play text-[10px]"></i> 放映
-                  </button>
-
-                  <!-- Toggle View Mode if > 3 -->
-                  <button 
-                    v-if="getMediaList(item).length > 3"
-                    @click="toggleExpand(item.id)" 
-                    class="text-xs text-slate-400 hover:text-white bg-slate-950 px-2 py-1 rounded border border-slate-800 transition-colors">
-                    <span v-if="expandedEvents[item.id]"><i class="fa-solid fa-compress mr-1"></i>收合</span>
-                    <span v-else><i class="fa-solid fa-table-cells mr-1"></i>全展開</span>
-                  </button>
-                </div>
-              </div>
-              
-              <!-- VIEW A: Single GIF / Single Image -->
-              <div v-if="getMediaList(item).length === 1" class="rounded-xl overflow-hidden border border-cyan-500/30 bg-black/60 relative group/solo">
-                <div 
-                  @click="openLightbox(getMediaList(item)[0], getMediaList(item), 0)"
-                  class="cursor-pointer relative aspect-video max-h-80 w-full flex items-center justify-center bg-slate-950">
-                  <img 
-                    :src="getMediaList(item)[0].poster || getMediaList(item)[0].url" 
-                    :alt="getMediaList(item)[0].name" 
-                    class="w-full h-full object-contain group-hover/solo:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <!-- Live GIF indicator -->
-                  <div v-if="getMediaList(item)[0].type === 'gif'" class="absolute top-3 left-3 bg-purple-600/90 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-purple-400/50 flex items-center gap-1.5 shadow-lg">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    簡報動畫 GIF (點擊播放)
-                  </div>
-                  <div class="absolute inset-0 bg-cyan-950/20 opacity-0 group-hover/solo:opacity-100 transition-opacity flex items-center justify-center">
-                    <span class="px-3 py-1 bg-black/80 rounded-full text-xs text-cyan-300 border border-cyan-500/40">
-                      <i class="fa-solid fa-expand mr-1"></i> 點擊放大檢視
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- VIEW B: Expanded Full Grid -->
-              <div v-else-if="expandedEvents[item.id]" class="grid grid-cols-2 sm:grid-cols-3 gap-2 transition-all">
-                <div 
-                  v-for="(m, mIdx) in getMediaList(item)" :key="mIdx"
-                  @click="openLightbox(m, getMediaList(item), mIdx)"
-                  class="relative aspect-square rounded-lg overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer group/matrix">
-                  <img :src="m.thumb || m.url" class="w-full h-full object-cover group-hover/matrix:scale-110 transition-transform duration-300" loading="lazy" decoding="async" />
-                  <div v-if="m.type === 'gif'" class="absolute top-1.5 left-1.5 bg-purple-600 text-white text-[9px] font-bold px-1 rounded">
-                    GIF
-                  </div>
-                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/matrix:opacity-100 transition-opacity flex items-center justify-center">
-                    <i class="fa-solid fa-magnifying-glass-plus text-cyan-400 text-lg"></i>
-                  </div>
-                </div>
-              </div>
-
-              <!-- VIEW C: Bento Spotlight Hero + Horizontal Filmstrip -->
-              <div v-else class="space-y-2.5">
-                <!-- Bento Layout -->
-                <div v-if="getMediaList(item).length >= 3" class="grid grid-cols-3 gap-2">
-                  <div 
-                    @click="openLightbox(getMediaList(item)[0], getMediaList(item), 0)"
-                    class="col-span-2 aspect-[16/10] rounded-xl overflow-hidden border border-cyan-500/20 bg-slate-950 cursor-pointer relative group/bentoMain">
-                    <img :src="getMediaList(item)[0].poster || getMediaList(item)[0].url" class="w-full h-full object-cover group-hover/bentoMain:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
-                    <div v-if="getMediaList(item)[0].type === 'gif'" class="absolute top-2 left-2 bg-purple-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">
-                      GIF
-                    </div>
-                  </div>
-                  <div class="flex flex-col gap-2">
-                    <div 
-                      v-for="(m, sIdx) in getMediaList(item).slice(1, 3)" :key="sIdx"
-                      @click="openLightbox(m, getMediaList(item), sIdx + 1)"
-                      class="flex-1 aspect-[4/3] rounded-xl overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer relative group/bentoSide">
-                      <img :src="m.thumb || m.url" class="w-full h-full object-cover group-hover/bentoSide:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
-                      <div v-if="m.type === 'gif'" class="absolute top-1 left-1 bg-purple-600 text-white text-[8px] font-bold px-1 rounded">
-                        GIF
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Two images side by side -->
-                <div v-else-if="getMediaList(item).length === 2" class="grid grid-cols-2 gap-2">
-                  <div 
-                    v-for="(m, mIdx) in getMediaList(item)" :key="mIdx"
-                    @click="openLightbox(m, getMediaList(item), mIdx)"
-                    class="aspect-[16/10] rounded-xl overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer group/two">
-                    <img :src="m.url" class="w-full h-full object-cover group-hover/two:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
-                  </div>
-                </div>
-
-                <!-- Horizontal Filmstrip -->
-                <div class="relative group/strip">
-                  <div 
-                    :id="'strip-' + item.id"
-                    class="flex items-center gap-2 overflow-x-auto filmstrip-scroll py-1 px-0.5 scrollbar-none">
-                    <div 
-                      v-for="(m, mIdx) in getMediaList(item)" :key="mIdx"
-                      @click="openLightbox(m, getMediaList(item), mIdx)"
-                      class="w-16 sm:w-20 aspect-square rounded-lg overflow-hidden border border-slate-800 hover:border-cyan-400 bg-slate-950 shrink-0 cursor-pointer relative group/thumb transition-all">
-                      <img :src="m.thumb || m.url" class="w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-200" loading="lazy" decoding="async" />
-                      <div v-if="m.type === 'gif'" class="absolute top-0.5 left-0.5 bg-purple-600 text-white text-[7px] font-bold px-1 rounded">
-                        GIF
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- ================= TAB 2: KNOWLEDGE & MEETING MINUTES ================= -->
-            <div v-if="item.knowledge" v-show="getActiveTab(item) === 'knowledge' || getMediaList(item).length === 0" class="mt-4 pt-4 border-t border-slate-800/80 space-y-4">
-              
-              <!-- 1. Executive Summary & Meta -->
-              <div class="p-3.5 rounded-xl bg-gradient-to-br from-amber-500/10 via-slate-950 to-cyan-500/10 border border-amber-500/30 shadow-lg">
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                  <span class="text-xs font-bold text-amber-300 flex items-center gap-1.5">
-                    <i class="fa-solid fa-feather text-amber-400"></i> 研討核心總綱
-                  </span>
-                  <span v-if="item.knowledge.minutes_meta" class="text-[10px] text-slate-300 bg-slate-900/90 px-2 py-0.5 rounded border border-slate-800 flex items-center gap-1">
-                    <i class="fa-solid fa-pen-nib text-cyan-400"></i> {{ item.knowledge.minutes_meta.recorder }}
-                  </span>
-                </div>
-                <p class="text-xs text-slate-200 leading-relaxed font-light">
-                  {{ item.knowledge.exec_summary }}
-                </p>
-              </div>
-
-              <!-- 2. Speaker Keynote Briefings -->
-              <div v-if="item.knowledge.topics && item.knowledge.topics.length > 0" class="space-y-2">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold text-cyan-400 flex items-center gap-1.5">
-                    <i class="fa-solid fa-chalkboard-user"></i> 專題精華與硬核結論
-                  </span>
-                  <span class="text-[10px] text-slate-500 font-mono">共 {{ item.knowledge.topics.length }} 個專題</span>
-                </div>
-
-                <div class="space-y-2">
-                  <div 
-                    v-for="(tp, tpIdx) in item.knowledge.topics" :key="tpIdx"
-                    class="bg-slate-950/70 rounded-xl p-3.5 border border-slate-800/90 hover:border-cyan-500/40 transition-colors">
-                    <div class="flex flex-wrap items-center justify-between gap-1.5 mb-1.5">
-                      <span class="text-xs font-bold text-white group-hover:text-cyan-300">
-                        {{ tp.title }}
-                      </span>
-                      <span class="text-[11px] font-semibold text-cyan-300 bg-cyan-950/70 px-2 py-0.5 rounded border border-cyan-800/60 font-mono flex items-center gap-1">
-                        <i class="fa-solid fa-user-circle text-[10px]"></i> {{ tp.speaker }}
-                      </span>
-                    </div>
-                    <ul class="space-y-1 pl-1 text-xs text-slate-300 font-light leading-relaxed">
-                      <li v-for="(b, bIdx) in tp.bullets" :key="bIdx" class="flex items-start gap-1.5">
-                        <span class="text-cyan-400 mt-0.5 text-[8px] shrink-0">▪</span>
-                        <span>{{ b }}</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 3. Member Debates & Contrarian Sparks -->
-              <div v-if="item.knowledge.debates && item.knowledge.debates.length > 0" class="p-3.5 rounded-xl bg-purple-950/20 border border-purple-500/30">
-                <div class="text-xs font-bold text-purple-300 mb-2.5 flex items-center gap-1.5">
-                  <i class="fa-solid fa-comments text-purple-400"></i> 讀書會成員思辨與非共識火花
-                </div>
-                <div class="space-y-2 text-xs">
-                  <div v-for="(db, dbIdx) in item.knowledge.debates" :key="dbIdx" class="bg-black/40 p-2.5 rounded-lg border border-purple-500/20">
-                    <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
-                      <span class="text-amber-300 font-semibold flex items-center gap-1">
-                        <i class="fa-solid fa-bolt text-[10px] text-amber-400"></i> {{ db.topic }}
-                      </span>
-                      <span v-if="db.proposer" class="text-[10px] text-slate-400 bg-slate-900 px-1.5 py-0.2 rounded font-mono">
-                        {{ db.proposer }}
-                      </span>
-                    </div>
-                    <p class="text-slate-300 leading-relaxed pl-1 font-light">{{ db.insight }}</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 4. Foresight Predictions -->
-              <div v-if="item.knowledge.predictions && item.knowledge.predictions.length > 0" class="p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
-                <div class="text-xs font-bold text-emerald-300 mb-2 flex items-center gap-1.5">
-                  <i class="fa-solid fa-compass text-emerald-400"></i> 前瞻預測與局勢推演
-                </div>
-                <ul class="space-y-1.5 text-xs text-slate-300 pl-1 font-light">
-                  <li v-for="(pred, pIdx) in item.knowledge.predictions" :key="pIdx" class="flex items-start gap-1.5 leading-relaxed">
-                    <span class="text-emerald-400 mt-0.5 text-[8px] shrink-0">▸</span>
-                    <span>{{ pred }}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- 5. Materials List -->
-              <div v-if="item.knowledge.materials && item.knowledge.materials.length > 0" class="pt-2 border-t border-slate-800/60">
-                <div class="text-[11px] font-bold text-slate-400 mb-2 flex items-center gap-1.5">
-                  <i class="fa-solid fa-paperclip text-sky-400"></i> 研討簡報與會議記錄清單 ({{ item.knowledge.materials.length }})
-                </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <div 
-                    v-for="(mat, mIdx) in item.knowledge.materials" :key="mIdx"
-                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-300 hover:text-cyan-300 hover:border-slate-700 transition-colors">
-                    <i :class="mat.type === 'pdf' ? 'fa-solid fa-file-pdf text-red-400' : mat.type === 'docx' ? 'fa-solid fa-file-word text-blue-400' : 'fa-solid fa-file-powerpoint text-amber-400'"></i>
-                    <span class="truncate max-w-[240px]">{{ mat.name }}</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+          </div>
 
           </div>
         </div>
@@ -799,6 +573,281 @@
 
     </div>
   </main>
+
+  <!-- ================= LAYER 2: EVENT DEEP DIVE VIEW (專場沉浸式獨立層) ================= -->
+  <div 
+    v-if="selectedEvent" 
+    class="fixed inset-0 z-40 bg-[#071122]/98 backdrop-blur-2xl overflow-y-auto flex flex-col p-3 sm:p-6 lg:p-8 select-text animate-fadeIn"
+    @keydown.esc="closeEventDetail"
+    tabindex="0">
+    
+    <!-- Top Sticky Control Bar -->
+    <div class="sticky top-0 z-20 max-w-6xl mx-auto w-full flex items-center justify-between pb-3 mb-6 border-b border-slate-800/90 bg-[#071122]/95 backdrop-blur-md shrink-0">
+      
+      <!-- Back Button -->
+      <button 
+        @click="closeEventDetail"
+        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-bold text-slate-200 hover:text-cyan-300 border border-slate-700/80 transition-all shadow-md group">
+        <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+        <span>返回時光軸 (Esc)</span>
+      </button>
+
+      <!-- Center Breadcrumb (Desktop) -->
+      <div class="hidden md:flex items-center gap-2 text-xs text-slate-400 font-mono">
+        <span>3M 時光軸</span>
+        <span>/</span>
+        <span class="text-cyan-400 font-bold">{{ selectedEvent.year }} 年</span>
+        <span>/</span>
+        <span class="text-slate-200 font-semibold truncate max-w-xs">{{ selectedEvent.title }}</span>
+      </div>
+
+      <!-- Right Prev / Next Switcher & Close -->
+      <div class="flex items-center gap-2">
+        <button 
+          @click="prevEvent" 
+          :disabled="!hasPrevEvent"
+          :class="hasPrevEvent ? 'hover:bg-slate-800 text-slate-200 hover:text-cyan-300 border-slate-700 cursor-pointer' : 'opacity-30 text-slate-600 border-slate-800/40 cursor-not-allowed'"
+          class="px-2.5 py-1.5 rounded-lg bg-slate-900 text-xs border transition-all flex items-center gap-1"
+          title="上一場 (← 鍵盤向左鍵)">
+          <i class="fa-solid fa-chevron-left text-[10px]"></i>
+          <span class="hidden sm:inline">上一場</span>
+        </button>
+
+        <button 
+          @click="nextEvent" 
+          :disabled="!hasNextEvent"
+          :class="hasNextEvent ? 'hover:bg-slate-800 text-slate-200 hover:text-cyan-300 border-slate-700 cursor-pointer' : 'opacity-30 text-slate-600 border-slate-800/40 cursor-not-allowed'"
+          class="px-2.5 py-1.5 rounded-lg bg-slate-900 text-xs border transition-all flex items-center gap-1"
+          title="下一場 (→ 鍵盤向右鍵)">
+          <span class="hidden sm:inline">下一場</span>
+          <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        </button>
+
+        <button 
+          @click="closeEventDetail" 
+          class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/80 transition-colors ml-1 text-base">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Main Container -->
+    <div class="max-w-6xl mx-auto w-full flex-1 pb-16 space-y-6">
+      
+      <!-- Event Header Hero Card -->
+      <div class="holo-card rounded-2xl p-6 sm:p-8 relative overflow-hidden border border-cyan-500/30 shadow-2xl">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-sm font-bold text-cyan-400 font-mono tracking-wider flex items-center gap-1.5">
+              <i class="fa-regular fa-calendar text-cyan-500"></i> {{ selectedEvent.date }}
+            </span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/80 font-mono">
+              {{ selectedEvent.year }}
+            </span>
+          </div>
+
+          <span 
+            :class="selectedEvent.category === '週年盛典' ? 'bg-amber-500 text-black font-black' : 'bg-slate-900 text-slate-300 border border-slate-700'"
+            class="text-xs px-3 py-1 rounded-full font-semibold tracking-wider">
+            {{ selectedEvent.category }}
+          </span>
+        </div>
+
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-4 tracking-tight">
+          {{ selectedEvent.title }}
+        </h1>
+
+        <!-- Speakers Badges -->
+        <div class="flex flex-wrap items-center gap-2 mb-5">
+          <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold mr-1">主講與成員:</span>
+          <span v-for="spk in selectedEvent.speakers" :key="spk" class="text-xs text-cyan-300 bg-cyan-950/70 px-3 py-1 rounded-lg border border-cyan-800/70 flex items-center gap-1.5 font-medium shadow-sm">
+            <i class="fa-solid fa-user-circle text-cyan-400"></i>{{ spk }}
+          </span>
+        </div>
+
+        <!-- Summary -->
+        <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-light mb-4">
+          {{ selectedEvent.summary }}
+        </p>
+
+        <!-- Google Drive Button if exists -->
+        <div v-if="selectedEvent.drive_url" class="pt-2">
+          <a 
+            :href="selectedEvent.drive_url" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-cyan-300 bg-cyan-950/60 hover:bg-cyan-900 border border-cyan-500/40 hover:border-cyan-300 transition-all shadow-[0_0_15px_rgba(6,182,212,0.18)]">
+            <i class="fa-brands fa-google-drive text-emerald-400 text-sm"></i>
+            <span>在 Google 雲端硬碟檢視原始專題資料夾</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Detail View Tabs Switcher (Shown if both Knowledge & Media exist) -->
+      <div v-if="selectedEvent.knowledge && getMediaList(selectedEvent).length > 0" class="flex items-center gap-2 p-1.5 bg-slate-950/80 rounded-2xl border border-slate-800/80 w-fit shadow-lg">
+        <button 
+          @click="detailActiveTab = 'knowledge'"
+          :class="detailActiveTab === 'knowledge' ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-[0_0_12px_rgba(245,158,11,0.25)] font-black' : 'text-slate-400 hover:text-white border-transparent font-medium'"
+          class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs border transition-all">
+          <i class="fa-solid fa-brain text-amber-400"></i>
+          <span>研討紀要 & 簡報洞察</span>
+          <span class="text-[10px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 rounded-full font-mono">{{ selectedEvent.knowledge.topics ? selectedEvent.knowledge.topics.length : 1 }}</span>
+        </button>
+
+        <button 
+          @click="detailActiveTab = 'media'"
+          :class="detailActiveTab === 'media' ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_12px_rgba(6,182,212,0.25)] font-black' : 'text-slate-400 hover:text-white border-transparent font-medium'"
+          class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs border transition-all">
+          <i class="fa-solid fa-camera text-cyan-400"></i>
+          <span>現場寫真與簡報動畫</span>
+          <span class="text-[10px] px-1.5 py-0.2 bg-slate-900 text-slate-300 rounded-full font-mono">{{ getMediaList(selectedEvent).length }}</span>
+        </button>
+      </div>
+
+      <!-- SECTION 1: KNOWLEDGE & MEETING MINUTES -->
+      <div v-if="selectedEvent.knowledge" v-show="detailActiveTab === 'knowledge' || getMediaList(selectedEvent).length === 0" class="space-y-6">
+        
+        <!-- 1. Executive Summary & Meta -->
+        <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-500/10 via-slate-950 to-cyan-500/10 border border-amber-500/30 shadow-xl">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <span class="text-sm font-bold text-amber-300 flex items-center gap-2">
+              <i class="fa-solid fa-feather text-amber-400"></i> 研討核心總綱
+            </span>
+            <span v-if="selectedEvent.knowledge.minutes_meta" class="text-xs text-slate-300 bg-slate-900/90 px-3 py-1 rounded-lg border border-slate-800 flex items-center gap-1.5">
+              <i class="fa-solid fa-pen-nib text-cyan-400"></i> {{ selectedEvent.knowledge.minutes_meta.recorder }}
+            </span>
+          </div>
+          <p class="text-sm text-slate-200 leading-relaxed font-light">
+            {{ selectedEvent.knowledge.exec_summary }}
+          </p>
+        </div>
+
+        <!-- 2. Speaker Keynote Briefings (2 columns responsive) -->
+        <div v-if="selectedEvent.knowledge.topics && selectedEvent.knowledge.topics.length > 0" class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-bold text-cyan-400 flex items-center gap-2">
+              <i class="fa-solid fa-chalkboard-user"></i> 專題精華與硬核結論
+            </span>
+            <span class="text-xs text-slate-500 font-mono">共 {{ selectedEvent.knowledge.topics.length }} 個專題</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div 
+              v-for="(tp, tpIdx) in selectedEvent.knowledge.topics" :key="tpIdx"
+              class="bg-slate-950/80 rounded-2xl p-5 border border-slate-800/90 hover:border-cyan-500/40 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                  <span class="text-sm font-bold text-white">
+                    {{ tp.title }}
+                  </span>
+                  <span class="text-xs font-semibold text-cyan-300 bg-cyan-950/70 px-2.5 py-0.5 rounded-lg border border-cyan-800/60 font-mono flex items-center gap-1">
+                    <i class="fa-solid fa-user-circle text-[11px]"></i> {{ tp.speaker }}
+                  </span>
+                </div>
+                <ul class="space-y-2 pl-1 text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+                  <li v-for="(b, bIdx) in tp.bullets" :key="bIdx" class="flex items-start gap-2">
+                    <span class="text-cyan-400 mt-1 text-[9px] shrink-0">▪</span>
+                    <span>{{ b }}</span>
+                  </li>
+                </ul>
+              </div>
+              <div v-if="tp.file" class="mt-3 pt-3 border-t border-slate-800/60 text-[11px] text-slate-400 flex items-center gap-1.5">
+                <i class="fa-solid fa-file-powerpoint text-amber-400"></i>
+                <span class="truncate">{{ tp.file }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Member Debates & Contrarian Sparks -->
+        <div v-if="selectedEvent.knowledge.debates && selectedEvent.knowledge.debates.length > 0" class="p-6 rounded-2xl bg-purple-950/20 border border-purple-500/30 space-y-4">
+          <div class="text-sm font-bold text-purple-300 flex items-center gap-2">
+            <i class="fa-solid fa-comments text-purple-400"></i> 讀書會成員思辨與非共識火花
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+            <div v-for="(db, dbIdx) in selectedEvent.knowledge.debates" :key="dbIdx" class="bg-black/40 p-4 rounded-xl border border-purple-500/20">
+              <div class="flex flex-wrap items-center justify-between gap-1 mb-1.5">
+                <span class="text-amber-300 font-semibold flex items-center gap-1.5">
+                  <i class="fa-solid fa-bolt text-xs text-amber-400"></i> {{ db.topic }}
+                </span>
+                <span v-if="db.proposer" class="text-xs text-slate-400 bg-slate-900 px-2 py-0.5 rounded font-mono">
+                  {{ db.proposer }}
+                </span>
+              </div>
+              <p class="text-slate-300 leading-relaxed font-light pl-1">{{ db.insight }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Foresight Predictions -->
+        <div v-if="selectedEvent.knowledge.predictions && selectedEvent.knowledge.predictions.length > 0" class="p-6 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-3">
+          <div class="text-sm font-bold text-emerald-300 flex items-center gap-2">
+            <i class="fa-solid fa-compass text-emerald-400"></i> 前瞻預測與局勢推演
+          </div>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-300 pl-1 font-light">
+            <li v-for="(pred, pIdx) in selectedEvent.knowledge.predictions" :key="pIdx" class="flex items-start gap-2 leading-relaxed">
+              <span class="text-emerald-400 mt-1 text-[10px] shrink-0">▸</span>
+              <span>{{ pred }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 5. Materials List -->
+        <div v-if="selectedEvent.knowledge.materials && selectedEvent.knowledge.materials.length > 0" class="p-6 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-3">
+          <div class="text-xs sm:text-sm font-bold text-slate-300 flex items-center gap-2">
+            <i class="fa-solid fa-paperclip text-sky-400"></i> 研討簡報與會議記錄清單 ({{ selectedEvent.knowledge.materials.length }})
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <div 
+              v-for="(mat, mIdx) in selectedEvent.knowledge.materials" :key="mIdx"
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-700/80 text-xs text-slate-200 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors">
+              <i :class="mat.type === 'pdf' ? 'fa-solid fa-file-pdf text-red-400' : mat.type === 'docx' ? 'fa-solid fa-file-word text-blue-400' : 'fa-solid fa-file-powerpoint text-amber-400'"></i>
+              <span>{{ mat.name }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SECTION 2: PHOTOS & GIF ANIMATIONS -->
+      <div v-if="getMediaList(selectedEvent).length > 0" v-show="detailActiveTab === 'media' || !selectedEvent.knowledge" class="space-y-4">
+        
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-bold text-cyan-400 flex items-center gap-2">
+            <i class="fa-solid fa-images"></i> 聚會紀實畫廊 ({{ getMediaList(selectedEvent).length }} 張)
+          </span>
+
+          <!-- Slideshow Button -->
+          <button 
+            @click="startSlideshow(getMediaList(selectedEvent), 0)"
+            class="text-xs font-bold text-amber-300 bg-amber-500/15 hover:bg-amber-500/30 border border-amber-500/40 px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-play text-[10px]"></i> 自動放映幻燈片
+          </button>
+        </div>
+
+        <!-- Photos Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          <div 
+            v-for="(m, mIdx) in getMediaList(selectedEvent)" :key="mIdx"
+            @click="openLightbox(m, getMediaList(selectedEvent), mIdx)"
+            class="relative aspect-[4/3] rounded-xl overflow-hidden border border-slate-800 bg-slate-950 cursor-pointer group/mat transition-all hover:border-cyan-400/80 hover:scale-[1.02]">
+            <img :src="m.thumb || m.url" class="w-full h-full object-cover group-hover/mat:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
+            <div v-if="m.type === 'gif'" class="absolute top-2 left-2 bg-purple-600/90 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow">
+              GIF
+            </div>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover/mat:opacity-100 transition-opacity flex items-center justify-center">
+              <i class="fa-solid fa-magnifying-glass-plus text-cyan-400 text-xl"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- ================= LIGHTBOX MODAL ================= -->
   <div 
@@ -1247,6 +1296,22 @@
             return;
           }
 
+          // 專場詳情 (Layer 2) 快捷鍵導航 (當 Lightbox 未開啟時)
+          if (selectedEvent.value && !lightbox.value.isOpen) {
+            if (e.key === 'Escape') {
+              closeEventDetail();
+              return;
+            }
+            if (e.key === 'ArrowLeft') {
+              prevEvent();
+              return;
+            }
+            if (e.key === 'ArrowRight') {
+              nextEvent();
+              return;
+            }
+          }
+
           if (!lightbox.value.isOpen) return;
           if (e.key === 'Escape') closeLightbox();
           if (e.key === 'ArrowLeft') prevLightbox();
@@ -1256,8 +1321,85 @@
             toggleSlideshowPlay();
           }
         });
+
+        // 監聽網址 Hash 路由變更
+        window.addEventListener('hashchange', checkHashRoute);
+        // 初始化檢查 Hash 路由
+        checkHashRoute();
       });
+
+      // Layer 2: 專場沉浸式詳細層 (Event Detail View)
+      const selectedEvent = ref(null);
+      const detailActiveTab = ref('knowledge');
+
+      const openEventDetail = (item) => {
+        selectedEvent.value = item;
+        if (item.knowledge) {
+          detailActiveTab.value = 'knowledge';
+        } else {
+          detailActiveTab.value = 'media';
+        }
+        window.location.hash = `#/event/${item.id}`;
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeEventDetail = () => {
+        selectedEvent.value = null;
+        if (window.location.hash.startsWith('#/event/')) {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        document.body.style.overflow = '';
+      };
+
+      const prevEvent = () => {
+        if (!selectedEvent.value) return;
+        const list = filteredEvents.value.length > 0 ? filteredEvents.value : events.value;
+        const idx = list.findIndex(e => e.id === selectedEvent.value.id);
+        if (idx > 0) {
+          openEventDetail(list[idx - 1]);
+        }
+      };
+
+      const nextEvent = () => {
+        if (!selectedEvent.value) return;
+        const list = filteredEvents.value.length > 0 ? filteredEvents.value : events.value;
+        const idx = list.findIndex(e => e.id === selectedEvent.value.id);
+        if (idx !== -1 && idx < list.length - 1) {
+          openEventDetail(list[idx + 1]);
+        }
+      };
+
+      const hasPrevEvent = computed(() => {
+        if (!selectedEvent.value) return false;
+        const list = filteredEvents.value.length > 0 ? filteredEvents.value : events.value;
+        const idx = list.findIndex(e => e.id === selectedEvent.value.id);
+        return idx > 0;
+      });
+
+      const hasNextEvent = computed(() => {
+        if (!selectedEvent.value) return false;
+        const list = filteredEvents.value.length > 0 ? filteredEvents.value : events.value;
+        const idx = list.findIndex(e => e.id === selectedEvent.value.id);
+        return idx !== -1 && idx < list.length - 1;
+      });
+
+      const checkHashRoute = () => {
+        const hash = window.location.hash;
+        const match = hash.match(/#\/event\/(.+)/);
+        if (match) {
+          const eventId = decodeURIComponent(match[1]);
+          const found = events.value.find(e => e.id === eventId);
+          if (found) {
+            openEventDetail(found);
+          }
+        } else if (selectedEvent.value) {
+          selectedEvent.value = null;
+          document.body.style.overflow = '';
+        }
+      };
+
       const getMediaList = (item) => {
+        if (!item) return [];
         if (item.media && item.media.length > 0) return item.media;
         if (item.photos && item.photos.length > 0) {
           return item.photos.map(p => ({
@@ -1278,20 +1420,6 @@
         const cats = new Set(events.value.map(e => e.category).filter(Boolean));
         return ['全部', ...Array.from(cats)];
       });
-
-      const activeCardTab = ref({});
-      const getActiveTab = (item) => {
-        if (activeCardTab.value[item.id]) {
-          return activeCardTab.value[item.id];
-        }
-        if (getMediaList(item).length === 0 && item.knowledge) {
-          return 'knowledge';
-        }
-        return 'media';
-      };
-      const setCardTab = (itemId, tab) => {
-        activeCardTab.value[itemId] = tab;
-      };
 
       const filteredEvents = computed(() => {
         const q = searchQuery.value.trim().toLowerCase();
@@ -1499,9 +1627,14 @@
         isManifestoOpen,
         openManifesto,
         closeManifesto,
-        activeCardTab,
-        getActiveTab,
-        setCardTab
+        selectedEvent,
+        detailActiveTab,
+        openEventDetail,
+        closeEventDetail,
+        prevEvent,
+        nextEvent,
+        hasPrevEvent,
+        hasNextEvent
       };
     }
   }).mount('#app');
