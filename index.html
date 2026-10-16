@@ -6,8 +6,9 @@
   <title>3M 讀書會 11 週年紀念時光軸 (2015 - 2026)</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Vue 3 -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- Vue 3 (Local bundle first, unpkg fallback) -->
+  <script src="vue.global.prod.js"></script>
+  <script>if (typeof Vue === 'undefined') document.write('<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"><\/script>')</script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- Classical Historic Serif Fonts (Declaration of Independence Aesthetic) -->
@@ -41,6 +42,11 @@
   </script>
 
   <style>
+    /* Prevent Flash of Uncompiled Content (FOUC) */
+    [v-cloak] {
+      display: none !important;
+    }
+
     /* Academic Midnight Sapphire Gradient Background */
     body {
       background: radial-gradient(130% 90% at 50% -10%, #173059 0%, #0e1d38 45%, #081224 100%);
@@ -147,7 +153,7 @@
   </style>
 </head>
 <body class="text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-black">
-<div id="app" class="relative z-10">
+<div id="app" v-cloak class="relative z-10">
 
   <!-- ================= CANVAS & AMBIENT AURORA BACKGROUND ================= -->
   <canvas id="cosmicCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-70"></canvas>
@@ -565,8 +571,6 @@
             </div>
 
           </div>
-
-          </div>
         </div>
 
       </div>
@@ -596,9 +600,9 @@
       <div class="hidden md:flex items-center gap-2 text-xs text-slate-400 font-mono">
         <span>3M 時光軸</span>
         <span>/</span>
-        <span class="text-cyan-400 font-bold">{{ selectedEvent.year }} 年</span>
+        <span class="text-slate-200 font-medium">{{ selectedEvent.year }} 年</span>
         <span>/</span>
-        <span class="text-slate-200 font-semibold truncate max-w-xs">{{ selectedEvent.title }}</span>
+        <span class="text-slate-300 font-medium truncate max-w-xs">{{ selectedEvent.title }}</span>
       </div>
 
       <!-- Right Prev / Next Switcher & Close -->
@@ -606,7 +610,7 @@
         <button 
           @click="prevEvent" 
           :disabled="!hasPrevEvent"
-          :class="hasPrevEvent ? 'hover:bg-slate-800 text-slate-200 hover:text-cyan-300 border-slate-700 cursor-pointer' : 'opacity-30 text-slate-600 border-slate-800/40 cursor-not-allowed'"
+          :class="hasPrevEvent ? 'hover:bg-slate-800 text-slate-300 hover:text-white border-slate-700 cursor-pointer' : 'opacity-30 text-slate-600 border-slate-800/40 cursor-not-allowed'"
           class="px-2.5 py-1.5 rounded-lg bg-slate-900 text-xs border transition-all flex items-center gap-1"
           title="上一場 (← 鍵盤向左鍵)">
           <i class="fa-solid fa-chevron-left text-[10px]"></i>
@@ -616,7 +620,7 @@
         <button 
           @click="nextEvent" 
           :disabled="!hasNextEvent"
-          :class="hasNextEvent ? 'hover:bg-slate-800 text-slate-200 hover:text-cyan-300 border-slate-700 cursor-pointer' : 'opacity-30 text-slate-600 border-slate-800/40 cursor-not-allowed'"
+          :class="hasNextEvent ? 'hover:bg-slate-800 text-slate-300 hover:text-white border-slate-700 cursor-pointer' : 'opacity-30 text-slate-600 border-slate-800/40 cursor-not-allowed'"
           class="px-2.5 py-1.5 rounded-lg bg-slate-900 text-xs border transition-all flex items-center gap-1"
           title="下一場 (→ 鍵盤向右鍵)">
           <span class="hidden sm:inline">下一場</span>
@@ -636,38 +640,40 @@
     <div class="max-w-6xl mx-auto w-full flex-1 pb-16 space-y-6">
       
       <!-- Event Header Hero Card -->
-      <div class="holo-card rounded-2xl p-6 sm:p-8 relative overflow-hidden border border-cyan-500/30 shadow-2xl">
+      <div class="bg-slate-900/60 rounded-2xl p-6 sm:p-8 relative overflow-hidden border border-slate-800 shadow-xl backdrop-blur-md">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
           <div class="flex items-center gap-2">
-            <span class="text-sm font-bold text-cyan-400 font-mono tracking-wider flex items-center gap-1.5">
-              <i class="fa-regular fa-calendar text-cyan-500"></i> {{ selectedEvent.date }}
+            <span class="text-xs sm:text-sm font-semibold text-slate-300 font-mono tracking-wider flex items-center gap-1.5">
+              <i class="fa-regular fa-calendar text-slate-400"></i> {{ selectedEvent.date }}
             </span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/80 font-mono">
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-800/90 text-slate-400 border border-slate-700/60 font-mono">
               {{ selectedEvent.year }}
             </span>
           </div>
 
           <span 
-            :class="selectedEvent.category === '週年盛典' ? 'bg-amber-500 text-black font-black' : 'bg-slate-900 text-slate-300 border border-slate-700'"
-            class="text-xs px-3 py-1 rounded-full font-semibold tracking-wider">
+            :class="selectedEvent.category === '週年盛典' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold' : 'bg-slate-800/80 text-slate-300 border border-slate-700/60 font-normal'"
+            class="text-xs px-3 py-1 rounded-full tracking-wider font-mono">
             {{ selectedEvent.category }}
           </span>
         </div>
 
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-4 tracking-tight">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-4 tracking-tight">
           {{ selectedEvent.title }}
         </h1>
 
         <!-- Speakers Badges -->
-        <div class="flex flex-wrap items-center gap-2 mb-5">
+        <div 
+          :class="(!selectedEvent.knowledge || selectedEvent.drive_url) ? 'mb-4' : 'mb-1'"
+          class="flex flex-wrap items-center gap-2">
           <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold mr-1">主講與成員:</span>
-          <span v-for="spk in selectedEvent.speakers" :key="spk" class="text-xs text-cyan-300 bg-cyan-950/70 px-3 py-1 rounded-lg border border-cyan-800/70 flex items-center gap-1.5 font-medium shadow-sm">
-            <i class="fa-solid fa-user-circle text-cyan-400"></i>{{ spk }}
+          <span v-for="spk in selectedEvent.speakers" :key="spk" class="text-xs text-slate-300 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700/60 flex items-center gap-1.5 font-medium shadow-sm">
+            <i class="fa-solid fa-user-circle text-slate-400"></i>{{ spk }}
           </span>
         </div>
 
-        <!-- Summary -->
-        <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-light mb-4">
+        <!-- Summary (Only shown for events without knowledge module to prevent duplicate content) -->
+        <p v-if="!selectedEvent.knowledge" class="text-sm sm:text-base text-slate-300 leading-relaxed font-light mb-4">
           {{ selectedEvent.summary }}
         </p>
 
@@ -677,32 +683,32 @@
             :href="selectedEvent.drive_url" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-cyan-300 bg-cyan-950/60 hover:bg-cyan-900 border border-cyan-500/40 hover:border-cyan-300 transition-all shadow-[0_0_15px_rgba(6,182,212,0.18)]">
-            <i class="fa-brands fa-google-drive text-emerald-400 text-sm"></i>
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 hover:border-slate-600 transition-colors">
+            <i class="fa-brands fa-google-drive text-slate-400 text-sm"></i>
             <span>在 Google 雲端硬碟檢視原始專題資料夾</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
           </a>
         </div>
       </div>
 
       <!-- Detail View Tabs Switcher (Shown if both Knowledge & Media exist) -->
-      <div v-if="selectedEvent.knowledge && getMediaList(selectedEvent).length > 0" class="flex items-center gap-2 p-1.5 bg-slate-950/80 rounded-2xl border border-slate-800/80 w-fit shadow-lg">
+      <div v-if="selectedEvent.knowledge && getMediaList(selectedEvent).length > 0" class="flex items-center gap-1.5 p-1 bg-slate-900/90 rounded-xl border border-slate-800 w-fit shadow-md">
         <button 
           @click="detailActiveTab = 'knowledge'"
-          :class="detailActiveTab === 'knowledge' ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-[0_0_12px_rgba(245,158,11,0.25)] font-black' : 'text-slate-400 hover:text-white border-transparent font-medium'"
-          class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs border transition-all">
-          <i class="fa-solid fa-brain text-amber-400"></i>
+          :class="detailActiveTab === 'knowledge' ? 'bg-slate-800 text-amber-300 border-slate-700/90 shadow-sm font-semibold' : 'text-slate-400 hover:text-slate-200 border-transparent font-normal'"
+          class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs border transition-all">
+          <i class="fa-solid fa-brain" :class="detailActiveTab === 'knowledge' ? 'text-amber-400' : 'text-slate-400'"></i>
           <span>研討紀要 & 簡報洞察</span>
-          <span class="text-[10px] px-1.5 py-0.2 bg-amber-500/20 text-amber-300 rounded-full font-mono">{{ selectedEvent.knowledge.topics ? selectedEvent.knowledge.topics.length : 1 }}</span>
+          <span :class="detailActiveTab === 'knowledge' ? 'bg-amber-500/20 text-amber-300' : 'bg-slate-800 text-slate-400'" class="text-[10px] px-1.5 py-0.2 rounded-full font-mono">{{ selectedEvent.knowledge.topics ? selectedEvent.knowledge.topics.length : 1 }}</span>
         </button>
 
         <button 
           @click="detailActiveTab = 'media'"
-          :class="detailActiveTab === 'media' ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_12px_rgba(6,182,212,0.25)] font-black' : 'text-slate-400 hover:text-white border-transparent font-medium'"
-          class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs border transition-all">
-          <i class="fa-solid fa-camera text-cyan-400"></i>
+          :class="detailActiveTab === 'media' ? 'bg-slate-800 text-slate-200 border-slate-700/90 shadow-sm font-semibold' : 'text-slate-400 hover:text-slate-200 border-transparent font-normal'"
+          class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs border transition-all">
+          <i class="fa-solid fa-camera text-slate-400"></i>
           <span>現場寫真與簡報動畫</span>
-          <span class="text-[10px] px-1.5 py-0.2 bg-slate-900 text-slate-300 rounded-full font-mono">{{ getMediaList(selectedEvent).length }}</span>
+          <span class="text-[10px] px-1.5 py-0.2 bg-slate-800 text-slate-400 rounded-full font-mono">{{ getMediaList(selectedEvent).length }}</span>
         </button>
       </div>
 
@@ -710,25 +716,68 @@
       <div v-if="selectedEvent.knowledge" v-show="detailActiveTab === 'knowledge' || getMediaList(selectedEvent).length === 0" class="space-y-6">
         
         <!-- 1. Executive Summary & Meta -->
-        <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-500/10 via-slate-950 to-cyan-500/10 border border-amber-500/30 shadow-xl">
-          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-            <span class="text-sm font-bold text-amber-300 flex items-center gap-2">
-              <i class="fa-solid fa-feather text-amber-400"></i> 研討核心總綱
+        <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800/90 shadow-sm space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+              <i class="fa-solid fa-feather text-amber-400/90"></i> 研討核心總綱
             </span>
-            <span v-if="selectedEvent.knowledge.minutes_meta" class="text-xs text-slate-300 bg-slate-900/90 px-3 py-1 rounded-lg border border-slate-800 flex items-center gap-1.5">
-              <i class="fa-solid fa-pen-nib text-cyan-400"></i> {{ selectedEvent.knowledge.minutes_meta.recorder }}
-            </span>
+            <div class="flex flex-wrap items-center gap-2">
+              <span v-if="getNoteTaker(selectedEvent)" class="text-xs text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/60 flex items-center gap-1.5 font-mono">
+                <i class="fa-solid fa-pen-nib text-slate-400"></i> Note Taker: <span class="text-slate-200 font-medium">{{ getNoteTaker(selectedEvent) }}</span>
+              </span>
+              <a v-if="selectedEvent.knowledge.minutes_meta && selectedEvent.knowledge.minutes_meta.notion_url" 
+                :href="selectedEvent.knowledge.minutes_meta.notion_url"
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-xs text-slate-400 hover:text-slate-200 bg-slate-800/80 hover:bg-slate-700/80 px-2.5 py-1 rounded-md border border-slate-700/60 flex items-center gap-1.5 font-mono transition-colors"
+                title="前往 Notion 開啟完整會議記錄">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400"></i>
+                <span>Notion 原始記錄</span>
+              </a>
+            </div>
           </div>
-          <p class="text-sm text-slate-200 leading-relaxed font-light">
+          <p class="text-sm sm:text-[15px] text-slate-300 leading-relaxed font-light">
             {{ selectedEvent.knowledge.exec_summary }}
           </p>
         </div>
 
-        <!-- 2. Speaker Keynote Briefings (2 columns responsive) -->
+        <!-- 2. Becky's Lens / Executive Provocations (高管破局提問與靈魂反思) -->
+        <div v-if="selectedEvent.knowledge.provocations && selectedEvent.knowledge.provocations.length > 0" class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+              <i class="fa-solid fa-lightbulb text-amber-400/90"></i> 決策者視角與破局提問 (Executive Provocations)
+            </span>
+            <span class="text-xs text-slate-500 font-mono">深度反思</span>
+          </div>
+
+          <div class="space-y-3">
+            <div 
+              v-for="(pr, prIdx) in selectedEvent.knowledge.provocations" :key="prIdx"
+              class="border-l-2 border-amber-400/80 bg-slate-900/40 p-5 rounded-r-xl border-y border-r border-slate-800/80 shadow-sm space-y-2.5">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-xs font-mono font-medium text-amber-400/90 uppercase tracking-wider flex items-center gap-1.5">
+                  <i class="fa-solid fa-quote-left text-amber-400/80 text-xs"></i> {{ pr.speaker }}'s Provocation
+                </span>
+                <span v-if="pr.tag" class="text-[10px] px-2 py-0.5 rounded bg-slate-800/80 text-amber-300/80 border border-slate-700/60 font-mono">
+                  {{ pr.tag }}
+                </span>
+              </div>
+              <p class="text-sm sm:text-base italic font-serif text-slate-100 leading-relaxed pl-1">
+                "{{ pr.quote }}"
+              </p>
+              <div class="pt-2.5 border-t border-slate-800/80 text-xs sm:text-sm text-slate-300 font-light flex items-start gap-2">
+                <span class="text-amber-400/90 font-medium shrink-0">破局點 / 底層張力：</span>
+                <span class="leading-relaxed text-slate-300">{{ pr.insight }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Speaker Keynote Briefings (2 columns responsive) -->
         <div v-if="selectedEvent.knowledge.topics && selectedEvent.knowledge.topics.length > 0" class="space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-sm font-bold text-cyan-400 flex items-center gap-2">
-              <i class="fa-solid fa-chalkboard-user"></i> 專題精華與硬核結論
+            <span class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+              <i class="fa-solid fa-chalkboard-user text-slate-400"></i> 專題精華與硬核結論
             </span>
             <span class="text-xs text-slate-500 font-mono">共 {{ selectedEvent.knowledge.topics.length }} 個專題</span>
           </div>
@@ -736,43 +785,101 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div 
               v-for="(tp, tpIdx) in selectedEvent.knowledge.topics" :key="tpIdx"
-              class="bg-slate-950/80 rounded-2xl p-5 border border-slate-800/90 hover:border-cyan-500/40 transition-all flex flex-col justify-between">
+              class="bg-slate-900/50 rounded-xl p-5 border border-slate-800/80 hover:border-slate-700 transition-colors flex flex-col justify-between">
               <div>
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-                  <span class="text-sm font-bold text-white">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span class="text-sm font-semibold text-slate-100">
                     {{ tp.title }}
                   </span>
-                  <span class="text-xs font-semibold text-cyan-300 bg-cyan-950/70 px-2.5 py-0.5 rounded-lg border border-cyan-800/60 font-mono flex items-center gap-1">
-                    <i class="fa-solid fa-user-circle text-[11px]"></i> {{ tp.speaker }}
+                  <span class="text-xs text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700/60 font-mono flex items-center gap-1">
+                    <i class="fa-solid fa-user-circle text-[11px] text-slate-400"></i> {{ tp.speaker }}
                   </span>
                 </div>
-                <ul class="space-y-2 pl-1 text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+                <ul class="space-y-2.5 pl-0.5 text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
                   <li v-for="(b, bIdx) in tp.bullets" :key="bIdx" class="flex items-start gap-2">
-                    <span class="text-cyan-400 mt-1 text-[9px] shrink-0">▪</span>
-                    <span>{{ b }}</span>
+                    <span class="text-slate-600 mt-1 text-[9px] shrink-0">▪</span>
+                    <span v-if="b.startsWith('[現況 Fact]')">
+                      <span class="inline-block text-[10px] font-mono text-slate-400 bg-slate-800/90 border border-slate-700/60 px-1.5 py-0.5 rounded mr-1 font-medium">現況 Fact</span>
+                      <span class="text-slate-300">{{ b.replace('[現況 Fact]', '').trim() }}</span>
+                    </span>
+                    <span v-else-if="b.startsWith('[洞察 Insight]')">
+                      <span class="inline-block text-[10px] font-mono text-amber-300/90 bg-amber-500/10 border border-amber-500/25 px-1.5 py-0.5 rounded mr-1 font-medium">洞察 Insight</span>
+                      <span class="text-slate-200">{{ b.replace('[洞察 Insight]', '').trim() }}</span>
+                    </span>
+                    <span v-else-if="b.startsWith('[反思 Tension]')">
+                      <span class="inline-block text-[10px] font-mono text-slate-300 bg-slate-800/90 border border-slate-700/60 px-1.5 py-0.5 rounded mr-1 font-medium">反思 Tension</span>
+                      <span class="text-slate-300">{{ b.replace('[反思 Tension]', '').trim() }}</span>
+                    </span>
+                    <span v-else>{{ b }}</span>
                   </li>
                 </ul>
               </div>
-              <div v-if="tp.file" class="mt-3 pt-3 border-t border-slate-800/60 text-[11px] text-slate-400 flex items-center gap-1.5">
-                <i class="fa-solid fa-file-powerpoint text-amber-400"></i>
+              <div v-if="tp.file" class="mt-3.5 pt-3 border-t border-slate-800/60 text-[11px] text-slate-400 flex items-center gap-1.5">
+                <i :class="tp.file.endsWith('.pdf') ? 'fa-solid fa-file-pdf text-red-400/80' : tp.file.endsWith('.gif') ? 'fa-solid fa-film text-purple-400/80' : 'fa-solid fa-file-powerpoint text-amber-400/80'"></i>
                 <span class="truncate">{{ tp.file }}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 3. Member Debates & Contrarian Sparks -->
-        <div v-if="selectedEvent.knowledge.debates && selectedEvent.knowledge.debates.length > 0" class="p-6 rounded-2xl bg-purple-950/20 border border-purple-500/30 space-y-4">
-          <div class="text-sm font-bold text-purple-300 flex items-center gap-2">
-            <i class="fa-solid fa-comments text-purple-400"></i> 讀書會成員思辨與非共識火花
+        <!-- 4. Open Discussions & 觀點張力矩陣 (Tension Spectrum) -->
+        <div v-if="selectedEvent.knowledge.open_discussions && selectedEvent.knowledge.open_discussions.length > 0" class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800/90 space-y-4 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+              <i class="fa-solid fa-scale-balanced text-slate-400"></i> 開放式討論與觀點張力矩陣 (Tension Spectrum)
+            </span>
+            <span class="text-xs text-slate-500 font-mono">思想博弈</span>
+          </div>
+
+          <div class="space-y-4">
+            <div 
+              v-for="(od, odIdx) in selectedEvent.knowledge.open_discussions" :key="odIdx"
+              class="bg-slate-950/60 rounded-xl p-4 sm:p-5 border border-slate-800/80 space-y-3.5 shadow-sm">
+              
+              <!-- Polarizing Question -->
+              <div class="text-sm font-medium text-slate-100 flex items-center gap-2">
+                <i class="fa-solid fa-code-branch text-xs text-amber-400/80"></i>
+                <span>{{ od.topic }}</span>
+              </div>
+
+              <!-- Thesis vs Antithesis Columns -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+                <div class="bg-slate-900/80 p-3.5 rounded-lg border border-slate-800/90 flex flex-col justify-between">
+                  <div class="text-xs font-mono font-medium text-slate-300 flex items-center gap-1.5 mb-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> 立場 A（論點與依據）
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">{{ od.thesis }}</p>
+                </div>
+
+                <div class="bg-slate-900/80 p-3.5 rounded-lg border border-slate-800/90 flex flex-col justify-between">
+                  <div class="text-xs font-mono font-medium text-slate-300 flex items-center gap-1.5 mb-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400/80"></span> 立場 B（反思與批判）
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">{{ od.antithesis }}</p>
+                </div>
+              </div>
+
+              <!-- Pivot / Unresolved Variable -->
+              <div v-if="od.pivot" class="p-3 rounded-lg bg-slate-900/90 border border-slate-800 text-xs text-slate-300 flex items-start gap-2">
+                <span class="text-amber-400/90 font-medium shrink-0">關鍵破局變數：</span>
+                <span class="font-light leading-relaxed text-slate-300">{{ od.pivot }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fallback: Member Debates & Contrarian Sparks if legacy debates present -->
+        <div v-else-if="selectedEvent.knowledge.debates && selectedEvent.knowledge.debates.length > 0" class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800/90 space-y-4 shadow-sm">
+          <div class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+            <i class="fa-solid fa-comments text-slate-400"></i> 讀書會成員思辨與非共識火花
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-            <div v-for="(db, dbIdx) in selectedEvent.knowledge.debates" :key="dbIdx" class="bg-black/40 p-4 rounded-xl border border-purple-500/20">
+            <div v-for="(db, dbIdx) in selectedEvent.knowledge.debates" :key="dbIdx" class="bg-slate-950/60 p-4 rounded-xl border border-slate-800/80">
               <div class="flex flex-wrap items-center justify-between gap-1 mb-1.5">
-                <span class="text-amber-300 font-semibold flex items-center gap-1.5">
-                  <i class="fa-solid fa-bolt text-xs text-amber-400"></i> {{ db.topic }}
+                <span class="text-slate-200 font-medium flex items-center gap-1.5">
+                  <i class="fa-solid fa-code-branch text-xs text-amber-400/80"></i> {{ db.topic }}
                 </span>
-                <span v-if="db.proposer" class="text-xs text-slate-400 bg-slate-900 px-2 py-0.5 rounded font-mono">
+                <span v-if="db.proposer" class="text-xs text-slate-400 bg-slate-800 px-2 py-0.5 rounded font-mono">
                   {{ db.proposer }}
                 </span>
               </div>
@@ -781,31 +888,37 @@
           </div>
         </div>
 
-        <!-- 4. Foresight Predictions -->
-        <div v-if="selectedEvent.knowledge.predictions && selectedEvent.knowledge.predictions.length > 0" class="p-6 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-3">
-          <div class="text-sm font-bold text-emerald-300 flex items-center gap-2">
-            <i class="fa-solid fa-compass text-emerald-400"></i> 前瞻預測與局勢推演
+        <!-- 5. Foresight Predictions -->
+        <div v-if="selectedEvent.knowledge.predictions && selectedEvent.knowledge.predictions.length > 0" class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800/90 space-y-3 shadow-sm">
+          <div class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+            <i class="fa-solid fa-compass text-slate-400"></i> 前瞻預測與局勢推演
           </div>
           <ul class="space-y-2 text-xs sm:text-sm text-slate-300 pl-1 font-light">
             <li v-for="(pred, pIdx) in selectedEvent.knowledge.predictions" :key="pIdx" class="flex items-start gap-2 leading-relaxed">
-              <span class="text-emerald-400 mt-1 text-[10px] shrink-0">▸</span>
-              <span>{{ pred }}</span>
+              <span class="text-slate-500 mt-1 text-[10px] shrink-0">▸</span>
+              <span class="text-slate-300">{{ pred }}</span>
             </li>
           </ul>
         </div>
 
-        <!-- 5. Materials List -->
-        <div v-if="selectedEvent.knowledge.materials && selectedEvent.knowledge.materials.length > 0" class="p-6 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-3">
-          <div class="text-xs sm:text-sm font-bold text-slate-300 flex items-center gap-2">
-            <i class="fa-solid fa-paperclip text-sky-400"></i> 研討簡報與會議記錄清單 ({{ selectedEvent.knowledge.materials.length }})
+        <!-- 6. Materials List -->
+        <div v-if="selectedEvent.knowledge.materials && selectedEvent.knowledge.materials.length > 0" class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800/90 space-y-3 shadow-sm">
+          <div class="text-xs sm:text-sm font-semibold text-slate-300 flex items-center gap-2">
+            <i class="fa-solid fa-paperclip text-slate-400"></i> 研討簡報與會議記錄清單 ({{ selectedEvent.knowledge.materials.length }})
           </div>
           <div class="flex flex-wrap gap-2">
-            <div 
+            <component 
+              :is="mat.url ? 'a' : 'div'"
               v-for="(mat, mIdx) in selectedEvent.knowledge.materials" :key="mIdx"
-              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-700/80 text-xs text-slate-200 hover:text-cyan-300 hover:border-cyan-500/50 transition-colors">
-              <i :class="mat.type === 'pdf' ? 'fa-solid fa-file-pdf text-red-400' : mat.type === 'docx' ? 'fa-solid fa-file-word text-blue-400' : 'fa-solid fa-file-powerpoint text-amber-400'"></i>
+              :href="mat.url || null"
+              :target="mat.url ? '_blank' : null"
+              :rel="mat.url ? 'noopener noreferrer' : null"
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 hover:text-white hover:border-slate-700 transition-colors"
+              :class="mat.url ? 'cursor-pointer hover:bg-slate-800/80 shadow-sm' : ''">
+              <i :class="mat.type === 'pdf' ? 'fa-solid fa-file-pdf text-red-400/80' : mat.type === 'docx' ? 'fa-solid fa-file-word text-blue-400/80' : mat.type === 'notion' ? 'fa-solid fa-book-open text-emerald-400/80' : mat.type === 'gif' ? 'fa-solid fa-film text-purple-400/80' : 'fa-solid fa-file-powerpoint text-amber-400/80'"></i>
               <span>{{ mat.name }}</span>
-            </div>
+              <i v-if="mat.url" class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-500"></i>
+            </component>
           </div>
         </div>
 
@@ -815,15 +928,15 @@
       <div v-if="getMediaList(selectedEvent).length > 0" v-show="detailActiveTab === 'media' || !selectedEvent.knowledge" class="space-y-4">
         
         <div class="flex items-center justify-between">
-          <span class="text-sm font-bold text-cyan-400 flex items-center gap-2">
-            <i class="fa-solid fa-images"></i> 聚會紀實畫廊 ({{ getMediaList(selectedEvent).length }} 張)
+          <span class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+            <i class="fa-solid fa-images text-slate-400"></i> 聚會紀實畫廊 ({{ getMediaList(selectedEvent).length }} 張)
           </span>
 
           <!-- Slideshow Button -->
           <button 
             @click="startSlideshow(getMediaList(selectedEvent), 0)"
-            class="text-xs font-bold text-amber-300 bg-amber-500/15 hover:bg-amber-500/30 border border-amber-500/40 px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
-            <i class="fa-solid fa-play text-[10px]"></i> 自動放映幻燈片
+            class="text-xs font-medium text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-play text-[10px] text-amber-400"></i> 自動放映幻燈片
           </button>
         </div>
 
@@ -928,11 +1041,19 @@
   <!-- ================= 3M MANIFESTO MODAL (HISTORICAL DECLARATION THEME) ================= -->
   <div 
     v-if="isManifestoOpen"
-    @click.self="closeManifesto"
-    class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto select-none transition-all duration-300">
+    class="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-6 overflow-y-auto select-none transition-all duration-300">
     
+    <!-- Full-Screen Backdrop Overlay (Click anywhere outside modal card to close immediately) -->
     <div 
-      class="relative w-full max-w-2xl parchment-sheet border-4 border-double border-[#96724a]/80 rounded-sm p-3 sm:p-5 text-left my-auto animate-scale-reveal text-[#2b2118] font-parchment-body select-text shadow-2xl">
+      class="fixed inset-0 bg-black/85 backdrop-blur-md cursor-pointer transition-opacity"
+      @click="closeManifesto"
+      title="點擊背景關閉 (ESC)">
+    </div>
+
+    <!-- Parchment Sheet Content Card -->
+    <div 
+      @click.stop
+      class="relative z-10 w-full max-w-2xl parchment-sheet border-4 border-double border-[#96724a]/80 rounded-sm p-3 sm:p-5 text-left my-auto animate-scale-reveal text-[#2b2118] font-parchment-body select-text shadow-2xl pointer-events-auto">
       
       <!-- Inner Frame with Filigree Corner Accents -->
       <div class="border border-[#aa8256]/50 p-5 sm:p-8 relative rounded-sm bg-[#faf5eb]/50">
@@ -943,16 +1064,20 @@
         <span class="absolute bottom-1.5 left-1.5 text-xs text-[#8a633c]/60 select-none pointer-events-none">❧</span>
         <span class="absolute bottom-1.5 right-1.5 text-xs text-[#8a633c]/60 select-none pointer-events-none">☙</span>
 
-        <!-- Top Close Button -->
+        <!-- Top-Right Close Button (Prominent, High Contrast, SVG icon immune to CDN issues) -->
         <button 
-          @click="closeManifesto" 
-          class="absolute top-2.5 right-2.5 text-[#785433] hover:text-[#2b1c10] text-lg p-1.5 rounded hover:bg-[#ebd9bc]/60 transition-colors cursor-pointer"
-          title="關閉憲章 (ESC)">
-          <i class="fa-solid fa-xmark"></i>
+          type="button"
+          @click.stop="closeManifesto" 
+          class="absolute top-2 right-2 sm:top-3 sm:right-3 z-30 w-9 h-9 rounded-full bg-[#ebd9bc] hover:bg-[#dfc59e] text-[#633f1c] hover:text-[#2b1808] border border-[#a88258]/60 hover:border-[#73491d] flex items-center justify-center transition-all cursor-pointer shadow-md hover:scale-105"
+          title="關閉憲章 (ESC)"
+          aria-label="關閉憲章">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
         </button>
 
         <!-- Main Title: Declaration of Independence Style -->
-        <h2 class="text-2xl sm:text-4xl font-black font-parchment-en tracking-wide text-[#23180f] text-center uppercase my-2">
+        <h2 class="text-2xl sm:text-4xl font-black font-parchment-en tracking-wide text-[#23180f] text-center uppercase my-2 pr-6 pl-6">
           The Declaration of 3M
         </h2>
         <div class="text-center font-serif text-xs tracking-widest text-[#69482b] font-medium mb-4">
@@ -1046,6 +1171,19 @@
           </div>
         </div>
 
+        <!-- 5. Bottom Prominent Close Action Button -->
+        <div class="mt-6 pt-4 border-t border-[#b8956e]/40 flex justify-center">
+          <button 
+            type="button"
+            @click.stop="closeManifesto"
+            class="px-6 py-2 rounded-full bg-[#80572e] hover:bg-[#633f1c] text-[#faf5eb] font-semibold text-xs tracking-wider uppercase font-parchment-en transition-all shadow-md hover:shadow-lg hover:scale-105 cursor-pointer flex items-center gap-2 border border-[#543314]">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            <span>關閉憲章 (Esc)</span>
+          </button>
+        </div>
+
       </div>
 
     </div>
@@ -1103,8 +1241,16 @@
 
       // 讀書會宗旨彈窗
       const isManifestoOpen = ref(false);
-      const openManifesto = () => { isManifestoOpen.value = true; };
-      const closeManifesto = () => { isManifestoOpen.value = false; };
+      const openManifesto = () => { 
+        isManifestoOpen.value = true;
+        document.body.style.overflow = 'hidden';
+      };
+      const closeManifesto = () => { 
+        isManifestoOpen.value = false;
+        if (!selectedEvent.value) {
+          document.body.style.overflow = '';
+        }
+      };
 
       const lightboxEl = ref(null);
       const lightbox = ref({
@@ -1227,11 +1373,12 @@
       const skipOpening = () => {
         if (openingAnimId) cancelAnimationFrame(openingAnimId);
         if (dockTimeout) clearTimeout(dockTimeout);
+        opening.value.active = false;
+        opening.value.docking = false;
         opening.value.stage = 'dock';
         opening.value.countYear = 11;
         opening.value.countDays = 4018;
         opening.value.countEvents = events.value.length || 18;
-        dockOpening();
       };
 
       const replayOpening = () => {
@@ -1283,16 +1430,17 @@
         runOpeningAnimation();
 
         window.addEventListener('keydown', (e) => {
-          // ESC 快速跳過開場
-          if (opening.value.active && (e.key === 'Escape' || e.key === ' ' || e.code === 'Space')) {
+          // ESC 優先 1：關閉讀書會宗旨彈窗
+          if (isManifestoOpen.value && e.key === 'Escape') {
             e.preventDefault();
-            skipOpening();
+            closeManifesto();
             return;
           }
 
-          // ESC 關閉宗旨彈窗
-          if (isManifestoOpen.value && e.key === 'Escape') {
-            closeManifesto();
+          // ESC 優先 2：快速跳過開場
+          if (opening.value.active && (e.key === 'Escape' || e.key === ' ' || e.code === 'Space')) {
+            e.preventDefault();
+            skipOpening();
             return;
           }
 
@@ -1409,6 +1557,17 @@
           }));
         }
         return [];
+      };
+
+      const getNoteTaker = (item) => {
+        if (!item || !item.knowledge || !item.knowledge.minutes_meta) return '';
+        const meta = item.knowledge.minutes_meta;
+        if (meta.note_taker) return meta.note_taker;
+        if (meta.recorder) {
+          const match = meta.recorder.split('(')[0].split(',')[0].split('，')[0].trim();
+          return match || meta.recorder;
+        }
+        return '';
       };
 
       const availableYears = computed(() => {
@@ -1592,6 +1751,8 @@
         animate();
       };
 
+      window.__APP_STATE__ = { isManifestoOpen, selectedEvent, opening };
+
       return {
         events,
         selectedYear,
@@ -1606,6 +1767,7 @@
         lightboxEl,
         currentMedia,
         getMediaList,
+        getNoteTaker,
         countType,
         toggleExpand,
         openLightbox,
